@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState, useRef, useCallback } from 'react'
 import PILLARS from '../data/pillars.json'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSearchParams } from 'react-router-dom'
+import FocusTrap from 'focus-trap-react'
 
 const STORAGE_SEARCH = 'jvdt.glossary.search'
 const STORAGE_CAT = 'jvdt.glossary.category'
@@ -124,38 +125,15 @@ export default function Glossary() {
     try { if (lastFocusedRef.current && typeof lastFocusedRef.current.focus === 'function') lastFocusedRef.current.focus() } catch {}
   }, [setSearchParams])
 
-  // keyboard handlers for esc and Cmd/Ctrl+W
+  // keyboard handlers for Cmd/Ctrl+W (Escape handled by focus-trap)
   useEffect(() => {
     function onKey(e) {
       if (!selectedSlug) return
-      if (e.key === 'Escape') { e.preventDefault(); closeDrawer() }
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'w') { e.preventDefault(); closeDrawer() }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [selectedSlug, closeDrawer])
-
-  // focus trap inside drawer
-  useEffect(() => {
-    if (!selectedSlug) return
-    const node = drawerRef.current
-    if (!node) return
-    const focusable = 'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
-    const elements = Array.from(node.querySelectorAll(focusable)).filter((el) => !el.hasAttribute('disabled'))
-    if (elements.length) elements[0].focus()
-
-    function handleTab(e) {
-      if (e.key !== 'Tab') return
-      const idx = elements.indexOf(document.activeElement)
-      if (e.shiftKey) {
-        if (idx === 0) { e.preventDefault(); elements[elements.length - 1].focus() }
-      } else {
-        if (idx === elements.length - 1) { e.preventDefault(); elements[0].focus() }
-      }
-    }
-    node.addEventListener('keydown', handleTab)
-    return () => node.removeEventListener('keydown', handleTab)
-  }, [selectedSlug])
 
   function onBackdropClick(e){ if (e.target === e.currentTarget) closeDrawer() }
 
@@ -249,65 +227,68 @@ export default function Glossary() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              ref={drawerRef}
               role="dialog"
               aria-modal="true"
               aria-labelledby="glossary-drawer-title"
               data-testid="glossary-drawer"
               className="absolute right-0 top-0 h-full w-full sm:w-[520px] bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-gray-800 p-6 overflow-auto"
             >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h2 id="glossary-drawer-title" className="text-xl font-semibold">{itemsBySlug.get(selectedSlug).term}</h2>
-                  {itemsBySlug.get(selectedSlug).category && <div className="text-xs mt-1 inline-block px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-200">{itemsBySlug.get(selectedSlug).category}</div>}
-                </div>
-                <div className="flex items-center gap-2">
-                  <button data-testid="drawer-copylink" onClick={onCopyLink} className="px-3 py-2 border rounded text-sm">Copy link</button>
-                  <button data-testid="drawer-close" onClick={closeDrawer} className="px-3 py-2 rounded border">Close</button>
-                </div>
-              </div>
-
-              <div className="mt-4 text-sm text-gray-800 dark:text-gray-200">
-                <div className="prose dark:prose-invert">{activeQuery ? highlightText(itemsBySlug.get(selectedSlug).definition, activeQuery) : itemsBySlug.get(selectedSlug).definition}</div>
-
-                {itemsBySlug.get(selectedSlug).aka && itemsBySlug.get(selectedSlug).aka.length > 0 && (
-                  <div className="mt-4">
-                    <h3 className="text-sm font-medium">Also known as</h3>
-                    <div className="text-sm text-gray-500">{itemsBySlug.get(selectedSlug).aka.join(', ')}</div>
-                  </div>
-                )}
-
-                {itemsBySlug.get(selectedSlug).examples && itemsBySlug.get(selectedSlug).examples.length > 0 && (
-                  <div className="mt-4">
-                    <h3 className="text-sm font-medium">Examples</h3>
-                    <ul className="list-disc list-inside text-sm text-gray-600">
-                      {itemsBySlug.get(selectedSlug).examples.map((ex,i)=>(<li key={i}>{ex}</li>))}
-                    </ul>
-                  </div>
-                )}
-
-                {itemsBySlug.get(selectedSlug).related && itemsBySlug.get(selectedSlug).related.length > 0 && (
-                  <div className="mt-4">
-                    <h3 className="text-sm font-medium">Related</h3>
-                    <div className="flex gap-2 flex-wrap mt-2">
-                      {itemsBySlug.get(selectedSlug).related.map((r,i)=>{
-                        const target = itemsBySlug.get(slugify(r)) || itemsBySlug.get(r)
-                        const slug = target ? target.slug : slugify(r)
-                        return (
-                          <button key={i} onClick={() => onRelatedClick(slug)} className="text-sm px-3 py-1 border rounded-full hover:bg-gray-100 dark:hover:bg-gray-700" aria-label={`Open related term ${r}`}>
-                            {target ? target.term : r}
-                          </button>
-                        )
-                      })}
+              <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true, escapeDeactivates: true, onDeactivate: closeDrawer }}>
+                <div ref={drawerRef}>
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h2 id="glossary-drawer-title" className="text-xl font-semibold">{itemsBySlug.get(selectedSlug).term}</h2>
+                      {itemsBySlug.get(selectedSlug).category && <div className="text-xs mt-1 inline-block px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-200">{itemsBySlug.get(selectedSlug).category}</div>}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <button data-testid="drawer-copylink" onClick={onCopyLink} className="px-3 py-2 border rounded text-sm">Copy link</button>
+                      <button data-testid="drawer-close" onClick={closeDrawer} className="px-3 py-2 rounded border">Close</button>
                     </div>
                   </div>
-                )}
-              </div>
 
-              <div className="mt-6">
-                <small className="text-xs text-gray-500">Share: </small>
-                <div className="mt-2">{copied && <span className="text-sm text-green-600">Copied!</span>}</div>
-              </div>
+                  <div className="mt-4 text-sm text-gray-800 dark:text-gray-200">
+                    <div className="prose dark:prose-invert">{activeQuery ? highlightText(itemsBySlug.get(selectedSlug).definition, activeQuery) : itemsBySlug.get(selectedSlug).definition}</div>
+
+                    {itemsBySlug.get(selectedSlug).aka && itemsBySlug.get(selectedSlug).aka.length > 0 && (
+                      <div className="mt-4">
+                        <h3 className="text-sm font-medium">Also known as</h3>
+                        <div className="text-sm text-gray-500">{itemsBySlug.get(selectedSlug).aka.join(', ')}</div>
+                      </div>
+                    )}
+
+                    {itemsBySlug.get(selectedSlug).examples && itemsBySlug.get(selectedSlug).examples.length > 0 && (
+                      <div className="mt-4">
+                        <h3 className="text-sm font-medium">Examples</h3>
+                        <ul className="list-disc list-inside text-sm text-gray-600">
+                          {itemsBySlug.get(selectedSlug).examples.map((ex,i)=>(<li key={i}>{ex}</li>))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {itemsBySlug.get(selectedSlug).related && itemsBySlug.get(selectedSlug).related.length > 0 && (
+                      <div className="mt-4">
+                        <h3 className="text-sm font-medium">Related</h3>
+                        <div className="flex gap-2 flex-wrap mt-2">
+                          {itemsBySlug.get(selectedSlug).related.map((r,i)=>{
+                            const target = itemsBySlug.get(slugify(r)) || itemsBySlug.get(r)
+                            const slug = target ? target.slug : slugify(r)
+                            return (
+                              <button key={i} onClick={() => onRelatedClick(slug)} className="text-sm px-3 py-1 border rounded-full hover:bg-gray-100 dark:hover:bg-gray-700" aria-label={`Open related term ${r}`}>
+                                {target ? target.term : r}
+                              </button>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="mt-6">
+                    <small className="text-xs text-gray-500">Share: </small>
+                    <div className="mt-2">{copied && <span className="text-sm text-green-600">Copied!</span>}</div>
+                  </div>
+                </div>
+              </FocusTrap>
             </motion.aside>
           </motion.div>
         )}
