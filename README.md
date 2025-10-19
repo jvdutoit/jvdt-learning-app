@@ -28,3 +28,27 @@ npm run preview
 ## Stack
 Vite + React + Tailwind + framer-motion.
 Data is stored in localStorage. You can replace the store with API calls later.
+
+## Deploy (Vercel)
+
+One-click deploy (GitHub): Import this repository in Vercel (https://vercel.com/new) and select the project. Vercel will detect the static build and run `npm run build`. The `vercel.json` in the repo includes an SPA rewrite so routes fallback to `index.html`.
+
+Using Vercel CLI:
+
+```bash
+# install CLI
+npm i -g vercel
+
+# link the project (first time)
+vercel login
+vercel link
+
+# build and deploy
+npm run build
+vercel --prod
+```
+
+Notes:
+- `npm run build` produces `dist/` which Vercel will serve. You can preview locally with `npm run preview`.
+- If your app needs environment variables, set them in the Vercel dashboard or with `vercel env add`.
+- The `vercel.json` file contains a rewrite to route all requests to `index.html` so client-side routing works (SPA fallback).
