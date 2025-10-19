@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Association",
+    "definition": "Connect new information to what is already known.",
+    "practices": ["make-a-bridge", "analogy", "before/after map"],
+    "example": "Link a new leadership model to a situation you faced last quarter."
+  },
+  {
+    "id": 2,
+    "name": "Analysis",
+    "definition": "Examine structure, parts, causes, and relationships.",
+    "practices": ["compare/contrast", "criteria list", "pattern hunt"],
+    "example": "Break a conflict into observations, feelings, needs, and a request."
+  },
+  {
+    "id": 3,
+    "name": "Root",
+    "definition": "Trace origins and essential meaning; find the first principles.",
+    "practices": ["etymology check", "5 whys", "principle → practice"],
+    "example": "Ask 'What is feedback for?' then derive 3 non-negotiables."
+  },
+  {
+    "id": 4,
+    "name": "Context",
+    "definition": "Place ideas within purpose, people, place, and timing.",
+    "practices": ["stakeholder map", "constraints list", "transfer test"],
+    "example": "Adapt a policy for a remote, multilingual team with 3 constraints."
+  }
+]

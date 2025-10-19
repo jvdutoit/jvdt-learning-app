@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens (rudimentary) */
+:root{
+  --color-root-base: #f9f7f3;
+  --color-context-deep: #0f172a;
+  --color-emotion-accent: #f59e0b;
+  --color-peace-highlight: #a7f3d0;
+}
