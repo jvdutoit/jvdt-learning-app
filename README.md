@@ -1,5 +1,7 @@
 # JVDT Learning App (Vite + React + Tailwind)
 
+[![CI](https://github.com/your-username/jvdt-learning-app/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/jvdt-learning-app/actions/workflows/ci.yml)
+
 A working prototype of the JVDT Learning Hub featuring:
 - Method map (Four Keys, Train Journey, Twenty Pillars)
 - Journey Builder (4 stations, Keys, Pillars, metric)
