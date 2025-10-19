@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
 import FourKeys from './components/FourKeys';
 import TrainJourney from './components/TrainJourney';
+import Glossary from './components/Glossary';
+import ReflectionCage from './components/ReflectionCage';
+import TeachPeace from './components/TeachPeace';
 
 function ThemeToggle() {
-  const [theme, setTheme] = useState(() => localStorage.getItem('jvdt:theme') || 'light');
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || localStorage.getItem('jvdt:theme') || 'light');
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
-    localStorage.setItem('jvdt:theme', theme);
+    try{ localStorage.setItem('theme', theme); }catch(e){}
   }, [theme]);
 
   return (
@@ -55,6 +58,9 @@ export default function App() {
           <Route path="/" element={<Navigate to="/keys" replace />} />
           <Route path="/keys" element={<FourKeys />} />
           <Route path="/journey" element={<TrainJourney />} />
+          <Route path="/glossary" element={<Glossary />} />
+          <Route path="/reflect" element={<ReflectionCage />} />
+          <Route path="/peace" element={<TeachPeace />} />
         </Routes>
       </main>
     </>
