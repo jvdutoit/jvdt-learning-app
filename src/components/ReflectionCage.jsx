@@ -9,14 +9,16 @@ function readAll(){
 export default function ReflectionCage(){
   const [text, setText] = useState('')
   const [entries, setEntries] = useState(()=>readAll())
+  const [status, setStatus] = useState('')
 
   useEffect(()=>{
     const id = setInterval(()=>{
       if(text.trim()){
-        const next = [...readAll()]
-        const draft = { id: crypto.randomUUID(), text, createdAt: new Date().toISOString() }
-        // temporarily don't push on every autosave; store current draft at top-level key for quick restore
-        localStorage.setItem('jvdt.reflection.draft', JSON.stringify(draft))
+        const draft = { id: 'draft', text, createdAt: new Date().toISOString() }
+        // store draft separately so saved entries remain intact
+        try{ localStorage.setItem('jvdt.reflection.draft', JSON.stringify(draft)) }catch(e){}
+        setStatus('Draft saved')
+        setTimeout(()=>setStatus(''), 1200)
       }
     }, 1500)
     return ()=>clearInterval(id)
@@ -31,11 +33,16 @@ export default function ReflectionCage(){
     setEntries(next)
     setText('')
     localStorage.removeItem('jvdt.reflection.draft')
+    setStatus('Saved')
+    setTimeout(()=>setStatus(''),1200)
   }
 
   function clearAll(){
+    if(!confirm('Clear all saved reflections? This cannot be undone.')) return
     localStorage.removeItem(STORAGE_KEY)
     setEntries([])
+    setStatus('Cleared')
+    setTimeout(()=>setStatus(''),1200)
   }
 
   useEffect(()=>{
@@ -49,10 +56,20 @@ export default function ReflectionCage(){
     <section className="p-6">
       <h1 className="text-2xl font-semibold mb-4">Reflection (CAGE)</h1>
       <p className="text-sm text-gray-600 mb-2">Write a short reflection. Autosaves drafts; use Save to store an entry.</p>
-      <textarea value={text} onChange={e=>setText(e.target.value)} rows={6} className="w-full p-3 border rounded-md mb-3 bg-white dark:bg-gray-800" placeholder="What did you notice? What changed?" />
+      <label htmlFor="reflection-text" className="sr-only">Reflection text</label>
+      <textarea id="reflection-text" value={text} onChange={e=>setText(e.target.value)} rows={6} className="w-full p-3 border rounded-md mb-2 bg-white dark:bg-gray-800" placeholder="What did you notice? What changed?" aria-describedby="reflection-stats" />
+
+      <div id="reflection-stats" className="flex items-center justify-between text-sm text-gray-600 mb-3">
+        <div>
+          <span className="mr-3">Chars: {text.length}</span>
+          <span>Words: {text.trim() ? text.trim().split(/\s+/).length : 0}</span>
+        </div>
+        <div className="text-xs text-gray-500">{status}</div>
+      </div>
+
       <div className="flex gap-2 mb-4">
         <button onClick={save} className="px-4 py-2 bg-blue-600 text-white rounded">Save</button>
-        <button onClick={()=>setText('')} className="px-4 py-2 border rounded">Clear Draft</button>
+        <button onClick={()=>{ if(confirm('Discard draft?')) setText('') }} className="px-4 py-2 border rounded">Clear Draft</button>
         <button onClick={clearAll} className="px-4 py-2 border rounded text-red-600">Clear All</button>
       </div>
 

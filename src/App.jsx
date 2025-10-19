@@ -39,6 +39,15 @@ function TopNav() {
             <Link to="/journey" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/journey' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
               Journey
             </Link>
+            <Link to="/glossary" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/glossary' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
+              Glossary
+            </Link>
+            <Link to="/reflect" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/reflect' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
+              Reflect
+            </Link>
+            <Link to="/peace" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/peace' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
+              Teach Peace
+            </Link>
           </nav>
         </div>
         <div className="flex items-center gap-2">
