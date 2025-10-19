@@ -8,7 +8,7 @@ function readAll(){
   try{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]') }catch(e){ return [] }
 }
 
-export default function ReflectionCage(){
+export default function ReflectionCage({ autosaveMs = 1200 }){
   const [text, setText] = useState('')
   const [entries, setEntries] = useState(()=>readAll())
   const [status, setStatus] = useState('')
@@ -33,11 +33,11 @@ export default function ReflectionCage(){
         setStatus('Draft saved')
         window.setTimeout(()=>setStatus(''), 1200)
       }catch(e){}
-    }, 1200)
+    }, autosaveMs)
     return ()=>{
       if(timeoutRef.current) window.clearTimeout(timeoutRef.current)
     }
-  }, [text])
+  }, [text, autosaveMs])
 
   function save(){
     if(!text.trim()) return
@@ -96,6 +96,19 @@ export default function ReflectionCage(){
           <button data-testid="reflection-save" onClick={save} className="px-4 py-2 bg-blue-600 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-300">Save</button>
           <button data-testid="reflection-clear-draft" onClick={()=>{ if(confirm('Discard draft?')) setText('') }} className="px-4 py-2 border rounded focus:outline-none focus:ring-2">Clear Draft</button>
           <button data-testid="reflection-clear-all" onClick={clearJournal} className="px-4 py-2 border rounded text-red-600 focus:outline-none focus:ring-2">Clear Journal</button>
+          <button data-testid="reflection-export" onClick={() => {
+            try{
+              const blob = new Blob([localStorage.getItem(STORAGE_KEY) || '[]'], { type: 'application/json' })
+              const url = URL.createObjectURL(blob)
+              const a = document.createElement('a')
+              a.href = url
+              a.download = `reflections-${new Date().toISOString().replace(/[:.]/g,'-')}.json`
+              document.body.appendChild(a)
+              a.click()
+              a.remove()
+              URL.revokeObjectURL(url)
+            }catch(e){ console.warn('export failed', e) }
+          }} className="px-4 py-2 border rounded text-sm">Export</button>
         </div>
 
         <h2 className="text-lg font-medium mb-3">Saved reflections</h2>
