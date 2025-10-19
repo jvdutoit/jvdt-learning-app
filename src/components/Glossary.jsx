@@ -233,7 +233,13 @@ export default function Glossary() {
               data-testid="glossary-drawer"
               className="absolute right-0 top-0 h-full w-full sm:w-[520px] bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-gray-800 p-6 overflow-auto"
             >
-              <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true, escapeDeactivates: true, onDeactivate: closeDrawer }}>
+              <FocusTrap focusTrapOptions={{
+                clickOutsideDeactivates: true,
+                escapeDeactivates: true,
+                onDeactivate: closeDrawer,
+                fallbackFocus: () => drawerRef.current,
+                initialFocus: () => drawerRef.current ? drawerRef.current.querySelector('[data-testid="drawer-close"]') : undefined
+              }}>
                 <div ref={drawerRef}>
                   <div className="flex items-start justify-between gap-4">
                     <div>

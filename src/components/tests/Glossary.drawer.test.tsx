@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, within } from '@testing-library/react'
+import { render, screen, within, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import Glossary from '../Glossary'
@@ -50,7 +50,7 @@ describe('Glossary drawer', () => {
     expect(drawer).toBeInTheDocument()
 
     await user.keyboard('{Escape}')
-    expect(screen.queryByTestId('glossary-drawer')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByTestId('glossary-drawer')).not.toBeInTheDocument())
   })
 
   it('deep-links via ?term= and copy-link works', async () => {
