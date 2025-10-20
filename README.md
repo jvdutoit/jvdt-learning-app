@@ -1,54 +1,34 @@
-# JVDT Learning App (Vite + React + Tailwind)
+# JVDT Learning Hub
+Vite + React + Tailwind + Framer Motion. A learning prototype implementing the Four Keys of Understanding, the Train Journey, a searchable Glossary, a Reflection (CAGE) journal, and a Teach Peace daily pact.
 
-[![CI](https://github.com/your-username/jvdt-learning-app/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/jvdt-learning-app/actions/workflows/ci.yml)
+## Demo
+_(add a screenshot or deployment URL here)_
 
-A working prototype of the JVDT Learning Hub featuring:
-- Method map (Four Keys, Train Journey, Twenty Pillars)
-- Journey Builder (4 stations, Keys, Pillars, metric)
-- Reflection Log with CAGE
-- Teach Peace agreement builder
-- Glossary and placeholders for Library, Community, Profile
+## Features
+- **Keys** — Association, Analysis, Root, Context (JSON-driven)
+- **Journey** — Information → Integration → Comprehension → Application (progress + localStorage)
+- **Glossary** — 60+ pedagogical terms with search, filters, and a detail drawer (deep links)
+- **Reflection (CAGE)** — autosave draft, counters, export JSON
+- **Teach Peace** — daily toggles: Love · Respect · Happiness
 
-## Run locally
+## Tech Stack
+- Vite + React 18
+- Tailwind CSS
+- Framer Motion
+- React Router DOM
+- Vitest + Testing Library
 
+## Routes
+- `/keys` — Four Keys
+- `/journey` — Train Journey
+- `/glossary` — Glossary + drawer (`?term=slug` deep links)
+- `/reflect` — Reflection (CAGE)
+- `/peace` — Teach Peace Pact
+
+## Getting Started
 ```bash
-npm install
+npm i
 npm run dev
+# production
+npm run build && npm run preview
 ```
-
-Open the printed URL (usually http://localhost:5173).
-
-## Build
-
-```bash
-npm run build
-npm run preview
-```
-
-## Stack
-Vite + React + Tailwind + framer-motion.
-Data is stored in localStorage. You can replace the store with API calls later.
-
-## Deploy (Vercel)
-
-One-click deploy (GitHub): Import this repository in Vercel (https://vercel.com/new) and select the project. Vercel will detect the static build and run `npm run build`. The `vercel.json` in the repo includes an SPA rewrite so routes fallback to `index.html`.
-
-Using Vercel CLI:
-
-```bash
-# install CLI
-npm i -g vercel
-
-# link the project (first time)
-vercel login
-vercel link
-
-# build and deploy
-npm run build
-vercel --prod
-```
-
-Notes:
-- `npm run build` produces `dist/` which Vercel will serve. You can preview locally with `npm run preview`.
-- If your app needs environment variables, set them in the Vercel dashboard or with `vercel env add`.
-- The `vercel.json` file contains a rewrite to route all requests to `index.html` so client-side routing works (SPA fallback).
