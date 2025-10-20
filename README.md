@@ -1,27 +1,34 @@
 # JVDT Learning Hub
+Vite + React + Tailwind + Framer Motion. A learning prototype implementing the Four Keys of Understanding, the Train Journey, a searchable Glossary, a Reflection (CAGE) journal, and a Teach Peace daily pact.
 
-[![CI](https://github.com/jvdutoit/jvdt-learning-app/actions/workflows/ci.yml/badge.svg)](https://github.com/jvdutoit/jvdt-learning-app/actions/workflows/ci.yml)
+## Demo
+_(add a screenshot or deployment URL here)_
 
-Vite + React + Tailwind + Framer Motion. Pages: **Keys**, **Journey**, **Glossary**, **Reflection (CAGE)**, **Teach Peace**.
+## Features
+- **Keys** — Association, Analysis, Root, Context (JSON-driven)
+- **Journey** — Information → Integration → Comprehension → Application (progress + localStorage)
+- **Glossary** — 60+ pedagogical terms with search, filters, and a detail drawer (deep links)
+- **Reflection (CAGE)** — autosave draft, counters, export JSON
+- **Teach Peace** — daily toggles: Love · Respect · Happiness
 
-## Quick Start
+## Tech Stack
+- Vite + React 18
+- Tailwind CSS
+- Framer Motion
+- React Router DOM
+- Vitest + Testing Library
+
+## Routes
+- `/keys` — Four Keys
+- `/journey` — Train Journey
+- `/glossary` — Glossary + drawer (`?term=slug` deep links)
+- `/reflect` — Reflection (CAGE)
+- `/peace` — Teach Peace Pact
+
+## Getting Started
 ```bash
 npm i
 npm run dev
-# prod
+# production
 npm run build && npm run preview
 ```
-
-## LocalStorage Keys
-- `jvdt.reflection.draft` – live draft string
-- `jvdt.reflections` – saved entries array
-- `jvdt.peacepact` – per-day object `{ YYYY-MM-DD: { love, respect, happiness } }`
-
-## Tests
-```bash
-npm run test
-npm run test:run
-```
-
-## Deployment (Vercel)
-Import this repo into Vercel → Framework: **Vite** → Build: `npm run build` → Output: `dist/`. SPA rewrites are configured via `vercel.json`.
