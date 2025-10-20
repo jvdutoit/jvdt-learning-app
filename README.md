@@ -6,7 +6,9 @@
 Vite + React + Tailwind + Framer Motion. A learning prototype implementing the Four Keys of Understanding, the Train Journey, a searchable Glossary, a Reflection (CAGE) journal, and a Teach Peace daily pact.
 
 ## Demo
-_(add a screenshot or deployment URL here)_
+![JVDT Learning Hub Screenshot](./docs/screenshot.png)
+
+The screenshot above shows the Four Keys and Train Journey modules from the JVDT Learning Hub interface.
 
 ## Features
 - **Keys** — Association, Analysis, Root, Context (JSON-driven)
