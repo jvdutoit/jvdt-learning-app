@@ -1,13 +1,13 @@
-name: "CI: Build and Test"
+name: CI: Build and Test
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -16,7 +16,8 @@ jobs:
       - name: Setup Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
@@ -24,10 +25,10 @@ jobs:
       - name: Run tests
         run: npm run test:run
 
-      - name: Build
+      - name: Build project
         run: npm run build
 
-      - name: Upload dist artifact
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dist
