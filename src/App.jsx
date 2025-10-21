@@ -43,6 +43,9 @@ function TopNav() {
             <Link to="/glossary" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/glossary' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
               Glossary
             </Link>
+            <Link to="/arcade" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/arcade' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
+              Game Arcade
+            </Link>
             <Link to="/reflect" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/reflect' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
               Reflect
             </Link>
