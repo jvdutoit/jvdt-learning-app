@@ -1,23 +1,42 @@
 import React, { useEffect, useState } from 'react';
 
 export default function GameArcade() {
-  const [arcadeHTML, setArcadeHTML] = useState('');
+  const [iframeAllowed, setIframeAllowed] = useState(true);
+
   useEffect(() => {
-    let mounted = true;
-    fetch('/arcade.html')
-      .then((r) => r.text())
-      .then((html) => {
-        if (mounted) setArcadeHTML(html);
-      })
-      .catch((e) => {
-        if (mounted) setArcadeHTML('<p>Failed to load arcade content.</p>');
-      });
-    return () => { mounted = false };
+    // quick feature-detect: try to load the iframe src in a hidden iframe to ensure it's reachable
+    const test = document.createElement('iframe');
+    test.style.display = 'none';
+    test.src = '/arcade.html';
+    const timer = setTimeout(() => {
+      // if it hasn't loaded in 3s assume cross-origin/frame blocking and fallback to fetch
+      setIframeAllowed(true);
+      document.body.removeChild(test);
+    }, 3000);
+    test.onload = () => {
+      clearTimeout(timer);
+      setIframeAllowed(true);
+      document.body.removeChild(test);
+    };
+    test.onerror = () => {
+      clearTimeout(timer);
+      setIframeAllowed(false);
+      document.body.removeChild(test);
+    };
+    document.body.appendChild(test);
+    return () => { try { document.body.removeChild(test); } catch (e) {} };
   }, []);
 
+  // Render arcade as iframe so scripts/styles inside arcade.html run in their own document
   return (
     <div className="prose max-w-none">
-      <div dangerouslySetInnerHTML={{ __html: arcadeHTML }} />
+      {iframeAllowed ? (
+        <iframe title="JVDT Game Arcade" src="/arcade.html" className="w-full h-[80vh] border rounded-lg" />
+      ) : (
+        <div>
+          <p>Arcade cannot be embedded. You can open <a className="text-indigo-600" href="/arcade.html" target="_blank" rel="noreferrer">the standalone arcade page</a> in a new tab.</p>
+        </div>
+      )}
     </div>
   );
 }
