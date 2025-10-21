@@ -5,6 +5,7 @@ import TrainJourney from './components/TrainJourney';
 import Glossary from './components/Glossary';
 import ReflectionCage from './components/ReflectionCage';
 import TeachPeace from './components/TeachPeace';
+import GameArcade from './GameArcade';
 
 function ThemeToggle() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || localStorage.getItem('jvdt:theme') || 'light');
@@ -70,6 +71,7 @@ export default function App() {
           <Route path="/glossary" element={<Glossary />} />
           <Route path="/reflect" element={<ReflectionCage />} />
           <Route path="/peace" element={<TeachPeace />} />
+          <Route path="/arcade" element={<GameArcade />} />
         </Routes>
       </main>
     </>
