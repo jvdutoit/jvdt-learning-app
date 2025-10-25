@@ -1,0 +1,330 @@
+[
+  {
+    "id": "jvdt-7",
+    "term": "JVDT-7",
+    "category": "Core Concepts",
+    "definition": "The name of the system, referring to the 7 axes or dimensions it measures. It maps the cognitive and moral faculties used in the journey from knowledge to wisdom.",
+    "examples": ["JVDT-7 assessment", "JVDT-7 profile", "JVDT-7 diagnostic"],
+    "related": ["cognitive-moral-architecture", "seven-axes", "virtue-ladder"]
+  },
+  {
+    "id": "cognitive-moral-architecture",
+    "term": "Cognitive-Moral Architecture",
+    "category": "Core Concepts", 
+    "definition": "What JVDT-7 aims to map – the underlying structure of how an individual perceives, interprets, reflects upon, applies, and values information, integrating intellectual and ethical development.",
+    "examples": ["Individual's learning architecture", "Moral reasoning patterns", "Cognitive processing preferences"],
+    "related": ["jvdt-7", "seven-axes", "integration-index"]
+  },
+  {
+    "id": "knowledge-formula",
+    "term": "Knowledge Formula",
+    "category": "Core Concepts",
+    "definition": "Information + Integration = Knowledge. The process of acquiring understanding.",
+    "examples": ["Reading + reflection = comprehension", "Data + synthesis = insight"],
+    "related": ["wisdom-formula", "integration-index", "train-journey"]
+  },
+  {
+    "id": "wisdom-formula", 
+    "term": "Wisdom Formula",
+    "category": "Core Concepts",
+    "definition": "Knowledge + Practice = Wisdom. The process of embodying understanding through action and moral integration.",
+    "examples": ["Understanding + application = wisdom", "Theory + lived experience = mastery"],
+    "related": ["knowledge-formula", "virtue-ladder", "application-axis"]
+  },
+  {
+    "id": "axis",
+    "term": "Axis (Plural: Axes)",
+    "category": "Core Concepts",
+    "definition": "One of the seven fundamental dimensions of the JVDT-7 model. Each axis represents a spectrum or dialectical tension between two poles.",
+    "examples": ["Perception axis", "Interpretation axis", "Application axis"],
+    "related": ["pole", "seven-axes", "virtue-ladder"]
+  },
+  {
+    "id": "pole",
+    "term": "Pole",
+    "category": "Core Concepts",
+    "definition": "One end of the spectrum on a given JVDT-7 axis, representing a primary tendency or approach within that faculty.",
+    "examples": ["Association pole", "Analysis pole", "Root pole", "Context pole"],
+    "related": ["axis", "margin", "balance"]
+  },
+  {
+    "id": "virtue-ladder",
+    "term": "Virtue Ladder",
+    "category": "Core Concepts",
+    "definition": "A 5-stage developmental pathway associated with each axis, outlining the journey from instinctual reliance on one pole towards integrated wisdom. The stages are: Instinct, Awareness, Balance, Mastery, Wisdom.",
+    "examples": ["Stage 1: Instinct", "Stage 5: Wisdom", "Developmental progression"],
+    "related": ["instinct-stage", "awareness-stage", "balance-stage", "mastery-stage", "wisdom-stage"]
+  },
+  {
+    "id": "integration-index",
+    "term": "Integration Index",
+    "category": "Core Concepts",
+    "definition": "A score calculated from responses to reflective questions, indicating how balanced or integrated a person's approach is within an axis (higher score = more integrated).",
+    "examples": ["75% Integration Index", "High integration level", "Balanced approach across axes"],
+    "related": ["margin", "balance", "virtue-ladder"]
+  },
+  {
+    "id": "margin",
+    "term": "Margin",
+    "category": "Core Concepts",
+    "definition": "The percentage difference between the scores for the two poles on an axis, indicating the strength of preference for the dominant pole.",
+    "examples": ["20% margin toward Analysis", "Low margin indicates balance", "High margin shows strong preference"],
+    "related": ["pole", "integration-index", "balance"]
+  },
+  {
+    "id": "instinct-stage",
+    "term": "Instinct Stage (Stage 1)",
+    "category": "Virtue Ladder Stages",
+    "definition": "Reactive, unaware of the polarity. The individual relies on one pole without conscious awareness of alternatives.",
+    "examples": ["Only using analysis", "Unconscious preference", "Reactive responses"],
+    "related": ["virtue-ladder", "awareness-stage", "pole"]
+  },
+  {
+    "id": "awareness-stage",
+    "term": "Awareness Stage (Stage 2)",
+    "category": "Virtue Ladder Stages", 
+    "definition": "Recognizes own preference/bias. The individual becomes conscious of their natural tendency and sees the value of the other pole.",
+    "examples": ["Noticing analytical bias", "Seeing value in intuition", "Conscious of preference"],
+    "related": ["virtue-ladder", "instinct-stage", "balance-stage"]
+  },
+  {
+    "id": "balance-stage",
+    "term": "Balance Stage (Stage 3)",
+    "category": "Virtue Ladder Stages",
+    "definition": "Begins to consciously integrate both poles. The individual actively works to balance their approach.",
+    "examples": ["Using both analysis and intuition", "Deliberate integration", "Conscious balancing"],
+    "related": ["virtue-ladder", "awareness-stage", "mastery-stage"]
+  },
+  {
+    "id": "mastery-stage",
+    "term": "Mastery Stage (Stage 4)",
+    "category": "Virtue Ladder Stages",
+    "definition": "Applies integration consistently and fluidly. The individual demonstrates consistent ability to integrate both poles as needed.",
+    "examples": ["Fluid integration", "Teaching others balance", "Consistent application"],
+    "related": ["virtue-ladder", "balance-stage", "wisdom-stage"]
+  },
+  {
+    "id": "wisdom-stage",
+    "term": "Wisdom Stage (Stage 5)",
+    "category": "Virtue Ladder Stages",
+    "definition": "Models the virtue; integration benefits others. The individual embodies seamless integration that serves and teaches others.",
+    "examples": ["Modeling integration", "Benefiting others", "Seamless wisdom"],
+    "related": ["virtue-ladder", "mastery-stage", "integration-index"]
+  },
+  {
+    "id": "perception-axis",
+    "term": "Perception Axis (A ↔ N)",
+    "category": "Seven Axes",
+    "definition": "How awareness first takes hold of reality. The spectrum between Association (patterns, empathy, intuition) and Analysis (categorization, logic, evidence).",
+    "examples": ["Seeing patterns vs. categorizing", "Intuitive vs. logical perception", "Gestalt vs. details"],
+    "related": ["association-pole", "analysis-pole", "interpretation-axis"]
+  },
+  {
+    "id": "association-pole",
+    "term": "Association (A)",
+    "category": "Perception Poles",
+    "definition": "Perceiving through patterns, empathy, intuition, story, atmosphere. Seeing connections and relationships.",
+    "examples": ["Pattern recognition", "Intuitive insights", "Story-based understanding"],
+    "related": ["perception-axis", "analysis-pole", "holistic-thinking"]
+  },
+  {
+    "id": "analysis-pole",
+    "term": "Analysis (N)",
+    "category": "Perception Poles",
+    "definition": "Perceiving through categorization, logic, evidence, structure, data. Breaking down into component parts.",
+    "examples": ["Logical analysis", "Data-driven insights", "Structural understanding"],
+    "related": ["perception-axis", "association-pole", "systematic-thinking"]
+  },
+  {
+    "id": "interpretation-axis",
+    "term": "Interpretation Axis (R ↔ C)",
+    "category": "Seven Axes",
+    "definition": "How meaning is anchored or situated. The spectrum between Root (origins, principles, timeless truths) and Context (systems, environments, applications).",
+    "examples": ["First principles vs. situational relevance", "Universal vs. contextual meaning"],
+    "related": ["root-pole", "context-pole", "perception-axis"]
+  },
+  {
+    "id": "root-pole",
+    "term": "Root (R)",
+    "category": "Interpretation Poles",
+    "definition": "Seeking origins, first principles, definitions, timeless truths. Anchoring meaning in fundamental realities.",
+    "examples": ["First principles thinking", "Foundational truths", "Essential definitions"],
+    "related": ["interpretation-axis", "context-pole", "wisdom-formula"]
+  },
+  {
+    "id": "context-pole",
+    "term": "Context (C)",
+    "category": "Interpretation Poles",
+    "definition": "Seeking systems, environments, applications, interrelations, relevance. Anchoring meaning in situational factors.",
+    "examples": ["Environmental factors", "Systemic relationships", "Practical applications"],
+    "related": ["interpretation-axis", "root-pole", "application-axis"]
+  },
+  {
+    "id": "reflection-axis",
+    "term": "Reflection Axis (I ↔ E)",
+    "category": "Seven Axes",
+    "definition": "How understanding is processed and consolidated. The spectrum between Internal (solitude, contemplation) and External (dialogue, teaching, public testing).",
+    "examples": ["Private contemplation vs. group discussion", "Inner processing vs. external validation"],
+    "related": ["internal-pole", "external-pole", "knowledge-formula"]
+  },
+  {
+    "id": "internal-pole",
+    "term": "Internal (I)",
+    "category": "Reflection Poles",
+    "definition": "Processing through solitude, contemplation, journaling, private synthesis. Deep inner work and personal reflection.",
+    "examples": ["Journaling", "Private contemplation", "Solitary thinking"],
+    "related": ["reflection-axis", "external-pole", "awareness-stage"]
+  },
+  {
+    "id": "external-pole",
+    "term": "External (E)",
+    "category": "Reflection Poles",
+    "definition": "Processing through dialogue, teaching, debate, public testing of ideas. Learning through interaction and external validation.",
+    "examples": ["Group discussions", "Teaching others", "Public debate"],
+    "related": ["reflection-axis", "internal-pole", "mastery-stage"]
+  },
+  {
+    "id": "application-axis",
+    "term": "Application Axis (D ↔ P)",
+    "category": "Seven Axes",
+    "definition": "How knowing translates into doing. The spectrum between Idealistic (vision, purpose, transformation) and Pragmatic (efficiency, function, tangible outcomes).",
+    "examples": ["Visionary vs. practical action", "Transformational vs. functional approach"],
+    "related": ["idealistic-pole", "pragmatic-pole", "wisdom-formula"]
+  },
+  {
+    "id": "idealistic-pole",
+    "term": "Idealistic (D)",
+    "category": "Application Poles", 
+    "definition": "Acting from vision, purpose, transformation, meaning. Driven by big picture goals and transformational change.",
+    "examples": ["Visionary leadership", "Transformational change", "Purpose-driven action"],
+    "related": ["application-axis", "pragmatic-pole", "wisdom-stage"]
+  },
+  {
+    "id": "pragmatic-pole",
+    "term": "Pragmatic (P)",
+    "category": "Application Poles",
+    "definition": "Acting from efficiency, function, reliability, process, tangible outcomes. Focused on practical implementation and measurable results.",
+    "examples": ["Process optimization", "Practical solutions", "Measurable outcomes"],
+    "related": ["application-axis", "idealistic-pole", "mastery-stage"]
+  },
+  {
+    "id": "motivation-axis",
+    "term": "Motivation Axis (S ↔ M)",
+    "category": "Seven Axes",
+    "definition": "The primary drive for learning and action. The spectrum between Self-Directed (autonomy, personal calling) and Mutual-Directed (belonging, service, communal goals).",
+    "examples": ["Individual achievement vs. collective service", "Personal mastery vs. community contribution"],
+    "related": ["self-directed-pole", "mutual-directed-pole", "value-expression-axis"]
+  },
+  {
+    "id": "self-directed-pole",
+    "term": "Self-Directed (S)",
+    "category": "Motivation Poles",
+    "definition": "Driven by autonomy, mastery, internal standards, personal calling. Motivated by individual excellence and self-actualization.",
+    "examples": ["Personal mastery", "Individual excellence", "Autonomous learning"],
+    "related": ["motivation-axis", "mutual-directed-pole", "idealistic-pole"]
+  },
+  {
+    "id": "mutual-directed-pole",
+    "term": "Mutual-Directed (M)",
+    "category": "Motivation Poles",
+    "definition": "Driven by belonging, contribution, service, communal goals. Motivated by collective good and shared purpose.",
+    "examples": ["Community service", "Collective achievement", "Shared purpose"],
+    "related": ["motivation-axis", "self-directed-pole", "value-expression-axis"]
+  },
+  {
+    "id": "orientation-axis",
+    "term": "Orientation Axis (T ↔ H)",
+    "category": "Seven Axes",
+    "definition": "The time horizon and scope of thought. The spectrum between Temporal (present, near-term, sequential) and Holistic (long arcs, interconnection, purpose).",
+    "examples": ["Short-term tasks vs. long-term vision", "Sequential steps vs. big picture"],
+    "related": ["temporal-pole", "holistic-pole", "application-axis"]
+  },
+  {
+    "id": "temporal-pole",
+    "term": "Temporal (T)",
+    "category": "Orientation Poles",
+    "definition": "Focusing on present, near-term milestones, schedules, sequential steps (Chronos time). Task-oriented and deadline-driven.",
+    "examples": ["Daily schedules", "Project milestones", "Sequential planning"],
+    "related": ["orientation-axis", "holistic-pole", "pragmatic-pole"]
+  },
+  {
+    "id": "holistic-pole", 
+    "term": "Holistic (H)",
+    "category": "Orientation Poles",
+    "definition": "Focusing on long arcs, interconnection, purpose, seasons, overarching narratives (Kairos time). Systems-oriented and meaning-focused.",
+    "examples": ["Long-term vision", "Systems thinking", "Seasonal rhythms"],
+    "related": ["orientation-axis", "temporal-pole", "idealistic-pole"]
+  },
+  {
+    "id": "value-expression-axis",
+    "term": "Value Expression Axis (L ↔ R)",
+    "category": "Seven Axes",
+    "definition": "The embodied moral energy guiding action. The spectrum between Love (compassion, empathy, mercy) and Respect (fairness, justice, principle).",
+    "examples": ["Compassionate care vs. principled justice", "Mercy vs. fairness"],
+    "related": ["love-pole", "respect-pole", "happiness-balance"]
+  },
+  {
+    "id": "love-pole",
+    "term": "Love (L)",
+    "category": "Value Expression Poles",
+    "definition": "Expressing value through compassion, empathy, mercy, relationship, inclusion. Care-focused and person-centered.",
+    "examples": ["Compassionate response", "Empathetic understanding", "Inclusive care"],
+    "related": ["value-expression-axis", "respect-pole", "happiness-balance"]
+  },
+  {
+    "id": "respect-pole",
+    "term": "Respect (R)",
+    "category": "Value Expression Poles",
+    "definition": "Expressing value through fairness, justice, principle, consistency, standards. Justice-focused and principle-centered.",
+    "examples": ["Fair treatment", "Principled action", "Consistent standards"],
+    "related": ["value-expression-axis", "love-pole", "happiness-balance"]
+  },
+  {
+    "id": "happiness-balance",
+    "term": "Happiness (H - Balance)",
+    "category": "Value Expression Balance",
+    "definition": "The state of joyful equilibrium achieved through integrating Love and Respect. The harmonious balance of compassion and justice.",
+    "examples": ["Balanced compassion and justice", "Joyful integration", "Harmonious values"],
+    "related": ["love-pole", "respect-pole", "value-expression-axis", "wisdom-stage"]
+  },
+  {
+    "id": "jvdt-code",
+    "term": "JVDT Code",
+    "category": "Assessment Results",
+    "definition": "A 7-letter code representing an individual's preferences across all seven axes (e.g., ARIDESL). Each letter corresponds to the dominant pole on each axis.",
+    "examples": ["ARIDESL", "NCEPMHR", "ACEPSTR"],
+    "related": ["seven-axes", "pole", "assessment-profile"]
+  },
+  {
+    "id": "archetype",
+    "term": "Archetype / Macro-Family",
+    "category": "Assessment Results",
+    "definition": "Broad categories grouping similar JVDT-7 profiles, based primarily on the first two axes (Perception & Interpretation). Examples: Root-Seekers, Integrators.",
+    "examples": ["Root-Seekers (AR)", "Integrators (AC)", "Contextual Analysts (NC)"],
+    "related": ["jvdt-code", "perception-axis", "interpretation-axis"]
+  },
+  {
+    "id": "epithet",
+    "term": "Epithet",
+    "category": "Assessment Results",
+    "definition": "A short, descriptive title assigned based on the first 3-4 letters of the JVDT-7 code, offering an immediate identity phrase (e.g., 'Visionary Integrator').",
+    "examples": ["Visionary Integrator", "Analytical Pragmatist", "Intuitive Connector"],
+    "related": ["jvdt-code", "archetype", "assessment-profile"]
+  },
+  {
+    "id": "microtext",
+    "term": "Microtext",
+    "category": "Assessment Results",
+    "definition": "A short paragraph describing the dominant pole of a specific axis for an individual, including strengths and challenges. The 7 microtexts combine to form the personal report.",
+    "examples": ["Perception microtext", "Application microtext", "Personal axis description"],
+    "related": ["assessment-profile", "pole", "personal-report"]
+  },
+  {
+    "id": "blind-spot",
+    "term": "Blind Spot",
+    "category": "Assessment Results",
+    "definition": "A potential challenge or distortion that arises when there's a strong, unbalanced preference for one pole of an axis, or a specific combination across axes.",
+    "examples": ["Over-analysis paralysis", "Intuition without validation", "Vision without execution"],
+    "related": ["margin", "balance", "integration-index", "virtue-ladder"]
+  }
+]
