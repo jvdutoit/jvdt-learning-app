@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
+import { LanguageProvider } from './contexts/LanguageContext';
+import LanguageToggle from './components/LanguageToggle';
 import FourKeys from './components/FourKeys';
 import TrainJourney from './components/TrainJourney';
 import Glossary from './components/Glossary';
@@ -69,6 +71,7 @@ function TopNav() {
           </nav>
         </div>
         <div className="flex items-center gap-2">
+          <LanguageToggle />
           <ThemeToggle />
         </div>
       </div>
@@ -78,7 +81,7 @@ function TopNav() {
 
 export default function App() {
   return (
-    <>
+    <LanguageProvider>
       <TopNav />
       <main className="max-w-6xl mx-auto px-4 py-6">
         <Routes>
@@ -96,6 +99,6 @@ export default function App() {
           <Route path="/arcade" element={<GameArcade />} />
         </Routes>
       </main>
-    </>
+    </LanguageProvider>
   )
 }

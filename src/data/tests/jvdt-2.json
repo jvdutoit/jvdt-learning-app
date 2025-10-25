@@ -1,13 +1,13 @@
 {
   "id": "jvdt-2",
-  "title": "JVDT-2 Kids Learning Style Assessment",
-  "description": "Discover how you like to learn best! Choose the option that sounds most like you.",
+  "title": "jvdt2.title",
+  "description": "jvdt2.description",
   "methodology": "jvdt-2-kids",
-  "timeEstimate": "5-7 minutes", 
-  "estimatedTime": "5-7 minutes",
+  "timeEstimate": "jvdt2.estimatedTime", 
+  "estimatedTime": "jvdt2.estimatedTime",
   "totalQuestions": 36,
-  "targetAudience": "Primary school learners (ages 8-12)",
-  "instructions": "Read each statement and pick the one that sounds most like you. There are no right or wrong answers - we just want to know how you like to learn!",
+  "targetAudience": "jvdt2.ageGroup",
+  "instructions": "jvdt2.instructions",
   "questions": [
     {
       "id": 1,

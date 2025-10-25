@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from '../../contexts/LanguageContext';
+import { getTranslatedArchetype, getTranslatedAxisData } from '../../utils/translationHelpers';
 import { calculateJVDT7Results, getJVDT7Recommendations } from './jvdt7Scorer';
 import { calculateJVDT4Results, getJVDT4Recommendations } from './jvdt4Scorer';
 import { calculateJVDT2Results, getJVDT2Recommendations } from '../../utils/jvdt2Scorer';
@@ -65,6 +67,7 @@ function ScaleQuestion({ question, selectedAnswer, onAnswer }) {
 
 // Main QuizEngine component
 export default function QuizEngine({ testDefinition, onComplete }) {
+  const { t } = useTranslation();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [startTime] = useState(new Date());
@@ -821,6 +824,9 @@ export default function QuizEngine({ testDefinition, onComplete }) {
 
   // Render JVDT-2 kids results
   if (results.methodology === 'jvdt-2-kids') {
+    // Get translated archetype data
+    const translatedArchetype = getTranslatedArchetype(results.archetype, t);
+    
     return (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -829,10 +835,10 @@ export default function QuizEngine({ testDefinition, onComplete }) {
       >
         <div className="text-center space-y-4">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-            🎉 Your Learning Style Results! 🎉
+            {t('jvdt2.resultsTitle', '🎉 Your Learning Style Results! 🎉')}
           </h2>
           <div className="text-lg text-gray-600 dark:text-gray-400">
-            Completed in {formatTime(timeSpent)}
+            {t('common.completed', 'Completed')} in {formatTime(timeSpent)}
           </div>
         </div>
 
@@ -840,11 +846,11 @@ export default function QuizEngine({ testDefinition, onComplete }) {
         <div className={`bg-gradient-to-r ${results.archetype.gradient} rounded-lg p-6 shadow-lg border-2 border-white dark:border-gray-700`}>
           <div className="text-center space-y-4">
             <div className="text-6xl mb-2">{results.archetype.badge}</div>
-            <h3 className="text-2xl font-bold text-gray-900">{results.archetype.title}</h3>
-            <p className="text-lg text-gray-800">{results.archetype.tagline}</p>
+            <h3 className="text-2xl font-bold text-gray-900">{translatedArchetype.title}</h3>
+            <p className="text-lg text-gray-800">{translatedArchetype.tagline}</p>
             <div className="bg-white/80 dark:bg-gray-800/80 rounded-lg p-4 mt-4">
               <p className="text-gray-900 dark:text-gray-100 text-lg font-medium">
-                {results.archetype.kidDescription}
+                {translatedArchetype.kidDescription}
               </p>
             </div>
           </div>
@@ -853,66 +859,77 @@ export default function QuizEngine({ testDefinition, onComplete }) {
         {/* Your Learning Powers */}
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
           <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100 text-center">
-            🌟 Your Learning Powers 🌟
+            {t('jvdt2.learningPowers', '🌟 Your Learning Powers 🌟')}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {Object.entries(results.axisDetails).map(([axis, details]) => (
-              <div key={axis} className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <div className="text-3xl mb-2">{details.dominantIcon}</div>
-                <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{axis}</div>
-                <div className="text-xs text-indigo-600 dark:text-indigo-400 font-semibold">
-                  {details.isBalanced ? 'Balanced! 🤝' : `${details.dominantPole} ${details.isStrong ? '⭐' : ''}`}
+            {Object.entries(results.axisDetails).map(([axis, details]) => {
+              const axisTranslations = getTranslatedAxisData(axis, t);
+              return (
+                <div key={axis} className="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div className="text-3xl mb-2">{details.dominantIcon}</div>
+                  <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{axisTranslations.axis}</div>
+                  <div className="text-xs text-indigo-600 dark:text-indigo-400 font-semibold">
+                    {details.isBalanced ? t('jvdt2.balanced', 'Balanced! 🤝') : 
+                      `${axisTranslations[details.dominantPole] || details.dominantPole} ${details.isStrong ? '⭐' : ''}`}
+                  </div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                    {details.percentageA}% - {details.percentageB}%
+                  </div>
                 </div>
-                <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                  {details.percentageA}% - {details.percentageB}%
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
         {/* Detailed Learning Style Breakdown */}
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Your Learning Style Details</h3>
+          <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
+            {t('jvdt2.detailsTitle', 'Your Learning Style Details')}
+          </h3>
           <div className="space-y-4">
-            {Object.entries(results.axisDetails).map(([axis, details]) => (
-              <div key={axis} className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="font-medium text-gray-900 dark:text-gray-100 flex items-center">
-                    {details.iconA} {axis} {details.iconB}
-                  </span>
-                  {details.isBalanced && (
-                    <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-300">
-                      Balanced! 🤝
+            {Object.entries(results.axisDetails).map(([axis, details]) => {
+              const axisTranslations = getTranslatedAxisData(axis, t);
+              return (
+                <div key={axis} className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium text-gray-900 dark:text-gray-100 flex items-center">
+                      {details.iconA} {axisTranslations.axis} {details.iconB}
                     </span>
-                  )}
+                    {details.isBalanced && (
+                      <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-300">
+                        {t('jvdt2.balanced', 'Balanced! 🤝')}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-700 dark:text-gray-300">
+                    <span>
+                      {axisTranslations[details.poleA] || details.poleA} {details.scoreA >= 8 ? '⭐' : ''} {details.percentageA}%
+                    </span>
+                    <span>
+                      {details.percentageB}% {details.scoreB >= 8 ? '⭐' : ''} {axisTranslations[details.poleB] || details.poleB}
+                    </span>
+                  </div>
+                  <div className="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden flex">
+                    <div 
+                      style={{ width: `${details.percentageA}%` }} 
+                      className="h-3 bg-sky-500 dark:bg-sky-400 rounded-l-full"
+                    ></div>
+                    <div 
+                      style={{ width: `${details.percentageB}%` }} 
+                      className="h-3 bg-rose-400 dark:bg-rose-500 rounded-r-full"
+                    ></div>
+                  </div>
                 </div>
-                <div className="flex justify-between text-sm text-gray-700 dark:text-gray-300">
-                  <span>
-                    {details.poleA} {details.scoreA >= 8 ? '⭐' : ''} {details.percentageA}%
-                  </span>
-                  <span>
-                    {details.percentageB}% {details.scoreB >= 8 ? '⭐' : ''} {details.poleB}
-                  </span>
-                </div>
-                <div className="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden flex">
-                  <div 
-                    style={{ width: `${details.percentageA}%` }} 
-                    className="h-3 bg-sky-500 dark:bg-sky-400 rounded-l-full"
-                  ></div>
-                  <div 
-                    style={{ width: `${details.percentageB}%` }} 
-                    className="h-3 bg-rose-400 dark:bg-rose-500 rounded-r-full"
-                  ></div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
         {/* Integration Score */}
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">How Balanced Are You?</h3>
+          <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
+            {t('jvdt2.integrationTitle', 'How Balanced Are You?')}
+          </h3>
           <div className="text-center space-y-4">
             <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400">
               {results.integrationScore.score}/100
@@ -936,33 +953,42 @@ export default function QuizEngine({ testDefinition, onComplete }) {
         {/* For Teachers Section */}
         <div className="bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-800 rounded-lg p-6">
           <h3 className="text-xl font-semibold mb-4 text-amber-900 dark:text-amber-100 flex items-center">
-            👩‍🏫 For Teachers & Parents 📚
+            {t('jvdt2.teachersTitle', '👩‍🏫 For Teachers & Parents 📚')}
           </h3>
           <div className="space-y-4">
             <div>
-              <h4 className="font-medium text-amber-800 dark:text-amber-200 mb-2">Learning Profile:</h4>
-              <p className="text-amber-700 dark:text-amber-300 text-sm">{results.archetype.teacher}</p>
+              <h4 className="font-medium text-amber-800 dark:text-amber-200 mb-2">
+                {t('jvdt2.learningProfile', 'Learning Profile:')}
+              </h4>
+              <p className="text-amber-700 dark:text-amber-300 text-sm">{translatedArchetype.teacher}</p>
             </div>
             
             {results.teacherTips.length > 0 && (
               <div>
-                <h4 className="font-medium text-amber-800 dark:text-amber-200 mb-2">Teaching Tips:</h4>
+                <h4 className="font-medium text-amber-800 dark:text-amber-200 mb-2">
+                  {t('jvdt2.teachingTips', 'Teaching Tips:')}
+                </h4>
                 <ul className="space-y-1 text-sm text-amber-700 dark:text-amber-300">
-                  {results.teacherTips.map((tip, index) => (
-                    <li key={index} className="flex items-start">
-                      <span className="text-amber-600 dark:text-amber-400 mr-2">•</span>
-                      <span>
-                        <strong>{tip.axis} ({tip.pole}):</strong> {tip.suggestion}
-                        {tip.strength && <span className="text-amber-600 dark:text-amber-400 ml-1">⭐</span>}
-                      </span>
-                    </li>
-                  ))}
+                  {results.teacherTips.map((tip, index) => {
+                    const axisTranslations = getTranslatedAxisData(tip.axis, t);
+                    return (
+                      <li key={index} className="flex items-start">
+                        <span className="text-amber-600 dark:text-amber-400 mr-2">•</span>
+                        <span>
+                          <strong>{axisTranslations.axis} ({axisTranslations[tip.pole] || tip.pole}):</strong> {tip.suggestion}
+                          {tip.strength && <span className="text-amber-600 dark:text-amber-400 ml-1">⭐</span>}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             )}
 
             <div>
-              <h4 className="font-medium text-amber-800 dark:text-amber-200 mb-2">Parent Tips:</h4>
+              <h4 className="font-medium text-amber-800 dark:text-amber-200 mb-2">
+                {t('jvdt2.parentTips', 'Parent Tips:')}
+              </h4>
               <div className="space-y-1 text-sm text-amber-700 dark:text-amber-300">
                 {results.recommendations.forParent.map((tip, index) => (
                   <p key={index}>{tip}</p>
@@ -974,7 +1000,9 @@ export default function QuizEngine({ testDefinition, onComplete }) {
 
         {/* Next Steps */}
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">🚀 Next Steps for Growth</h3>
+          <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
+            {t('jvdt2.nextStepsTitle', '🚀 Next Steps for Growth')}
+          </h3>
           <ul className="space-y-2">
             {results.recommendations.nextSteps.map((step, index) => (
               <li key={index} className="flex items-start">
@@ -989,7 +1017,7 @@ export default function QuizEngine({ testDefinition, onComplete }) {
         <div className="text-center">
           <div className="inline-flex items-center space-x-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 px-4 py-2 rounded-full border border-green-200 dark:border-green-800">
             <span className="text-2xl">🏆</span>
-            <span className="font-medium">Assessment Complete!</span>
+            <span className="font-medium">{t('jvdt2.assessmentComplete', 'Assessment Complete!')}</span>
             <span className="text-2xl">🎉</span>
           </div>
         </div>
