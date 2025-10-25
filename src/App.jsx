@@ -6,6 +6,8 @@ import Glossary from './components/Glossary';
 import ReflectionCage from './components/ReflectionCage';
 import TeachPeace from './components/TeachPeace';
 import GameArcade from './GameArcade';
+import TestList from './components/diagnostics/TestList';
+import DiagnosticTest from './components/diagnostics/DiagnosticTest';
 
 function ThemeToggle() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || localStorage.getItem('jvdt:theme') || 'light');
@@ -28,6 +30,8 @@ function ThemeToggle() {
 
 function TopNav() {
   const loc = useLocation();
+  const isTestActive = loc.pathname.startsWith('/test');
+  
   return (
     <div className="sticky top-0 z-10 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-slate-200 dark:border-gray-800">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -39,6 +43,9 @@ function TopNav() {
             </Link>
             <Link to="/journey" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/journey' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
               Journey
+            </Link>
+            <Link to="/test" className={`px-3 py-1 rounded-lg text-sm ${isTestActive ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
+              Diagnostics
             </Link>
             <Link to="/glossary" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/glossary' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
               Glossary
@@ -71,6 +78,8 @@ export default function App() {
           <Route path="/" element={<Navigate to="/keys" replace />} />
           <Route path="/keys" element={<FourKeys />} />
           <Route path="/journey" element={<TrainJourney />} />
+          <Route path="/test" element={<TestList />} />
+          <Route path="/test/:testId" element={<DiagnosticTest />} />
           <Route path="/glossary" element={<Glossary />} />
           <Route path="/reflect" element={<ReflectionCage />} />
           <Route path="/peace" element={<TeachPeace />} />

@@ -1,0 +1,462 @@
+{
+  "id": "jvdt-7",
+  "title": "JVDT-7 Diagnostic Assessment", 
+  "description": "Comprehensive assessment across seven key personal and professional development areas",
+  "version": "1.0",
+  "estimatedTime": "25-30 minutes",
+  "totalQuestions": 28,
+  "categories": [
+    {
+      "id": "emotional-intelligence",
+      "name": "Emotional Intelligence",
+      "weight": 0.143,
+      "description": "Understanding and managing emotions in yourself and others"
+    },
+    {
+      "id": "critical-thinking", 
+      "name": "Critical Thinking",
+      "weight": 0.143,
+      "description": "Analyzing information objectively and making reasoned judgments"
+    },
+    {
+      "id": "communication",
+      "name": "Communication Skills", 
+      "weight": 0.143,
+      "description": "Effectively expressing ideas and understanding others"
+    },
+    {
+      "id": "resilience",
+      "name": "Resilience & Adaptability",
+      "weight": 0.143,
+      "description": "Bouncing back from setbacks and adapting to change"
+    },
+    {
+      "id": "leadership",
+      "name": "Leadership Potential",
+      "weight": 0.143,
+      "description": "Inspiring and guiding others toward common goals"
+    },
+    {
+      "id": "creativity", 
+      "name": "Creative Problem Solving",
+      "weight": 0.143,
+      "description": "Generating innovative solutions and thinking outside the box"
+    },
+    {
+      "id": "self-awareness",
+      "name": "Self-Awareness",
+      "weight": 0.141,
+      "description": "Understanding your own strengths, weaknesses, and motivations"
+    }
+  ],
+  "questions": [
+    {
+      "id": "eq1",
+      "category": "emotional-intelligence",
+      "type": "scale",
+      "question": "When a colleague is visibly upset, I usually notice and understand what they might be feeling.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "eq2", 
+      "category": "emotional-intelligence",
+      "type": "multiple-choice",
+      "question": "You're in a meeting and someone criticizes your idea harshly. What's your best response?",
+      "options": [
+        "Defend your idea aggressively",
+        "Take a moment to understand their perspective, then respond calmly",
+        "Stay silent and avoid further conflict",
+        "Criticize their idea in return"
+      ],
+      "correctAnswer": 1,
+      "points": 1,
+      "explanation": "Emotional intelligence involves managing your emotions and understanding others' perspectives before responding."
+    },
+    {
+      "id": "eq3",
+      "category": "emotional-intelligence", 
+      "type": "scale",
+      "question": "I can accurately identify and name my emotions as they occur.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "eq4",
+      "category": "emotional-intelligence",
+      "type": "scale", 
+      "question": "I remain calm and composed when dealing with stressful situations.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "ct1",
+      "category": "critical-thinking",
+      "type": "multiple-choice",
+      "question": "When evaluating news articles, which approach is most important?",
+      "options": [
+        "Check if it confirms what you already believe",
+        "Look for multiple sources and verify facts",
+        "Share it immediately if it's interesting",
+        "Only read headlines to save time"
+      ],
+      "correctAnswer": 1,
+      "points": 1,
+      "explanation": "Critical thinking requires verification from multiple reliable sources rather than confirmation bias."
+    },
+    {
+      "id": "ct2",
+      "category": "critical-thinking",
+      "type": "scale",
+      "question": "I question assumptions and look for evidence before accepting information as true.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "ct3",
+      "category": "critical-thinking",
+      "type": "multiple-choice",
+      "question": "A colleague presents data showing declining productivity. What's your first step?",
+      "options": [
+        "Immediately implement solutions",
+        "Ask questions about how the data was collected and what it represents",
+        "Ignore it if it contradicts your experience",
+        "Blame external factors"
+      ],
+      "correctAnswer": 1,
+      "points": 1,
+      "explanation": "Critical thinking starts with examining the source, methodology, and context of information."
+    },
+    {
+      "id": "ct4",
+      "category": "critical-thinking",
+      "type": "scale",
+      "question": "I can identify logical fallacies and weak arguments in discussions.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "comm1",
+      "category": "communication",
+      "type": "scale",
+      "question": "I adapt my communication style based on my audience (colleagues, clients, friends).",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "comm2",
+      "category": "communication",
+      "type": "multiple-choice",
+      "question": "During a team discussion, you notice one member hasn't spoken. What do you do?",
+      "options": [
+        "Continue the discussion without them",
+        "Put them on the spot by asking them directly",
+        "Create an opening and invite their input gently",
+        "Assume they have nothing to contribute"
+      ],
+      "correctAnswer": 2,
+      "points": 1,
+      "explanation": "Effective communication includes ensuring all voices are heard while being respectful and inclusive."
+    },
+    {
+      "id": "comm3",
+      "category": "communication",
+      "type": "scale",
+      "question": "I listen actively and ask clarifying questions to ensure I understand others.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "comm4",
+      "category": "communication",
+      "type": "scale",
+      "question": "I can explain complex ideas in simple, understandable terms.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "res1",
+      "category": "resilience",
+      "type": "scale",
+      "question": "When I face setbacks, I bounce back quickly and learn from the experience.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "res2",
+      "category": "resilience",
+      "type": "multiple-choice",
+      "question": "Your project gets cancelled after months of work. What's your most likely response?",
+      "options": [
+        "Feel devastated and lose motivation for weeks",
+        "Analyze what went wrong, learn from it, and apply insights to future projects",
+        "Blame others for the failure",
+        "Avoid taking on challenging projects in the future"
+      ],
+      "correctAnswer": 1,
+      "points": 1,
+      "explanation": "Resilience involves learning from setbacks and using them as growth opportunities."
+    },
+    {
+      "id": "res3",
+      "category": "resilience",
+      "type": "scale",
+      "question": "I adapt well to changes in my work environment or personal life.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "res4",
+      "category": "resilience",
+      "type": "scale",
+      "question": "I maintain a positive outlook even during difficult times.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "lead1",
+      "category": "leadership",
+      "type": "scale",
+      "question": "Others often look to me for guidance and direction in group situations.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "lead2",
+      "category": "leadership",
+      "type": "multiple-choice",
+      "question": "Your team is struggling with low morale. What's your approach?",
+      "options": [
+        "Push them harder to improve performance",
+        "Listen to their concerns and work together on solutions",
+        "Ignore it and hope it improves",
+        "Report the problem to management"
+      ],
+      "correctAnswer": 1,
+      "points": 1,
+      "explanation": "Effective leadership involves listening to team members and collaboratively addressing challenges."
+    },
+    {
+      "id": "lead3",
+      "category": "leadership",
+      "type": "scale",
+      "question": "I inspire and motivate others to achieve their best work.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "lead4",
+      "category": "leadership",
+      "type": "scale",
+      "question": "I take initiative to solve problems without being asked.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "crea1",
+      "category": "creativity",
+      "type": "scale",
+      "question": "I regularly generate multiple solutions to problems before choosing one.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "crea2",
+      "category": "creativity",
+      "type": "multiple-choice",
+      "question": "You're tasked with improving team productivity. What's your approach?",
+      "options": [
+        "Implement the same solutions that worked elsewhere",
+        "Brainstorm creative approaches, even unconventional ones",
+        "Stick to proven traditional methods",
+        "Ask your supervisor what to do"
+      ],
+      "correctAnswer": 1,
+      "points": 1,
+      "explanation": "Creative problem-solving involves exploring innovative and unconventional solutions."
+    },
+    {
+      "id": "crea3",
+      "category": "creativity",
+      "type": "scale",
+      "question": "I enjoy exploring new ideas and approaches, even if they seem unusual.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "crea4",
+      "category": "creativity",
+      "type": "scale",
+      "question": "I can connect ideas from different areas to create innovative solutions.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "self1",
+      "category": "self-awareness",
+      "type": "scale",
+      "question": "I understand my strengths and use them effectively.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "self2",
+      "category": "self-awareness",
+      "type": "scale",
+      "question": "I recognize my weaknesses and actively work to improve them.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    },
+    {
+      "id": "self3",
+      "category": "self-awareness",
+      "type": "multiple-choice",
+      "question": "How do you typically respond to feedback about your performance?",
+      "options": [
+        "Get defensive and justify your actions",
+        "Listen carefully and reflect on how to improve",
+        "Ignore it if you disagree",
+        "Take it personally and feel upset"
+      ],
+      "correctAnswer": 1,
+      "points": 1,
+      "explanation": "Self-awareness includes being open to feedback and using it for personal growth."
+    },
+    {
+      "id": "self4",
+      "category": "self-awareness",
+      "type": "scale",
+      "question": "I understand what motivates me and what drains my energy.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "points": 1
+    }
+  ],
+  "scoring": {
+    "levels": [
+      {
+        "name": "Developing",
+        "range": [0, 0.4],
+        "description": "You're building foundational skills across these areas. There's significant opportunity for growth and development.",
+        "recommendations": [
+          "Focus on self-reflection and awareness practices",
+          "Seek feedback from others regularly",
+          "Practice active listening in conversations",
+          "Start with small leadership opportunities"
+        ]
+      },
+      {
+        "name": "Competent", 
+        "range": [0.41, 0.65],
+        "description": "You have solid skills in most areas with room for targeted improvement. You're effective in many situations.",
+        "recommendations": [
+          "Identify your strongest areas and leverage them more",
+          "Work on specific weaknesses identified in the assessment",
+          "Seek mentorship or coaching for leadership development",
+          "Practice creative problem-solving techniques"
+        ]
+      },
+      {
+        "name": "Proficient",
+        "range": [0.66, 0.8], 
+        "description": "You demonstrate strong capabilities across most areas. You're ready for greater challenges and responsibilities.",
+        "recommendations": [
+          "Take on leadership roles in projects or teams",
+          "Mentor others in areas where you excel",
+          "Continuously challenge yourself with complex problems",
+          "Develop expertise in specialized areas"
+        ]
+      },
+      {
+        "name": "Advanced",
+        "range": [0.81, 1.0],
+        "description": "You show exceptional strength across all seven areas. You're ready to lead and inspire others while continuing to grow.",
+        "recommendations": [
+          "Seek executive or senior leadership opportunities",
+          "Become a mentor and coach for others",
+          "Lead organizational change initiatives",
+          "Share your expertise through teaching or writing"
+        ]
+      }
+    ]
+  }
+}
