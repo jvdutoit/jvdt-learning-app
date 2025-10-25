@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState, useRef, useCallback } from 'react'
 import PILLARS from '../data/pillars.json'
 import JVDT7_GLOSSARY from '../data/jvdt7-glossary.json'
+import JVDT4_GLOSSARY from '../data/jvdt4-glossary.json'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSearchParams } from 'react-router-dom'
 import FocusTrap from 'focus-trap-react'
@@ -80,8 +81,20 @@ export default function Glossary() {
       return { raw: j, term, definition, category, aka, examples, related, slug }
     })
 
-    // Combine both data sources
-    return [...pillarItems, ...jvdt7Items]
+    // Process JVDT-4 glossary data
+    const jvdt4Items = JVDT4_GLOSSARY.map((j) => {
+      const term = j.term || ''
+      const definition = j.definition || ''
+      const category = j.category || 'JVDT-4'
+      const aka = j.aka || []
+      const examples = j.examples || []
+      const related = j.related || []
+      const slug = j.id || slugify(term) || Math.random().toString(36).slice(2,8)
+      return { raw: j, term, definition, category, aka, examples, related, slug }
+    })
+
+    // Combine all data sources
+    return [...pillarItems, ...jvdt7Items, ...jvdt4Items]
   }, [])
 
   const itemsBySlug = useMemo(() => {

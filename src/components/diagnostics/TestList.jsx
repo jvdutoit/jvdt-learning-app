@@ -39,6 +39,15 @@ export default function TestList() {
       categories: ['Grammar & Structure', 'Vocabulary', 'Reading Comprehension', 'Practical Usage']
     },
     {
+      id: 'jvdt-4',
+      title: 'JVDT-4 Cognitive Framework Assessment',
+      description: 'Essential 4-axis cognitive framework measuring core learning and decision-making preferences across Seeing, Thinking, Doing, and Caring dimensions.',
+      estimatedTime: '12-15 minutes',
+      totalQuestions: 24,
+      icon: '🧠',
+      categories: ['Seeing (Story↔Facts)', 'Thinking (Why↔How)', 'Doing (Dream↔Plan)', 'Caring (Kind↔Fair)']
+    },
+    {
       id: 'jvdt-7',
       title: 'JVDT-7 Diagnostic Assessment',
       description: 'Authentic Cognitive Framework and Moral Architecture diagnostic system measuring virtue development across seven core axes of human understanding and wisdom.',
