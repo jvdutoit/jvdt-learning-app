@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useState, useRef, useCallback } from 'react'
 import PILLARS from '../data/pillars.json'
+import JVDT7_GLOSSARY from '../data/jvdt7-glossary.json'
+import JVDT4_GLOSSARY from '../data/jvdt4-glossary.json'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSearchParams } from 'react-router-dom'
 import FocusTrap from 'focus-trap-react'
@@ -55,7 +57,8 @@ export default function Glossary() {
   useEffect(() => { try { localStorage.setItem(STORAGE_CAT, category) } catch {} }, [category])
 
   const items = useMemo(() => {
-    return PILLARS.map((p) => {
+    // Process PILLARS data
+    const pillarItems = PILLARS.map((p) => {
       const term = p.term ?? p.title ?? p.name ?? ''
       const definition = p.definition ?? p.summary ?? p.desc ?? p.description ?? ''
       const category = p.category ?? p.domain ?? p.group ?? 'Uncategorized'
@@ -65,6 +68,33 @@ export default function Glossary() {
       const slug = slugify(term) || (p.id ? String(p.id) : Math.random().toString(36).slice(2,8))
       return { raw: p, term, definition, category, aka, examples, related, slug }
     })
+
+    // Process JVDT-7 glossary data
+    const jvdt7Items = JVDT7_GLOSSARY.map((j) => {
+      const term = j.term || ''
+      const definition = j.definition || ''
+      const category = j.category || 'JVDT-7'
+      const aka = j.aka || []
+      const examples = j.examples || []
+      const related = j.related || []
+      const slug = j.id || slugify(term) || Math.random().toString(36).slice(2,8)
+      return { raw: j, term, definition, category, aka, examples, related, slug }
+    })
+
+    // Process JVDT-4 glossary data
+    const jvdt4Items = JVDT4_GLOSSARY.map((j) => {
+      const term = j.term || ''
+      const definition = j.definition || ''
+      const category = j.category || 'JVDT-4'
+      const aka = j.aka || []
+      const examples = j.examples || []
+      const related = j.related || []
+      const slug = j.id || slugify(term) || Math.random().toString(36).slice(2,8)
+      return { raw: j, term, definition, category, aka, examples, related, slug }
+    })
+
+    // Combine all data sources
+    return [...pillarItems, ...jvdt7Items, ...jvdt4Items]
   }, [])
 
   const itemsBySlug = useMemo(() => {

@@ -1,0 +1,161 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh16960\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 /**\
+ * Analyzes JVDT-4 Kids diagnostic results using the Gemini API.\
+ * * @param \{object\} jsonData The JSON data from the jvdt4_kids_result.json file.\
+ * @param \{string\} childName The name of the child for personalization.\
+ * @returns \{Promise<string|null>\} A promise that resolves with the analysis text or null if an error occurs.\
+ */\
+async function analyzeJvdt4ResultsWithGemini(jsonData, childName = "the child") \{\
+    // --- 1. Define the System Instruction ---\
+    const systemPrompt = `\
+Act as an experienced child educational psychologist specializing in learning styles based on the JVDT-4 framework (Seeing: Story/Facts, Thinking: Why/How, Doing: Dream/Plan, Caring: Kind/Fair). Your goal is to provide a warm, encouraging, and insightful analysis based on a child's diagnostic results provided in JSON format. Focus on celebrating strengths, explaining the archetype simply, and offering practical, positive suggestions for parents/teachers to support the child's unique learning profile. Avoid jargon and keep the tone appropriate for discussing a child's development (roughly ages 8-12). Do not simply repeat the input; synthesize it into a coherent narrative. Structure the output clearly, perhaps with sections for "Understanding $\{childName\}'s Style," "Strengths to Celebrate," and "Ways to Support Growth." Use Markdown for formatting.\
+    `.trim();\
+\
+    // --- 2. Prepare the User Query ---\
+    // Optionally, prune the JSON data to send only essential fields for privacy/efficiency\
+    const essentialData = \{\
+        code: jsonData.code,\
+        scores: jsonData.scores,\
+        archetypeTitle: jsonData.archetypeTitle,\
+        description: jsonData.description, // kidDescription\
+        teacherInterpretation: jsonData.teacherInterpretation,\
+        teacherTips: jsonData.teacherTips\
+    \};\
+\
+    const userQuery = `\
+Please analyze the following JVDT-4 Kids diagnostic results for a child named $\{childName\} and provide a detailed interpretation suitable for parents/teachers:\
+\
+\\`\\`\\`json\
+$\{JSON.stringify(essentialData, null, 2)\}\
+\\`\\`\\`\
+\
+Based on this JSON, generate a comprehensive analysis following the instructions in the system prompt. Use Markdown formatting.\
+    `.trim();\
+\
+    // --- 3. Prepare the API Request ---\
+    const apiKey = ""; // Leave empty - handled by environment\
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=$\{apiKey\}`;\
+\
+    const payload = \{\
+        contents: [\{\
+            parts: [\{ text: userQuery \}]\
+        \}],\
+        systemInstruction: \{\
+            parts: [\{ text: systemPrompt \}]\
+        \},\
+        // Optional: Add generationConfig if needed (e.g., temperature, safetySettings)\
+        // generationConfig: \{\
+        //   temperature: 0.7,\
+        // \}\
+    \};\
+\
+    // --- 4. Make the API Call with Retry Logic ---\
+    let analysisText = null;\
+    let attempts = 0;\
+    const maxAttempts = 5;\
+    let delay = 1000; // Start with 1 second delay\
+\
+    while (attempts < maxAttempts) \{\
+        try \{\
+            const response = await fetch(apiUrl, \{\
+                method: 'POST',\
+                headers: \{\
+                    'Content-Type': 'application/json',\
+                \},\
+                body: JSON.stringify(payload)\
+            \});\
+\
+            if (!response.ok) \{\
+                 // Handle specific retryable errors (like 429 Too Many Requests)\
+                 if (response.status === 429 || response.status >= 500) \{\
+                      console.warn(`Attempt $\{attempts + 1\} failed with status $\{response.status\}. Retrying in $\{delay / 1000\}s...`);\
+                      await new Promise(resolve => setTimeout(resolve, delay));\
+                      delay *= 2; // Exponential backoff\
+                      attempts++;\
+                      continue; // Retry the loop\
+                 \} else \{\
+                      // Non-retryable error\
+                      console.error(`API Error: $\{response.status\} $\{response.statusText\}`);\
+                      const errorBody = await response.text();\
+                      console.error("Error Body:", errorBody);\
+                      return null; // Stop trying\
+                 \}\
+            \}\
+\
+            const result = await response.json();\
+\
+            // --- 5. Process the Response ---\
+            analysisText = result.candidates?.[0]?.content?.parts?.[0]?.text;\
+\
+            if (analysisText) \{\
+                console.log("Gemini analysis received successfully.");\
+                return analysisText; // Success! Exit loop.\
+            \} else \{\
+                 console.warn(`Attempt $\{attempts + 1\}: Received unexpected response structure. Retrying...`, result);\
+                 // Fall through to retry logic in case of malformed success response\
+            \}\
+\
+        \} catch (error) \{\
+            console.warn(`Attempt $\{attempts + 1\} failed with network error: $\{error\}. Retrying in $\{delay / 1000\}s...`);\
+            // Fall through to retry logic\
+        \}\
+\
+        // If we reached here, it means an attempt failed and needs retry\
+        await new Promise(resolve => setTimeout(resolve, delay));\
+        delay *= 2; // Exponential backoff\
+        attempts++;\
+    \}\
+\
+    console.error(`Failed to get analysis after $\{maxAttempts\} attempts.`);\
+    return null; // Return null after all retries fail\
+\}\
+\
+// --- Example Usage ---\
+/*\
+// Assume 'kiraJsonResult' is the parsed JSON object from the file\
+// Example:\
+const kiraJsonResult = \{\
+  "version": "jvdt4-kids-1.0.1",\
+  "code": ["Facts", "How", "Dream", "Kind"],\
+  "icons": ["\uc0\u55357 \u56522 ", "\u9881 \u65039 ", "\u55357 \u56493 ", "\u55357 \u56470 "],\
+  "scores": \{\
+    "Seeing": \{ "Story": 4, "Facts": 5 \},\
+    "Thinking": \{ "Why": 4, "How": 5 \},\
+    "Doing": \{ "Dream": 6, "Plan": 3 \},\
+    "Caring": \{ "Kind": 8, "Fair": 1 \}\
+  \},\
+  "archetypeTitle": "The Practical Dreamer",\
+  "description": "Wow! You're great at using facts (\uc0\u55357 \u56522 ) to understand 'How?' things work (\u9881 \u65039 ). You love dreaming up big ideas (\u55357 \u56493 ) and using them to be kind to others (\u55357 \u56470 ). That's your superpower!",\
+  "teacherInterpretation": "Curious and compassionate; applies learning to help others.",\
+  "teacherTips": "\'95 Facts (Seeing): Encourage adding one example or story to each fact.\\n\'95 How (Thinking): Ask: What's one reason this idea matters?\\n\'95 Dream (Doing): Help them write 3 small steps before starting.\\n\'95 Kind (Caring): Help them practice saying 'no' kindly but clearly.",\
+  "answers": [], // Shortened for example\
+  "skipsLeft": 4,\
+  "itemOrder": [], // Shortened for example\
+  "sideSwap": [], // Shortened for example\
+  "generatedAt": "2025-10-23T13:15:34.505Z"\
+\};\
+\
+async function displayAnalysis() \{\
+    console.log("Requesting Gemini analysis for Kira...");\
+    const analysis = await analyzeJvdt4ResultsWithGemini(kiraJsonResult, "Kira");\
+\
+    if (analysis) \{\
+        console.log("\\n--- Generated Analysis ---");\
+        console.log(analysis);\
+        // In a real app, you would display this analysis in the UI\
+        // e.g., document.getElementById('gemini-analysis-output').innerHTML = marked.parse(analysis); // If using a Markdown library\
+    \} else \{\
+        console.log("Could not retrieve analysis.");\
+        // Display an error message in the UI\
+    \}\
+\}\
+\
+// displayAnalysis(); // Uncomment to run example\
+*/\
+}

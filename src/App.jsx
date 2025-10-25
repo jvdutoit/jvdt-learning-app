@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
+import { LanguageProvider } from './contexts/LanguageContext';
+import LanguageToggle from './components/LanguageToggle';
 import FourKeys from './components/FourKeys';
 import TrainJourney from './components/TrainJourney';
 import Glossary from './components/Glossary';
 import ReflectionCage from './components/ReflectionCage';
 import TeachPeace from './components/TeachPeace';
+import GameArcade from './GameArcade';
+import TestList from './components/diagnostics/TestList';
+import DiagnosticTest from './components/diagnostics/DiagnosticTest';
+import ResourceCatalog from './components/resources/ResourceCatalog';
+import ResourceViewer from './components/resources/ResourceViewer';
+import ResourceGenerator from './components/resources/ResourceGenerator';
 
 function ThemeToggle() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || localStorage.getItem('jvdt:theme') || 'light');
@@ -27,6 +35,9 @@ function ThemeToggle() {
 
 function TopNav() {
   const loc = useLocation();
+  const isTestActive = loc.pathname.startsWith('/test');
+  const isResourceActive = loc.pathname.startsWith('/resources');
+  
   return (
     <div className="sticky top-0 z-10 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-slate-200 dark:border-gray-800">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -39,8 +50,17 @@ function TopNav() {
             <Link to="/journey" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/journey' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
               Journey
             </Link>
+            <Link to="/test" className={`px-3 py-1 rounded-lg text-sm ${isTestActive ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
+              Diagnostics
+            </Link>
+            <Link to="/resources" className={`px-3 py-1 rounded-lg text-sm ${isResourceActive ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
+              Resources
+            </Link>
             <Link to="/glossary" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/glossary' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
               Glossary
+            </Link>
+            <Link to="/arcade" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/arcade' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
+              Game Arcade
             </Link>
             <Link to="/reflect" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/reflect' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
               Reflect
@@ -51,6 +71,7 @@ function TopNav() {
           </nav>
         </div>
         <div className="flex items-center gap-2">
+          <LanguageToggle />
           <ThemeToggle />
         </div>
       </div>
@@ -60,18 +81,24 @@ function TopNav() {
 
 export default function App() {
   return (
-    <>
+    <LanguageProvider>
       <TopNav />
       <main className="max-w-6xl mx-auto px-4 py-6">
         <Routes>
           <Route path="/" element={<Navigate to="/keys" replace />} />
           <Route path="/keys" element={<FourKeys />} />
           <Route path="/journey" element={<TrainJourney />} />
+          <Route path="/test" element={<TestList />} />
+          <Route path="/test/:testId" element={<DiagnosticTest />} />
+          <Route path="/resources" element={<ResourceCatalog />} />
+          <Route path="/resources/generate" element={<ResourceGenerator />} />
+          <Route path="/resources/:resourceId" element={<ResourceViewer />} />
           <Route path="/glossary" element={<Glossary />} />
           <Route path="/reflect" element={<ReflectionCage />} />
           <Route path="/peace" element={<TeachPeace />} />
+          <Route path="/arcade" element={<GameArcade />} />
         </Routes>
       </main>
-    </>
+    </LanguageProvider>
   )
 }
