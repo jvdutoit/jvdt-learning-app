@@ -26,6 +26,9 @@ export default function DiagnosticTest() {
       if (testId === 'english-fluency') {
         const module = await import('../../data/tests/english-fluency.json');
         testData = module.default;
+      } else if (testId === 'jvdt-4') {
+        const module = await import('../../data/tests/jvdt-4.json');
+        testData = module.default;
       } else if (testId === 'jvdt-7') {
         const module = await import('../../data/tests/jvdt-7.json');
         testData = module.default;

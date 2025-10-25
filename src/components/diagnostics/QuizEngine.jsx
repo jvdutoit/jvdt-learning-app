@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { calculateJVDT7Results, getJVDT7Recommendations } from './jvdt7Scorer';
+import { calculateJVDT4Results, getJVDT4Recommendations } from './jvdt4Scorer';
 
 // Question type components
 function MultipleChoiceQuestion({ question, selectedAnswer, onAnswer }) {
@@ -154,6 +155,55 @@ export default function QuizEngine({ testDefinition, onComplete }) {
         timeSpent,
         methodology: 'jvdt-7-authentic',
         ...jvdt7Results,
+        recommendations,
+        answers
+      };
+
+      setResults(finalResults);
+      setShowResults(true);
+
+      // Save results to localStorage
+      const resultsKey = `jvdt:test-results-${testDefinition.id}`;
+      const historyKey = 'jvdt:test-history';
+      
+      try {
+        localStorage.setItem(resultsKey, JSON.stringify(finalResults));
+        
+        // Add to history
+        const history = JSON.parse(localStorage.getItem(historyKey) || '[]');
+        history.push({
+          testId: testDefinition.id,
+          completedAt: finalResults.completedAt,
+          jvdtCode: finalResults.jvdtCode,
+          overallStage: finalResults.overallStage,
+          integrationIndex: finalResults.integrationIndex
+        });
+        localStorage.setItem(historyKey, JSON.stringify(history));
+
+        // Clear progress
+        localStorage.removeItem(`jvdt:test-progress-${testDefinition.id}`);
+      } catch (error) {
+        console.warn('Could not save test results:', error);
+      }
+
+      if (onComplete) {
+        onComplete(finalResults);
+      }
+      return;
+    }
+
+    // Check if this is the JVDT-4 test
+    if (testDefinition.id === 'jvdt-4' && testDefinition.scoring?.method === 'jvdt_4_axes') {
+      // Use JVDT-4 scoring methodology
+      const jvdt4Results = calculateJVDT4Results(testDefinition, answers);
+      const recommendations = getJVDT4Recommendations(jvdt4Results, testDefinition);
+      
+      const finalResults = {
+        testId: testDefinition.id,
+        completedAt: new Date().toISOString(),
+        timeSpent,
+        methodology: 'jvdt-4-cognitive',
+        ...jvdt4Results,
         recommendations,
         answers
       };
