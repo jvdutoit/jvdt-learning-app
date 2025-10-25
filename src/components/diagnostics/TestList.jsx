@@ -39,6 +39,16 @@ export default function TestList() {
       categories: ['Grammar & Structure', 'Vocabulary', 'Reading Comprehension', 'Practical Usage']
     },
     {
+      id: 'jvdt-2',
+      title: 'JVDT-2 Kids Learning Style Assessment',
+      description: 'Fun and simple assessment for primary school learners to discover their unique learning style across four key areas with easy either-or choices.',
+      estimatedTime: '5-7 minutes',
+      totalQuestions: 36,
+      icon: '🎨',
+      categories: ['Seeing (Story↔Facts)', 'Thinking (Why↔How)', 'Doing (Dream↔Plan)', 'Caring (Kind↔Fair)'],
+      ageGroup: 'Primary School (Ages 8-12)'
+    },
+    {
       id: 'jvdt-4',
       title: 'JVDT-4 Cognitive Framework Assessment',
       description: 'Essential 4-axis cognitive framework measuring core learning and decision-making preferences across Seeing, Thinking, Doing, and Caring dimensions.',
@@ -106,6 +116,14 @@ export default function TestList() {
                   </div>
                 </div>
 
+                {test.ageGroup && (
+                  <div className="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-800 rounded-lg p-2">
+                    <div className="text-sm text-yellow-800 dark:text-yellow-200 font-medium">
+                      👶 Perfect for: {test.ageGroup}
+                    </div>
+                  </div>
+                )}
+
                 <div className="space-y-2">
                   <h3 className="font-medium text-gray-900 dark:text-gray-100 text-sm">Assessment Areas:</h3>
                   <div className="flex flex-wrap gap-1">
@@ -126,8 +144,10 @@ export default function TestList() {
                       <div className="font-medium">Last completed: {formatDate(lastResult.completedAt)}</div>
                       {lastResult.jvdtCode ? (
                         <div>JVDT Code: {lastResult.jvdtCode} • Stage: {lastResult.overallStage?.name || 'Unknown'}</div>
+                      ) : lastResult.dominantCode ? (
+                        <div>Learning Style: {lastResult.archetype} • Profile: {lastResult.dominantCode?.join('-') || 'Unknown'}</div>
                       ) : (
-                        <div>Score: {Math.round(lastResult.score * 100)}% ({lastResult.level})</div>
+                        <div>Score: {Math.round((lastResult.score || 0) * 100)}% ({lastResult.level || 'Unknown'})</div>
                       )}
                     </div>
                   </div>
@@ -195,13 +215,22 @@ export default function TestList() {
                             {result.overallStage?.name || 'JVDT Profile'}
                           </div>
                         </div>
+                      ) : result.dominantCode ? (
+                        <div>
+                          <div className="font-medium text-gray-900 dark:text-gray-100">
+                            {result.archetype || 'Learning Style'}
+                          </div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">
+                            {result.dominantCode?.join('-') || 'Kids Profile'}
+                          </div>
+                        </div>
                       ) : (
                         <div>
                           <div className="font-medium text-gray-900 dark:text-gray-100">
-                            {Math.round(result.score * 100)}%
+                            {Math.round((result.score || 0) * 100)}%
                           </div>
                           <div className="text-sm text-gray-600 dark:text-gray-400">
-                            {result.level}
+                            {result.level || 'Assessment'}
                           </div>
                         </div>
                       )}

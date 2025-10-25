@@ -1,0 +1,1256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;JVDT-4 Kids Diagnostic&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Load Tailwind CSS --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- NOTE for Production: Add Subresource Integrity (SRI) hash for the CDN script --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- NOTE for Production: Implement a Content Security Policy (CSP) via meta tag or HTTP header --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Google Fonts --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html.dark {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>/* Basic dark mode */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #1e2ebab; /* slate-800 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Poppins', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f0f9ff; /* sky-50 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html.dark body {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>background-color: #1e293b; /* slate-800 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:bg-slate-700 { background-color: #334155; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:text-slate-100 { color: #f1f5f9; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:text-sky-200 { color: #bae6fd; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:text-rose-300 { color: #fda4af; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:text-gray-300 { color: #d1d5db; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:bg-sky-900 { background-color: #0c4a6e; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:border-slate-600 { border-color: #475569; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:bg-slate-600 { background-color: #475569; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:text-slate-200 { color: #e2e8f0; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:text-amber-900 { color: #78350f; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:text-blue-900 { color: #1e3a8a; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:text-violet-900 { color: #4c1d95; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:text-cyan-900 { color: #164e63; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:text-pink-900 { color: #831843; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:text-emerald-900 { color: #064e3b; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:text-rose-900 { color: #881337; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:text-slate-900 { color: #0f172a; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:bg-amber-200 { background-color: #fcd34d; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:bg-blue-200 { background-color: #bfdbfe; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:bg-violet-200 { background-color: #ddd6fe; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:bg-cyan-200 { background-color: #a5f3fc; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:bg-pink-200 { background-color: #fbcfe8; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:bg-emerald-200 { background-color: #a7f3d0; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:bg-rose-200 { background-color: #fecdd3; }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>html.dark .dark\:bg-slate-200 { background-color: #e2e8f0; }</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Make choice buttons larger and more distinct */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.choice-btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.2s ease-in-out;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 4px solid transparent;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-height: 150px; /* Ensure buttons have height */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>user-select: none; /* Prevent text selection on rapid tapping */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.choice-btn:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: scale(1.03);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">         </span>.choice-btn:focus {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>outline: 4px solid #0369a1; /* sky-700 focus outline */</p>
+<p class="p1"><span class="Apple-converted-space">             </span>outline-offset: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">         </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Specific colors for choices */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.choice-btn-a { background-color: #bae6fd; color: #0c4a6e; border-color: #7dd3fc; } /* sky-200 / sky-900 / sky-300 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.choice-btn-b { background-color: #fda4af; color: #881337; border-color: #fb7185; } /* rose-300 / rose-900 / rose-400 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html.dark .choice-btn-a { background-color: #38bdf8; color: #075985; border-color: #0ea5e9; } /* sky-400 / sky-800 / sky-500 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html.dark .choice-btn-b { background-color: #fb7185; color: #881337; border-color: #f43f5e; } /* rose-400 / rose-900 / rose-500 */</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Progress dots */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.progress-dot {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #cbd5e1; /* slate-300 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: background-color 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 4px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html.dark .progress-dot { background-color: #475569; } /* slate-600 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.progress-dot.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #0ea5e9; /* sky-500 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html.dark .progress-dot.active { background-color: #38bdf8; } /* sky-400 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.progress-dot.completed {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>background-color: #0284c7; /* sky-600 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html.dark .progress-dot.completed { background-color: #0ea5e9; } /* sky-500 */</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Result icons */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.result-icon {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 3.25rem; /* Increased size */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 0.65rem; /* Increased margin */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Result Description Card */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#result-description-kids {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>border: 1px solid rgba(2,132,199,.12); /* Subtle border */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html.dark #result-description-kids {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>border-color: rgba(56, 189, 248, 0.2); /* Lighter border in dark mode */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Fade-in animation */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.screen {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: fadeIn 0.5s ease-in-out;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes fadeIn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>from { opacity: 0; transform: translateY(10px); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>to { opacity: 1; transform: translateY(0); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Reduced motion preferences */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@media (prefers-reduced-motion: reduce) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.screen { animation: none; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.choice-btn:hover { transform: none; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>/* Only target choice-btn for transition removal */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.choice-btn {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>transition: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Print-specific styles removed as print button is removed */</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="flex items-center justify-center min-h-screen p-4"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Removed print-container class, no longer needed --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="w-full max-w-lg bg-white rounded-2xl shadow-xl p-6 md:p-8 dark:bg-slate-700 dark:text-slate-100"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Start Screen --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="start-screen-kids" class="screen text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Fun icon --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="text-6xl"&gt;🚀&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-3xl font-bold text-sky-800 dark:text-sky-200 mt-4"&gt;Discover Your Learning Superpowers!&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-lg text-gray-600 dark:text-gray-300 mt-3"&gt;Let's find out what makes you special!&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-left bg-sky-50 dark:bg-sky-900 rounded-lg p-5 mt-6 space-y-2 text-sky-900 dark:text-sky-100 text-base"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Read each pair of choices.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Fixed bold text --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Pick the one that sounds &lt;strong&gt;more like you&lt;/strong&gt;.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;There are no right or wrong answers!&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button type="button" id="start-button-kids" class="w-full mt-8 bg-sky-500 hover:bg-sky-600 text-white text-xl font-semibold py-4 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Let's Go!</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Teacher Options --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;button type="button" id="teacher-toggle" class="mt-3 text-sm text-sky-700 dark:text-sky-300 underline"&gt;Teacher options&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;div id="teacher-panel" class="hidden mt-3 text-left text-sm bg-slate-100 dark:bg-slate-600 p-4 rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;h3 class="font-semibold mb-2"&gt;Options:&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;label class="block mb-1"&gt;&lt;input type="checkbox" id="opt-shuffle"&gt; Shuffle items&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;label class="block mb-1"&gt;&lt;input type="checkbox" id="opt-back"&gt; Enable Back button&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;label class="block"&gt;&lt;input type="checkbox" id="opt-dark"&gt; Dark mode&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Quiz Screen --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="quiz-screen-kids" class="screen hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Progress Dots --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="progress-dots" class="flex justify-center items-center mb-6 flex-wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Dots will be added here --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Question Number with aria-live --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="question-number-kids" aria-live="polite" class="text-center text-sky-600 dark:text-sky-300 font-semibold mb-4"&gt;Question 1 of 36&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Choice Buttons with radiogroup --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="choices-group" role="radiogroup" aria-labelledby="question-number-kids" aria-orientation="horizontal"</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>class="grid grid-cols-1 md:grid-cols-2 gap-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" id="choice-a" role="radio" aria-checked="false" tabindex="0"</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>class="choice-btn choice-btn-a rounded-lg font-semibold text-lg"&gt;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" id="choice-b" role="radio" aria-checked="false" tabindex="-1"</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>class="choice-btn choice-btn-b rounded-lg font-semibold text-lg"&gt;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;!-- Optional Buttons --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;div class="flex justify-between items-center mt-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;button type="button" id="back-button-kids" class="hidden text-sm text-sky-700 dark:text-sky-300 underline"&gt;Back&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;!-- Added aria-label --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;button type="button" id="read-button" aria-label="Read the current question out loud" class="text-sm text-sky-700 dark:text-sky-300 underline"&gt;🔊 Read this&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;button type="button" id="skip-button" class="text-sm text-slate-500 dark:text-slate-400 underline"&gt;Not sure (&lt;span id="skips-left"&gt;4&lt;/span&gt; left)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Result Screen --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="result-screen-kids" class="screen hidden text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;span class="text-6xl"&gt;🌟&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-3xl font-bold text-sky-800 dark:text-sky-200 mt-4"&gt;Your Learning Style Is...&lt;/h1&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Result Title (Archetype) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 id="result-title-kids" class="mt-2 text-3xl font-bold text-sky-800 dark:text-sky-200"&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Gradient Chip (Badge + Tagline) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="result-chip" class="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold text-slate-900"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="result-badge"&gt;&lt;/span&gt; &lt;span id="result-tagline"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- 4-Letter Code (for teacher reference) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="result-code-kids" class="text-sm text-gray-500 dark:text-gray-400 mt-1"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Kid-Focused Description (New) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="result-kid-description" class="mt-4 text-lg font-medium text-sky-700 dark:text-sky-200"&gt;&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Result Icons (4-axis) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="result-icons-kids" class="mt-5 flex justify-center items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;!-- Icons dynamically added --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Result Description (Teacher Interpretation) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="result-description-kids" class="mt-5 text-lg text-gray-700 dark:text-gray-200 bg-sky-50 dark:bg-sky-900 p-4 rounded-lg"&gt;&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;!-- Axis Summary Panel (New) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;div id="axis-summary-panel" class="mt-5 bg-slate-50 dark:bg-slate-600 p-4 rounded"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;h3 class="font-semibold mb-2 text-slate-800 dark:text-slate-100"&gt;Your Mix at a Glance&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div id="axis-summary-rows" class="space-y-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;!-- Rows added dynamically --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;!-- Superpower Zone (New) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;div id="superpower-zone" class="mt-5 bg-emerald-50 dark:bg-emerald-900 p-4 rounded text-left"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;h3 class="font-semibold mb-2 text-emerald-800 dark:text-emerald-100"&gt;🌟 Your Superpower Zone!&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;p class="text-emerald-700 dark:text-emerald-200"&gt;You might really enjoy activities like:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;ul id="superpower-list" class="list-disc list-inside mt-2 text-emerald-700 dark:text-emerald-200 space-y-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;!-- Activities added dynamically --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;!-- Legend Bar (Interactive) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;div id="legend-bar-interactive" class="mt-6 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">               </span>&lt;div class="flex items-center justify-between"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;h3 class="text-sm font-bold text-slate-700 dark:text-slate-100"&gt;How to read the profile&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;button id="legend-toggle" type="button"</p>
+<p class="p1"><span class="Apple-converted-space">                   </span>class="text-xs underline text-sky-700 dark:text-sky-300"&gt;What this means&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">               </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">               </span>&lt;!-- Corrected comment --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">               </span>&lt;!-- Compact icon row --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">               </span>&lt;ul class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-3" role="list" aria-label="Profile legend"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;!-- Seeing --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;li class="flex items-center gap-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                   </span>&lt;span class="text-xl" aria-hidden="true"&gt;🖼️&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                   </span>&lt;div class="text-xs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div class="font-semibold text-slate-800 dark:text-slate-100"&gt;Seeing&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div class="text-slate-600 dark:text-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>&lt;span data-legend-label data-axis-index="0" class="rounded-full px-1.5 py-0.5 text-[10px] font-semibold bg-amber-200 text-amber-900 dark:bg-amber-200 dark:text-amber-900"&gt;Story&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>vs</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>&lt;span data-legend-label data-axis-index="0" class="rounded-full px-1.5 py-0.5 text-[10px] font-semibold bg-blue-200 text-blue-900 dark:bg-blue-200 dark:text-blue-900"&gt;Facts&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                   </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;!-- Thinking --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;li class="flex items-center gap-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                   </span>&lt;span class="text-xl" aria-hidden="true"&gt;❓&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                   </span>&lt;div class="text-xs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div class="font-semibold text-slate-800 dark:text-slate-100"&gt;Thinking&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div class="text-slate-600 dark:text-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>&lt;span data-legend-label data-axis-index="1" class="rounded-full px-1.5 py-0.5 text-[10px] font-semibold bg-violet-200 text-violet-900 dark:bg-violet-200 dark:text-violet-900"&gt;Why&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>vs</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>&lt;span data-legend-label data-axis-index="1" class="rounded-full px-1.5 py-0.5 text-[10px] font-semibold bg-cyan-200 text-cyan-900 dark:bg-cyan-200 dark:text-cyan-900"&gt;How&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                   </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;!-- Doing --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;li class="flex items-center gap-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                   </span>&lt;span class="text-xl" aria-hidden="true"&gt;💭&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                   </span>&lt;div class="text-xs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div class="font-semibold text-slate-800 dark:text-slate-100"&gt;Doing&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div class="text-slate-600 dark:text-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>&lt;span data-legend-label data-axis-index="2" class="rounded-full px-1.5 py-0.5 text-[10px] font-semibold bg-pink-200 text-pink-900 dark:bg-pink-200 dark:text-pink-900"&gt;Dream&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>vs</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>&lt;span data-legend-label data-axis-index="2" class="rounded-full px-1.5 py-0.5 text-[10px] font-semibold bg-emerald-200 text-emerald-900 dark:bg-emerald-200 dark:text-emerald-900"&gt;Plan&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                   </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;!-- Caring --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;li class="flex items-center gap-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                   </span>&lt;span class="text-xl" aria-hidden="true"&gt;💖&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                   </span>&lt;div class="text-xs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div class="font-semibold text-slate-800 dark:text-slate-100"&gt;Caring&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div class="text-slate-600 dark:text-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>&lt;span data-legend-label data-axis-index="3" class="rounded-full px-1.5 py-0.5 text-[10px] font-semibold bg-rose-200 text-rose-900 dark:bg-rose-200 dark:text-rose-900"&gt;Kind&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>vs</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>&lt;span data-legend-label data-axis-index="3" class="rounded-full px-1.5 py-0.5 text-[10px] font-semibold bg-slate-200 text-slate-900 dark:bg-slate-200 dark:text-slate-900"&gt;Fair&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                   </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">               </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">               </span>&lt;!-- Expandable helper text --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">               </span>&lt;div id="legend-explain" class="mt-3 text-xs text-slate-600 dark:text-slate-200 hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>The four icons always appear in this order:</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;strong&gt;Seeing → Thinking → Doing → Caring&lt;/strong&gt;.</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>Your result shows which side you picked most on each pair (or 🤝 if it was a tie!). The colors match the badges shown above.</p>
+<p class="p1"><span class="Apple-converted-space">               </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;!-- Teacher Tips (optional) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;div id="teacher-tips-container" class="hidden mt-4 text-left text-sm bg-slate-50 dark:bg-slate-600 p-3 rounded"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;h3 class="font-semibold mb-1 text-slate-800 dark:text-slate-100"&gt;Teacher Tips for Growth:&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;!-- Updated style for readability --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;pre id="teacher-tips" class="whitespace-pre-wrap text-slate-700 dark:text-slate-200 leading-relaxed text-[0.95rem]"&gt;&lt;/pre&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;!-- Buttons --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;div class="mt-6 space-y-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;!-- New TXT Save Button --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;button type="button" id="save-txt" title="Download a simple text file with this result" class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg text-lg font-semibold"&gt;Save Result (TXT)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;button type="button" id="save-json" title="Download a JSON file with this result" class="w-full bg-sky-500 hover:bg-sky-600 text-white py-3 rounded-lg text-lg font-semibold"&gt;Save Result (JSON)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;button type="button" id="restart-button-kids" class="w-full bg-slate-700 hover:bg-slate-800 text-white text-lg font-semibold py-4 px-8 rounded-lg shadow-lg transition-transform transform hover:scale-105"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>Play Again!</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- JVDT-4 Kids Data ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Immutable source of questions</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const SOURCE_QUESTIONS = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Axis 1: Seeing (Story vs Facts) - S/F</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Seeing", poleA: "Story", poleB: "Facts", textA: "I remember pictures and stories best.", textB: "I remember facts and numbers best." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Seeing", poleA: "Story", poleB: "Facts", textA: "I notice people’s feelings in a movie.", textB: "I notice small details in the background." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Seeing", poleA: "Story", poleB: "Facts", textA: "I understand things when someone shows me.", textB: "I understand things when someone explains step by step." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Seeing", poleA: "Story", poleB: "Facts", textA: "I learn new things by imagining them.", textB: "I learn new things by practising them." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Seeing", poleA: "Story", poleB: "Facts", textA: "I like making up stories or comics.", textB: "I like solving puzzles and tasks." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Seeing", poleA: "Story", poleB: "Facts", textA: "I guess the meaning of a word from the story.", textB: "I check the meaning in a dictionary or list." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Seeing", poleA: "Story", poleB: "Facts", textA: "I think about how something feels.", textB: "I think about how something works." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Seeing", poleA: "Story", poleB: "Facts", textA: "I prefer drawing my ideas.", textB: "I prefer writing notes or lists." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Seeing", poleA: "Story", poleB: "Facts", textA: "I trust my feeling about an answer.", textB: "I check carefully if it is correct." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Axis 2: Thinking (Why vs How) - W/H</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Thinking", poleA: "Why", poleB: "How", textA: "I ask “Why does this happen?”", textB: "I ask “How can I do this?”" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Thinking", poleA: "Why", poleB: "How", textA: "I like hearing the story behind things.", textB: "I like seeing how something helps today." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Thinking", poleA: "Why", poleB: "How", textA: "I want to know where an idea came from.", textB: "I want to know what I can do with it." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Thinking", poleA: "Why", poleB: "How", textA: "I enjoy learning about the past.", textB: "I enjoy learning about what is new." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Thinking", poleA: "Why", poleB: "How", textA: "I think rules make sense when I know their reason.", textB: "I follow rules when they work well." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Thinking", poleA: "Why", poleB: "How", textA: "I wonder why people think differently.", textB: "I wonder how people make things work together." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Thinking", poleA: "Why", poleB: "How", textA: "I remember stories about how things began.", textB: "I remember examples of how to use them now." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Thinking", poleA: "Why", poleB: "How", textA: "I like talking about what things mean.", textB: "I like talking about what things can do." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Thinking", poleA: "Why", poleB: "How", textA: "I ask “Why are we learning this?”", textB: "I ask “How can I use this?”" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Axis 3: Doing (Dream vs Plan) - D/P</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Doing", poleA: "Dream", poleB: "Plan", textA: "I get big ideas and want to start right away.", textB: "I make a plan before I begin." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Doing", poleA: "Dream", poleB: "Plan", textA: "I enjoy imagining what the future could be.", textB: "I enjoy following clear steps to finish." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Doing", poleA: "Dream", poleB: "Plan", textA: "I change ideas as I go along.", textB: "I like keeping the plan the same." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Doing", poleA: "Dream", poleB: "Plan", textA: "I work best when something feels exciting.", textB: "I work best when everything is organised." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Doing", poleA: "Dream", poleB: "Plan", textA: "I often dream about new inventions or games.", textB: "I like building things that already exist." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Doing", poleA: "Dream", poleB: "Plan", textA: "I like projects that tell a story or help people.", textB: "I like projects that work well and look neat." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Doing", poleA: "Dream", poleB: "Plan", textA: "I care more about meaning than perfect results.", textB: "I care more about good results than big meaning." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Doing", poleA: "Dream", poleB: "Plan", textA: "I start even if I don’t know every step.", textB: "I wait until I understand the steps." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Doing", poleA: "Dream", poleB: "Plan", textA: "I say, “Let’s try!”", textB: "I say, “Let’s plan first.”" },</p>
+<p class="p1"><span class="Apple-converted-space">             </span>// Axis 4: Caring (Kind vs Fair) - K/F</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Caring", poleA: "Kind", poleB: "Fair", textA: "I comfort someone who feels sad.", textB: "I remind friends to play by the rules." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Caring", poleA: "Kind", poleB: "Fair", textA: "I forgive quickly.", textB: "I make sure everyone follows the same rule." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Caring", poleA: "Kind", poleB: "Fair", textA: "I think helping is more important than winning.", textB: "I think being fair is more important than helping." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Caring", poleA: "Kind", poleB: "Fair", textA: "I like making peace between people.", textB: "I like making sure the game is fair." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Caring", poleA: "Kind", poleB: "Fair", textA: "I understand people’s feelings fast.", textB: "I notice when something isn’t fair." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Caring", poleA: "Kind", poleB: "Fair", textA: "I would rather be gentle than right.", textB: "I would rather be honest than soft." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Caring", poleA: "Kind", poleB: "Fair", textA: "I tell friends it’s okay if they make mistakes.", textB: "I tell friends what they can do better next time." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Caring", poleA: "Kind", poleB: "Fair", textA: "I listen first when people are upset.", textB: "I explain calmly what went wrong." },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ axis: "Caring", poleA: "Kind", poleB: "Fair", textA: "I want everyone to feel safe.", textB: "I want everyone to be treated the same." }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const axesConfig = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"Seeing": { poleA: "Story", poleB: "Facts", iconA: "🖼️", iconB: "📊" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"Thinking": { poleA: "Why", poleB: "How", iconA: "❓", iconB: "⚙️" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"Doing": { poleA: "Dream", poleB: "Plan", iconA: "💭", iconB: "🗺️" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"Caring": { poleA: "Kind", poleB: "Fair", iconA: "💖", iconB: "⚖️" }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">         </span>// Teacher Tips</p>
+<p class="p1"><span class="Apple-converted-space">         </span>const tips = {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>Story: "Encourage adding one fact to each idea.",</p>
+<p class="p1"><span class="Apple-converted-space">             </span>Facts: "Encourage adding one example or story to each fact.",</p>
+<p class="p1"><span class="Apple-converted-space">             </span>Why: "Ask: What's one way this helps someone today?",</p>
+<p class="p1"><span class="Apple-converted-space">             </span>How: "Ask: What's one reason this idea matters?",</p>
+<p class="p1"><span class="Apple-converted-space">             </span>Dream: "Help them write 3 small steps before starting.",</p>
+<p class="p1"><span class="Apple-converted-space">             </span>Plan: "Ask: Is there room for a new idea here?",</p>
+<p class="p1"><span class="Apple-converted-space">             </span>Kind: "Help them practice saying 'no' kindly but clearly.",</p>
+<p class="p1"><span class="Apple-converted-space">             </span>Fair: "Ask: Can we start by saying something kind?"</p>
+<p class="p1"><span class="Apple-converted-space">         </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">         </span>// Archetype Matrix Data (Added kidDescription)</p>
+<p class="p1"><span class="Apple-converted-space">         </span>const archetypes = {</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-Why-Dream-Kind": { title: "The Imaginative Helper", tagline: "Learns through stories, dreams big, and cares deeply.", kidDescription: "Wow! You love stories (🖼️), asking 'Why?' (❓), dreaming up big ideas (💭), and being super kind (💖). Telling stories to help people is your superpower!", teacher: "Natural empath and storyteller; connects ideas emotionally and wants to help others." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-Why-Dream-Fair": { title: "The Wise Dreamer", tagline: "Dreams up fair ideas that make the world better.", kidDescription: "Stories (🖼️) and asking 'Why?' (❓) are your jam! You have big dreams (💭) and always want things to be fair (⚖️). You're great at imagining fair ways to play!", teacher: "Balances imagination with justice; loves stories with morals and lessons." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-Why-Plan-Kind": { title: "The Gentle Organizer", tagline: "Plans kind ways to make good ideas real.", kidDescription: "You learn well with stories (🖼️) and like knowing 'Why?' (❓). You also enjoy having a plan (🗺️) and being really kind (💖). Making kind plans is one of your talents!", teacher: "Likes stories but also structure; leads softly and kindly." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-Why-Plan-Fair": { title: "The Thoughtful Guardian", tagline: "Keeps things fair and true to their meaning.", kidDescription: "You like stories (🖼️) and understanding 'Why?' (❓). Making clear plans (🗺️) and keeping things fair (⚖️) are important to you. You're awesome at making sure rules make sense!", teacher: "Protects principles; values tradition, fairness, and responsibility." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-How-Dream-Kind": { title: "The Creative Builder", tagline: "Turns ideas into kind actions.", kidDescription: "Stories (🖼️) help you learn, and you love knowing 'How?' (⚙️). You dream up cool new things (💭) and are always kind (💖). You can imagine amazing ways to help others!", teacher: "Loves to make things, enjoys showing others how ideas can help." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-How-Dream-Fair": { title: "The Inventive Maker", tagline: "Builds fair and fun new worlds.", kidDescription: "You're great with stories (🖼️) and figuring out 'How?' (⚙️). You dream big (💭) but always make sure things are fair (⚖️). You're like an inventor who makes fair games!", teacher: "Engineer-artist hybrid; imaginative but grounded in systems and fairness." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-How-Plan-Kind": { title: "The Caring Designer", tagline: "Plans carefully to create good things for people.", kidDescription: "You like learning from stories (🖼️) and knowing 'How?' (⚙️). Following a plan (🗺️) feels good, and you're super kind (💖). You're fantastic at planning nice things for others!", teacher: "Likes clear instructions, builds things that help or comfort others." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-How-Plan-Fair": { title: "The Balanced Planner", tagline: "Makes sure every plan works well and treats people right.", kidDescription: "Stories (🖼️) are fun, and you like knowing 'How?' (⚙️). You stick to the plan (🗺️) and make sure everything is fair (⚖️). You're great at making sure plans work for everyone!", teacher: "Practical, dependable, and just; ensures both order and inclusion." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-Why-Dream-Kind": { title: "The Thoughtful Inventor", tagline: "Finds smart, kind reasons for new ideas.", kidDescription: "You like facts (📊) and always ask 'Why?' (❓). You have big dreams (💭) and a kind heart (💖). You're good at thinking up kind reasons for your awesome ideas!", teacher: "Analytical yet caring; blends reason with compassion." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-Why-Dream-Fair": { title: "The Principled Creator", tagline: "Dreams up fair solutions using what they know.", kidDescription: "Facts (📊) and asking 'Why?' (❓) help you learn. You dream big (💭) and believe in being fair (⚖️). You're amazing at creating fair ideas based on what you know!", teacher: "Wants ideas to be correct and just; loves solving real problems." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-Why-Plan-Kind": { title: "The Patient Helper", tagline: "Plans carefully to do kind things that work.", kidDescription: "You like facts (📊), understanding 'Why?' (❓), and having a plan (🗺️). Being kind (💖) is important too! You're great at planning helpful things step-by-step.", teacher: "Values order and kindness; solid team player who likes clear steps." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-Why-Plan-Fair": { title: "The Reliable Judge", tagline: "Thinks before acting and keeps things fair.", kidDescription: "Facts (📊) and asking 'Why?' (❓) guide you. You like clear plans (🗺️) and making sure things are fair (⚖️). You're really good at thinking carefully and being fair!", teacher: "Calm, objective, consistent; great at mediating or leading by fairness." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-How-Dream-Kind": { title: "The Practical Dreamer", tagline: "Uses facts to make kind ideas real.", kidDescription: "Wow! You're great at using facts (📊) to understand 'How?' things work (⚙️). You love dreaming up big ideas (💭) and using them to be kind to others (💖). That's your superpower!", teacher: "Curious and compassionate; applies learning to help others." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-How-Dream-Fair": { title: "The Inventive Fixer", tagline: "Figures out fair new ways to improve things.", kidDescription: "You use facts (📊) and know 'How?' (⚙️) things work. You dream (💭) of better ways and want things to be fair (⚖️). You're like a super-fixer who makes things fair!", teacher: "Problem-solver; experiments until systems feel fair for everyone." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-How-Plan-Kind": { title: "The Helpful Builder", tagline: "Follows clear steps to make life easier for others.", kidDescription: "You like facts (📊), knowing 'How?' (⚙️), and following plans (🗺️). You're also very kind (💖)! You're wonderful at building things carefully to help people.", teacher: "Systematic worker; thrives on routine and helping through action." },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-How-Plan-Fair": { title: "The Logical Leader", tagline: "Keeps things running smoothly and fairly.", kidDescription: "Facts (📊), knowing 'How?' (⚙️), and having a plan (🗺️) are your style! You make sure everything is fair (⚖️). You're fantastic at organizing things so they work well for everyone!", teacher: "Natural organizer; leads by fairness, facts, and responsibility." }</p>
+<p class="p1"><span class="Apple-converted-space">         </span>};</p>
+<p class="p1"><span class="Apple-converted-space">         </span>// Fallback for Balanced cases</p>
+<p class="p1"><span class="Apple-converted-space">         </span>const defaultArchetype = { title: "Balanced Explorer", tagline: "Uses many skills to learn and grow!", kidDescription: "Cool! You use a mix of different superpowers to learn and explore. That means you can be good at lots of things!", teacher: "Shows flexibility across different learning styles." };</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">         </span>// Visuals Map</p>
+<p class="p1"><span class="Apple-converted-space">         </span>const archetypeVisuals = {</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-Why-Dream-Kind": <span class="Apple-converted-space">  </span>{ badge:"🎨🤝", icons:["🖼️","❓","💭","💖"], gradient:"from-amber-300 via-violet-300 to-pink-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-Why-Dream-Fair": <span class="Apple-converted-space">  </span>{ badge:"📜🌍", icons:["🖼️","❓","💭","⚖️"], gradient:"from-amber-300 via-violet-300 to-slate-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-Why-Plan-Kind":<span class="Apple-converted-space">    </span>{ badge:"🗂️💗", icons:["🖼️","❓","🗺️","💖"], gradient:"from-amber-300 via-violet-300 to-rose-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-Why-Plan-Fair":<span class="Apple-converted-space">    </span>{ badge:"🛡️📖", icons:["🖼️","❓","🗺️","⚖️"], gradient:"from-amber-300 via-violet-300 to-slate-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-How-Dream-Kind": <span class="Apple-converted-space">  </span>{ badge:"🛠️💝", icons:["🖼️","⚙️","💭","💖"], gradient:"from-amber-300 via-cyan-300 to-pink-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-How-Dream-Fair": <span class="Apple-converted-space">  </span>{ badge:"🧩⚖️", icons:["🖼️","⚙️","💭","⚖️"], gradient:"from-amber-300 via-cyan-300 to-slate-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-How-Plan-Kind":<span class="Apple-converted-space">    </span>{ badge:"📐💕", icons:["🖼️","⚙️","🗺️","💖"], gradient:"from-amber-300 via-cyan-300 to-rose-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Story-How-Plan-Fair":<span class="Apple-converted-space">    </span>{ badge:"📋⚖️", icons:["🖼️","⚙️","🗺️","⚖️"], gradient:"from-amber-300 via-cyan-300 to-slate-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-Why-Dream-Kind": <span class="Apple-converted-space">  </span>{ badge:"🔬💡", icons:["📊","❓","💭","💖"], gradient:"from-blue-300 via-violet-300 to-pink-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-Why-Dream-Fair": <span class="Apple-converted-space">  </span>{ badge:"⚖️💡", icons:["📊","❓","💭","⚖️"], gradient:"from-blue-300 via-violet-300 to-slate-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-Why-Plan-Kind":<span class="Apple-converted-space">    </span>{ badge:"🧱💗", icons:["📊","❓","🗺️","💖"], gradient:"from-blue-300 via-violet-300 to-rose-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-Why-Plan-Fair":<span class="Apple-converted-space">    </span>{ badge:"🧠⚖️", icons:["📊","❓","🗺️","⚖️"], gradient:"from-blue-300 via-violet-300 to-slate-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-How-Dream-Kind": <span class="Apple-converted-space">  </span>{ badge:"🧰💖", icons:["📊","⚙️","💭","💖"], gradient:"from-blue-300 via-cyan-300 to-pink-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-How-Dream-Fair": <span class="Apple-converted-space">  </span>{ badge:"🧪⚖️", icons:["📊","⚙️","💭","⚖️"], gradient:"from-blue-300 via-cyan-300 to-slate-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-How-Plan-Kind":<span class="Apple-converted-space">    </span>{ badge:"🏗️💞", icons:["📊","⚙️","🗺️","💖"], gradient:"from-blue-300 via-cyan-300 to-rose-300" },</p>
+<p class="p1"><span class="Apple-converted-space">           </span>"Facts-How-Plan-Fair":<span class="Apple-converted-space">    </span>{ badge:"🧭⚖️", icons:["📊","⚙️","🗺️","⚖️"], gradient:"from-blue-300 via-cyan-300 to-slate-300" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Add fallbacks for "Balanced" if needed, or handle in lookup</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"Balanced": { badge: "🌟", icons: ["🤝", "🤝", "🤝", "🤝"], gradient: "from-gray-300 to-white"} // Simple fallback visual</p>
+<p class="p1"><span class="Apple-converted-space">         </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">         </span>// Superpower Activities Data (New)</p>
+<p class="p1"><span class="Apple-converted-space">         </span>const superpowerActivities = {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Story-Why-Dream-Kind": ["Telling stories with a good message", "Imagining ways to help friends feel better", "Drawing comics about adventures"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Story-Why-Dream-Fair": ["Making up fair rules for a new game", "Writing stories about heroes who do the right thing", "Imagining a better world"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Story-Why-Plan-Kind": ["Planning a kind surprise for someone", "Organizing toys or books to share", "Drawing maps for story characters"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Story-Why-Plan-Fair": ["Helping make classroom rules fair", "Learning about history and why things happened", "Planning a fair way to share snacks"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Story-How-Dream-Kind": ["Building something helpful from a story", "Showing friends how to do something kind", "Inventing a gadget to help someone"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Story-How-Dream-Fair": ["Designing a fair obstacle course", "Building a model world where everything works right", "Showing how to fix something fairly"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Story-How-Plan-Kind": ["Following instructions to make a gift", "Planning a helpful project step-by-step", "Drawing detailed plans for a kind invention"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Story-How-Plan-Fair": ["Organizing game equipment fairly", "Following steps to build something sturdy", "Making sure everyone gets a turn"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Facts-Why-Dream-Kind": ["Researching how animals help each other", "Imagining kind inventions based on science", "Explaining why being kind is important"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Facts-Why-Dream-Fair": ["Learning about rules in nature", "Designing a fair experiment", "Thinking of fair reasons for big ideas"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Facts-Why-Plan-Kind": ["Planning a recycling project", "Following steps to help in the garden", "Making a chart to track kind deeds"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Facts-Why-Plan-Fair": ["Helping create fair classroom jobs", "Organizing facts for a presentation", "Making sure everyone understands the rules"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Facts-How-Dream-Kind": ["Building a robot that helps people", "Experimenting with ways to make things better for others", "Showing how science can be kind"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Facts-How-Dream-Fair": ["Inventing a fair way to use resources", "Designing a system where everyone is treated equally", "Fixing something so it works better and is fair"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Facts-How-Plan-Kind": ["Following a recipe to bake for others", "Building something useful step-by-step", "Making a checklist to help the class"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Facts-How-Plan-Fair": ["Organizing a collection neatly", "Following coding instructions precisely", "Making sure game scores are tracked correctly"],</p>
+<p class="p1"><span class="Apple-converted-space">             </span>// Default for Balanced</p>
+<p class="p1"><span class="Apple-converted-space">             </span>"Balanced": ["Trying different kinds of puzzles", "Working on group projects", "Learning new things in your own way"]</p>
+<p class="p1"><span class="Apple-converted-space">         </span>};</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- Application State ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentKidQuestionIndex = 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let kidScores = {}; // Reset in resetState</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let finalKidCode = [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let finalKidIcons = [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let kidAnswers = []; // For back button</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let skipsLeft = 4;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let answering = false; // Debounce flag</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Teacher options with keys for localStorage</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let enableBack = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let shuffleItems = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let darkMode = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const LS_KEY = 'jvdt4_kids_state'; // LocalStorage key for progress</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const LS_OPT_KEY = 'jvdt4_kids_options'; // Key for teacher options</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let questionOrder = []; // Mutable working list of questions</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let sideSwapMap = []; // Map for randomizing button sides</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- DOM Elements ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const startScreenKids = document.getElementById('start-screen-kids');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const quizScreenKids = document.getElementById('quiz-screen-kids');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultScreenKids = document.getElementById('result-screen-kids');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const startButtonKids = document.getElementById('start-button-kids');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const restartButtonKids = document.getElementById('restart-button-kids');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const questionNumberKids = document.getElementById('question-number-kids');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const choiceAButton = document.getElementById('choice-a');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const choiceBButton = document.getElementById('choice-b');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const choicesGroup = document.getElementById('choices-group'); // Radiogroup container</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const progressDotsContainer = document.getElementById('progress-dots');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultTitleKids = document.getElementById('result-title-kids'); // Archetype title</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultChip = document.getElementById('result-chip'); // Chip container</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultBadge = document.getElementById('result-badge'); // Badge emoji</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultTagline = document.getElementById('result-tagline'); // Tagline text</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultCodeKids = document.getElementById('result-code-kids'); // 4-letter code p tag</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultKidDescription = document.getElementById('result-kid-description'); // New kid description P tag</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultIconsKids = document.getElementById('result-icons-kids'); // 4-icon row</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultDescriptionKids = document.getElementById('result-description-kids'); // Archetype description (teacher)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const axisSummaryPanel = document.getElementById('axis-summary-panel'); // Panel for bars</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const axisSummaryRows = document.getElementById('axis-summary-rows'); // Container for bars</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const superpowerZone = document.getElementById('superpower-zone'); // New superpower zone div</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const superpowerList = document.getElementById('superpower-list'); // New superpower list ul</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const teacherToggle = document.getElementById('teacher-toggle');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const teacherPanel = document.getElementById('teacher-panel');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const optShuffle = document.getElementById('opt-shuffle');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const optBack = document.getElementById('opt-back');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const optDark = document.getElementById('opt-dark');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const backBtn = document.getElementById('back-button-kids');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const readBtn = document.getElementById('read-button');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const skipBtn = document.getElementById('skip-button');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const skipsLeftSpan = document.getElementById('skips-left');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const teacherTipsContainer = document.getElementById('teacher-tips-container');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const teacherTipsPre = document.getElementById('teacher-tips');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const saveJsonBtn = document.getElementById('save-json');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const saveTxtButton = document.getElementById('save-txt'); // New TXT save button</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const legendToggle = document.getElementById('legend-toggle'); // Legend toggle button</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const legendExplain = document.getElementById('legend-explain'); // Legend explanation text</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- Functions ---</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Utility: Fisher-Yates Shuffle</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function fisherYates(arr){</p>
+<p class="p1"><span class="Apple-converted-space">          </span>for (let i = arr.length - 1; i &gt; 0; i--){</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const j = Math.floor(Math.random() * (i + 1));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>[arr[i], arr[j]] = [arr[j], arr[i]];</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// LocalStorage save/load for options</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function saveOptions() {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>localStorage.setItem(LS_OPT_KEY, JSON.stringify({ enableBack, shuffleItems, darkMode }));</p>
+<p class="p1"><span class="Apple-converted-space">             </span>} catch (e) { console.warn("Could not save options.", e); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function loadOptions() {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>const opts = JSON.parse(localStorage.getItem(LS_OPT_KEY));</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>if (opts) {</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>enableBack = opts.enableBack === true;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>shuffleItems = opts.shuffleItems === true;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>darkMode = opts.darkMode === true;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>// Update checkboxes</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>optBack.checked = enableBack;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>optShuffle.checked = shuffleItems;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>optDark.checked = darkMode;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>}</p>
+<p class="p1"><span class="Apple-converted-space">             </span>} catch { /* Ignore parsing errors, start fresh */ }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// LocalStorage save/load for quiz progress</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function saveState(){</p>
+<p class="p1"><span class="Apple-converted-space">          </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Save all state needed to resume</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem(LS_KEY, JSON.stringify({currentKidQuestionIndex, kidScores, kidAnswers, skipsLeft, sideSwapMap})); // Include sideSwapMap</p>
+<p class="p1"><span class="Apple-converted-space">          </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>console.warn("Could not save state.", e);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function loadState(){</p>
+<p class="p1"><span class="Apple-converted-space">          </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const state = JSON.parse(localStorage.getItem(LS_KEY));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Add a compatibility check for all restored properties</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (state &amp;&amp; typeof state.currentKidQuestionIndex === 'number' &amp;&amp; state.kidScores &amp;&amp; Array.isArray(state.kidAnswers) &amp;&amp; Array.isArray(state.sideSwapMap)) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Basic check if scores structure matches config</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const scoreKeys = Object.keys(state.kidScores);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const configKeys = Object.keys(axesConfig);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Check lengths match and sideSwapMap length matches question count</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (scoreKeys.length === configKeys.length &amp;&amp; scoreKeys.every(k =&gt; configKeys.includes(k)) &amp;&amp; state.sideSwapMap.length === SOURCE_QUESTIONS.length) {</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>return state;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.removeItem(LS_KEY); // Clear invalid state</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return null;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>} catch {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.removeItem(LS_KEY); // Clear invalid state</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return null;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Resets state variables</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function resetState() {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>currentKidQuestionIndex = 0;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>kidScores = { Seeing: { Story: 0, Facts: 0 }, Thinking: { Why: 0, How: 0 }, Doing: { Dream: 0, Plan: 0 }, Caring: { Kind: 0, Fair: 0 } };</p>
+<p class="p1"><span class="Apple-converted-space">             </span>finalKidCode = [];</p>
+<p class="p1"><span class="Apple-converted-space">             </span>finalKidIcons = [];</p>
+<p class="p1"><span class="Apple-converted-space">             </span>kidAnswers = [];</p>
+<p class="p1"><span class="Apple-converted-space">             </span>skipsLeft = 4;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>answering = false;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>questionOrder = []; // Reset order array</p>
+<p class="p1"><span class="Apple-converted-space">             </span>sideSwapMap = []; // Reset swap map</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">         </span>// Initializes or Resumes the Quiz UI</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function initOrResumeKids() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>loadOptions(); // Load teacher options first</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resetState(); // Always reset state</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const savedState = loadState();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (savedState &amp;&amp; savedState.currentKidQuestionIndex &amp;&amp; savedState.currentKidQuestionIndex &lt; SOURCE_QUESTIONS.length) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Restore state if valid resume point exists</p>
+<p class="p1"><span class="Apple-converted-space">                </span>currentKidQuestionIndex = savedState.currentKidQuestionIndex;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>kidScores = savedState.kidScores;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>kidAnswers = savedState.kidAnswers || [];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>skipsLeft = savedState.skipsLeft !== undefined ? savedState.skipsLeft : 4;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>sideSwapMap = savedState.sideSwapMap; // Restore side swap map</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Reconstruct question order based on options (shuffle might have been toggled)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>questionOrder = shuffleItems ? SOURCE_QUESTIONS.slice().sort(() =&gt; Math.random() - 0.5) : SOURCE_QUESTIONS.slice();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// If the saved state included a *specific* order (e.g., from a previous shuffle), we might need to restore that exact order here instead.</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// For simplicity now, we regenerate based on current toggle state.</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>startScreenKids.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quizScreenKids.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>resultScreenKids.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log("Resuming quiz...");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>// Otherwise, ensure start screen is shown</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>startScreenKids.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>quizScreenKids.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>resultScreenKids.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>localStorage.removeItem(LS_KEY); // Clear any invalid state</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>console.log("Showing start screen.");</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>// Build initial order based on current options for a fresh start</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>questionOrder = shuffleItems ? SOURCE_QUESTIONS.slice().sort(() =&gt; Math.random() - 0.5) : SOURCE_QUESTIONS.slice();</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>sideSwapMap = questionOrder.map(() =&gt; Math.random() &lt; 0.5); // Generate swap map for fresh start</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>// Setup common UI elements regardless of state</p>
+<p class="p1"><span class="Apple-converted-space">             </span>applyDarkMode(darkMode); // Apply dark mode based on loaded option</p>
+<p class="p1"><span class="Apple-converted-space">             </span>createProgressDots();</p>
+<p class="p1"><span class="Apple-converted-space">             </span>displayKidQuestion(); // Will show first question or resume question</p>
+<p class="p1"><span class="Apple-converted-space">             </span>maybeShowBack();</p>
+<p class="p1"><span class="Apple-converted-space">             </span>updateSkipButton();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Starts a *new* quiz, clearing old state</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function startNewQuizKids() {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>localStorage.removeItem(LS_KEY); // Clear previous state</p>
+<p class="p1"><span class="Apple-converted-space">             </span>resetState(); // Reset state variables</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>// Apply shuffle if toggled, use slice() and Fisher-Yates</p>
+<p class="p1"><span class="Apple-converted-space">             </span>questionOrder = SOURCE_QUESTIONS.slice(); // Start with a fresh copy</p>
+<p class="p1"><span class="Apple-converted-space">             </span>if (shuffleItems) {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>fisherYates(questionOrder);</p>
+<p class="p1"><span class="Apple-converted-space">             </span>}</p>
+<p class="p1"><span class="Apple-converted-space">             </span>// Generate side swap map for the new order</p>
+<p class="p1"><span class="Apple-converted-space">             </span>sideSwapMap = questionOrder.map(() =&gt; Math.random() &lt; 0.5);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>startScreenKids.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">             </span>quizScreenKids.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">             </span>resultScreenKids.classList.add('hidden');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>createProgressDots();</p>
+<p class="p1"><span class="Apple-converted-space">             </span>displayKidQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">             </span>maybeShowBack();</p>
+<p class="p1"><span class="Apple-converted-space">             </span>updateSkipButton();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function createProgressDots() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>progressDotsContainer.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let i = 0; i &lt; questionOrder.length; i++) { // Use questionOrder length</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const dot = document.createElement('span');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dot.classList.add('progress-dot');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dot.dataset.index = i;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>progressDotsContainer.appendChild(dot);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateProgressDots() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const dots = progressDotsContainer.querySelectorAll('.progress-dot');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>dots.forEach((dot, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dot.classList.remove('active', 'completed');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (index &lt; currentKidQuestionIndex) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dot.classList.add('completed');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else if (index === currentKidQuestionIndex) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dot.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Updated displayKidQuestion with side swapping</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function displayKidQuestion() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentKidQuestionIndex &gt;= questionOrder.length) { // Use questionOrder length</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showKidResults();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const q = questionOrder[currentKidQuestionIndex]; // Use questionOrder</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Fallback if question is undefined</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!q) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.error("Error: Could not find question at index", currentKidQuestionIndex);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showKidResults();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const cfg = axesConfig[q.axis];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const swap = sideSwapMap[currentKidQuestionIndex]; // Check swap map</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>questionNumberKids.textContent = `Question ${currentKidQuestionIndex + 1} of ${questionOrder.length}`; // Use questionOrder length</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Determine content based on swap</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const leftPole = swap ? q.poleB : q.poleA;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const rightPole = swap ? q.poleA : q.poleB;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const leftIcon = swap ? cfg.iconB : cfg.iconA;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const rightIcon = swap ? cfg.iconA : cfg.iconB;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const leftText = swap ? q.textB : q.textA;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const rightText = swap ? q.textA : q.textB;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>choiceAButton.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-4xl mb-2" aria-hidden="true"&gt;${leftIcon}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-xl font-semibold"&gt;${leftPole}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-base mt-1 opacity-90"&gt;${leftText}&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>choiceBButton.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-4xl mb-2" aria-hidden="true"&gt;${rightIcon}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-xl font-semibold"&gt;${rightPole}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-base mt-1 opacity-90"&gt;${rightText}&lt;/div&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>setChecked(null);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>setTabStops('A');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateProgressDots();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>maybeShowBack();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateSkipButton();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>choiceAButton.focus();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Function to update aria-checked state visually</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function setChecked(which) { // which can be 'A', 'B', or null</p>
+<p class="p1"><span class="Apple-converted-space">          </span>choiceAButton.setAttribute('aria-checked', which === 'A' ? 'true' : 'false');</p>
+<p class="p1"><span class="Apple-converted-space">          </span>choiceBButton.setAttribute('aria-checked', which === 'B' ? 'true' : 'false');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Function to set tabindex for keyboard navigation</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function setTabStops(which) { // 'A' or 'B' indicates which gets tabindex=0</p>
+<p class="p1"><span class="Apple-converted-space">             </span>choiceAButton.tabIndex = which === 'A' ? 0 : -1;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>choiceBButton.tabIndex = which === 'B' ? 0 : -1;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// New wrapper function to handle scoring based on chosen pole</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function handleKidAnswerPole(chosenPole) {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>if (answering || currentKidQuestionIndex &gt;= questionOrder.length) return; // Use questionOrder length</p>
+<p class="p1"><span class="Apple-converted-space">             </span>answering = true;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>const question = questionOrder[currentKidQuestionIndex]; // Use questionOrder</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>kidAnswers.push({</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>index: currentKidQuestionIndex,</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>axis: question.axis,</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>chosenPole: chosenPole,</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>// Also store original A/B for potential debugging/analysis</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>// choice: (chosenPole === question.poleA &amp;&amp; !sideSwapMap[currentKidQuestionIndex]) || (chosenPole === question.poleB &amp;&amp; sideSwapMap[currentKidQuestionIndex]) ? 'A' : 'B'</p>
+<p class="p1"><span class="Apple-converted-space">             </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>kidScores[question.axis][chosenPole]++;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>currentKidQuestionIndex++;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>saveState();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>if (currentKidQuestionIndex &lt; questionOrder.length) { // Use questionOrder length</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>displayKidQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">             </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>showKidResults();</p>
+<p class="p1"><span class="Apple-converted-space">             </span>}</p>
+<p class="p1"><span class="Apple-converted-space">             </span>setTimeout(() =&gt; answering = false, 180);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function handleSkip() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (skipsLeft &lt;= 0 || currentKidQuestionIndex &gt;= questionOrder.length) return; // Use questionOrder length</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>skipsLeft--;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Use questionOrder here</p>
+<p class="p1"><span class="Apple-converted-space">            </span>kidAnswers.push({ index: currentKidQuestionIndex, axis: questionOrder[currentKidQuestionIndex].axis, choice: 'skipped' });</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentKidQuestionIndex++;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>saveState();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateSkipButton();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentKidQuestionIndex &lt; questionOrder.length) { // Use questionOrder length</p>
+<p class="p1"><span class="Apple-converted-space">                </span>displayKidQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showKidResults();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">         </span>function handleBack() {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>if (!enableBack || currentKidQuestionIndex === 0 || kidAnswers.length === 0) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>currentKidQuestionIndex--;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const lastAnswer = kidAnswers.pop();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>if (lastAnswer.choice !== 'skipped') {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>// Use chosenPole from the answer record to decrement correctly</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>if (kidScores[lastAnswer.axis] &amp;&amp; kidScores[lastAnswer.axis][lastAnswer.chosenPole] &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>kidScores[lastAnswer.axis][lastAnswer.chosenPole]--;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>console.warn("Could not decrement score for", lastAnswer);</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>}</p>
+<p class="p1"><span class="Apple-converted-space">             </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>skipsLeft++;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>saveState();</p>
+<p class="p1"><span class="Apple-converted-space">             </span>displayKidQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">         </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function maybeShowBack() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>backBtn.classList.toggle('hidden', !enableBack || currentKidQuestionIndex === 0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateSkipButton() {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>skipsLeftSpan.textContent = skipsLeft;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>skipBtn.disabled = skipsLeft &lt;= 0;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>skipBtn.classList.toggle('opacity-50', skipsLeft &lt;= 0);</p>
+<p class="p1"><span class="Apple-converted-space">             </span>skipBtn.classList.toggle('cursor-not-allowed', skipsLeft &lt;= 0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Updated calculateKidResult with Balanced option</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function calculateKidResult() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>finalKidCode = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>finalKidIcons = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (const axis of Object.keys(kidScores)) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const config = axesConfig[axis];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const scoreA = kidScores[axis][config.poleA];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const scoreB = kidScores[axis][config.poleB];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let dominantPole, dominantIcon;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Handle potential skips affecting total questions answered for this axis</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const questionsAnsweredForAxis = kidAnswers.filter(ans =&gt; ans.axis === axis &amp;&amp; ans.choice !== 'skipped').length;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Determine dominance based on answered questions</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Balanced if tied OR fewer than 7 questions were answered for the axis</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (scoreA === scoreB || questionsAnsweredForAxis &lt; 7) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dominantPole = "Balanced";</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dominantIcon = "🤝"; // Or another suitable icon</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else if (scoreA &gt; scoreB) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dominantPole = config.poleA;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dominantIcon = config.iconA;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dominantPole = config.poleB;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dominantIcon = config.iconB;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>finalKidCode.push(dominantPole);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>finalKidIcons.push(dominantIcon);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Updated getResultDescription (now uses archetype.teacher)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function getArchetypeDescription(code) { // Renamed for clarity</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const key = code.join('-');</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const archetype = archetypes[key] || defaultArchetype;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>return archetype.teacher; // Return the teacher interpretation</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// New function for kid-focused description</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function getKidDescription(code) {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const key = code.join('-');</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const archetype = archetypes[key] || defaultArchetype;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>return archetype.kidDescription; // Return the kid-friendly text</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Updated teacherNote function for clarity</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function teacherNote(code) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const lines = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const axisNames = ['Seeing', 'Thinking', 'Doing', 'Caring'];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>code.forEach((pole, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (pole === 'Balanced') return;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const axisName = axisNames[index];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const t = tips[pole] || 'Encourage exploring the other side.';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>lines.push(`• ${pole} (${axisName}): ${t}`); // Add axis name for clarity</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return lines.join('\n');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Updated axisSummaryRow with Balanced text and Star indicator</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function axisSummaryRow(axis, poleA, poleB){</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const scoreA = kidScores[axis][poleA] || 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const scoreB = kidScores[axis][poleB] || 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const totalAnswered = kidAnswers.filter(ans =&gt; ans.axis === axis &amp;&amp; ans.choice !== 'skipped').length;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Use totalAnswered if &gt; 0, otherwise default to 1</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const effectiveTotal = totalAnswered &gt; 0 ? totalAnswered : 1;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const pctA = Math.round((scoreA / effectiveTotal) * 100);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const pctB = 100 - pctA;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const dominantPole = finalKidCode[Object.keys(axesConfig).indexOf(axis)];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Strong preference: &gt;= 8 actual answers OR &gt;= 89% (~8/9)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const strongA = scoreA &gt;= 8 || (totalAnswered &gt;= 8 &amp;&amp; pctA &gt;= 89);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const strongB = scoreB &gt;= 8 || (totalAnswered &gt;= 8 &amp;&amp; pctB &gt;= 89);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const isStrong = strongA || strongB;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let stretchHint = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (isStrong &amp;&amp; dominantPole !== 'Balanced') {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>const stretchPole = dominantPole === poleA ? poleB : poleA;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>stretchHint = tips[stretchPole] ? `Try: ${tips[stretchPole]}` : '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Determine bar color based on which pole had more score (A or B)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Use the standard A/B colors for consistency</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const barColorA = 'bg-sky-500 dark:bg-sky-400';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const barColorB = 'bg-rose-400 dark:bg-rose-500';</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Text for balanced state</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const balancedText = dominantPole === 'Balanced' ? '&lt;span class="font-semibold text-emerald-600 dark:text-emerald-300"&gt;Balanced! 🤝&lt;/span&gt; You use both skills!' : '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Star indicator</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const starA = strongA ? '⭐' : '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const starB = strongB ? '⭐' : '';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mt-3 text-left"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="flex justify-between text-sm font-semibold dark:text-slate-100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;${poleA} ${starA} ${pctA}%&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>${balancedText ? `&lt;span class="mx-2 text-center flex-1"&gt;${balancedText}&lt;/span&gt;` : ''} &lt;!-- Centered balanced text --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;${pctB}% ${starB} ${poleB}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="w-full h-2 bg-slate-200 dark:bg-slate-500 rounded-full overflow-hidden mt-1 flex"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div style="width:${pctA}%;" class="h-2 ${barColorA} rounded-l-full"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div style="width:${pctB}%;" class="h-2 ${barColorB} rounded-r-full"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>${isStrong &amp;&amp; stretchHint &amp;&amp; dominantPole !== 'Balanced' ? `&lt;div class="mt-1.5 text-xs text-slate-600 dark:text-slate-300"&gt;&lt;span class="font-medium"&gt;Next small step:&lt;/span&gt; ${stretchHint}&lt;/div&gt;` : ''}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Updated showKidResults to use Archetype and Visuals data, add new elements</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showKidResults() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>calculateKidResult();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>quizScreenKids.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultScreenKids.classList.remove('hidden');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const key = finalKidCode.join('-');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const archetype = archetypes[key] || defaultArchetype;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Use default visuals if 'Balanced' is present or key not found</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const visualsKey = finalKidCode.includes("Balanced") ? "Balanced" : key;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const visuals = archetypeVisuals[visualsKey] || archetypeVisuals["Balanced"];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Update title, chip, code, icons</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultTitleKids.textContent = archetype.title;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultBadge.textContent = visuals.badge;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultTagline.textContent = archetype.tagline;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultChip.className = `inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold text-slate-900 bg-gradient-to-r ${visuals.gradient}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultCodeKids.textContent = `(${finalKidCode.join(' - ')})`; // Show the code for reference</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultIconsKids.innerHTML = visuals.icons.map(icon =&gt; `&lt;span class="result-icon"&gt;${icon}&lt;/span&gt;`).join('');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Set Kid Description and Teacher Description</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultKidDescription.textContent = getKidDescription(finalKidCode);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultDescriptionKids.textContent = getArchetypeDescription(finalKidCode);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Add Axis Summary Rows</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const rowsHTML = [</p>
+<p class="p1"><span class="Apple-converted-space">                </span>axisSummaryRow('Seeing', 'Story', 'Facts'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>axisSummaryRow('Thinking', 'Why', 'How'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>axisSummaryRow('Doing', 'Dream', 'Plan'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>axisSummaryRow('Caring', 'Kind', 'Fair'),</p>
+<p class="p1"><span class="Apple-converted-space">            </span>].join('');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>axisSummaryRows.innerHTML = rowsHTML;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Populate Superpower Zone</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const activitiesKey = finalKidCode.includes("Balanced") ? "Balanced" : key;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const activities = superpowerActivities[activitiesKey] || superpowerActivities["Balanced"];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>superpowerList.innerHTML = activities.map(activity =&gt; `&lt;li&gt;${activity}&lt;/li&gt;`).join('');</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Show teacher tips</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const tipsText = teacherNote(finalKidCode);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (tipsText) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>teacherTipsPre.textContent = tipsText;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>teacherTipsContainer.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>teacherTipsContainer.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Highlight chosen legend items</p>
+<p class="p1"><span class="Apple-converted-space">             </span>highlightLegend(finalKidCode);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.removeItem(LS_KEY); // Clear state on completion</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>// Scroll to top</p>
+<p class="p1"><span class="Apple-converted-space">             </span>window.scrollTo(0, 0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Web Speech API function with language setting and length cap</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function speak(text) {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>if (!('speechSynthesis' in window)) {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>alert("Sorry, your browser doesn't support reading aloud.");</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>}</p>
+<p class="p1"><span class="Apple-converted-space">             </span>window.speechSynthesis.cancel(); // Cancel any previous speech</p>
+<p class="p1"><span class="Apple-converted-space">             </span>// Cap length for safety</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const utterance = new SpeechSynthesisUtterance(text.slice(0, 500));</p>
+<p class="p1"><span class="Apple-converted-space">             </span>utterance.rate = 0.9; // Slightly slower for kids</p>
+<p class="p1"><span class="Apple-converted-space">             </span>utterance.pitch = 1.1; // Slightly higher pitch</p>
+<p class="p1"><span class="Apple-converted-space">             </span>utterance.lang = 'en-US'; // Set language locale (e.g., 'en-US', 'en-GB')</p>
+<p class="p1"><span class="Apple-converted-space">             </span>window.speechSynthesis.speak(utterance);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">         </span>// Function to apply/remove dark mode class</p>
+<p class="p1"><span class="Apple-converted-space">         </span>function applyDarkMode(isDark) {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>if (isDark) {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>document.documentElement.classList.add('dark');</p>
+<p class="p1"><span class="Apple-converted-space">             </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>document.documentElement.classList.remove('dark');</p>
+<p class="p1"><span class="Apple-converted-space">             </span>}</p>
+<p class="p1"><span class="Apple-converted-space">         </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">         </span>// Function to save final result as JSON, including version, order, swap map</p>
+<p class="p1"><span class="Apple-converted-space">         </span>function saveResultJSON() {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const dataToSave = {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>version: "jvdt4-kids-1.0.1", // Increment version</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>code: finalKidCode,</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>icons: finalKidIcons,</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>scores: kidScores,</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>archetypeTitle: (archetypes[finalKidCode.join('-')] || defaultArchetype).title, // Add archetype title</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>description: getKidDescription(finalKidCode), // Kid description</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>teacherInterpretation: getArchetypeDescription(finalKidCode), // Teacher description</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>teacherTips: teacherNote(finalKidCode),</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>answers: kidAnswers, // Include answers</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>skipsLeft: skipsLeft, // Include remaining skips</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>// Map questionOrder back to original indices if shuffled, or just use current structure</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>itemOrder: questionOrder.map(q =&gt; ({axis:q.axis, a:q.poleA, b:q.poleB})), // Store simplified order</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>sideSwap: sideSwapMap, // Store the swap map used</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>generatedAt: new Date().toISOString()</p>
+<p class="p1"><span class="Apple-converted-space">             </span>};</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const blob = new Blob([JSON.stringify(dataToSave, null, 2)], { type: 'application/json' });</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const url = URL.createObjectURL(blob);</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const a = document.createElement('a');</p>
+<p class="p1"><span class="Apple-converted-space">             </span>a.href = url;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>a.download = 'jvdt4_kids_result.json';</p>
+<p class="p1"><span class="Apple-converted-space">             </span>document.body.appendChild(a); // Required for Firefox</p>
+<p class="p1"><span class="Apple-converted-space">             </span>a.click();</p>
+<p class="p1"><span class="Apple-converted-space">             </span>document.body.removeChild(a);</p>
+<p class="p1"><span class="Apple-converted-space">             </span>URL.revokeObjectURL(url);</p>
+<p class="p1"><span class="Apple-converted-space">         </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// New function to save result as TXT</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function saveResultTXT() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const key = finalKidCode.join('-');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const archetype = archetypes[key] || defaultArchetype;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const activitiesKey = finalKidCode.includes("Balanced") ? "Balanced" : key;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const activities = superpowerActivities[activitiesKey] || superpowerActivities["Balanced"];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let reportText = `JVDT-4 Kids Diagnostic Result\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `Generated: ${new Date().toLocaleDateString()}\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `===================================\n\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `YOUR LEARNING STYLE IS...\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `${archetype.title}\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `"${archetype.tagline}"\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `(${finalKidCode.join(' - ')})\n\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `Hey there! ${getKidDescription(finalKidCode)}\n\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `-----------------------------------\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `YOUR MIX AT A GLANCE:\n\n`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const axisOrder = ['Seeing', 'Thinking', 'Doing', 'Caring'];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>axisOrder.forEach(axis =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const config = axesConfig[axis];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const scoreA = kidScores[axis][config.poleA] || 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const scoreB = kidScores[axis][config.poleB] || 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const totalAnswered = kidAnswers.filter(ans =&gt; ans.axis === axis &amp;&amp; ans.choice !== 'skipped').length;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const effectiveTotal = totalAnswered &gt; 0 ? totalAnswered : 1;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const pctA = Math.round((scoreA / effectiveTotal) * 100);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const pctB = 100 - pctA;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const dominantPole = finalKidCode[axisOrder.indexOf(axis)];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const strongA = scoreA &gt;= 8 || (totalAnswered &gt;= 8 &amp;&amp; pctA &gt;= 89);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const strongB = scoreB &gt;= 8 || (totalAnswered &gt;= 8 &amp;&amp; pctB &gt;= 89);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const starA = strongA ? '⭐' : '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const starB = strongB ? '⭐' : '';</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>reportText += `${axis.toUpperCase()}:\n`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (dominantPole === 'Balanced') {</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>reportText += `<span class="Apple-converted-space">  </span>${config.poleA} ${pctA}% vs ${pctB}% ${config.poleB} - Balanced! 🤝\n`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>reportText += `<span class="Apple-converted-space">  </span>${config.poleA} ${starA} ${pctA}% vs ${pctB}% ${starB} ${config.poleB}\n`;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>if ((strongA || strongB) &amp;&amp; dominantPole !== 'Balanced') {</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>const stretchPole = dominantPole === config.poleA ? config.poleB : config.poleA;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>const stretchHint = tips[stretchPole] ? `Try: ${tips[stretchPole]}` : '';</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>if (stretchHint) {</p>
+<p class="p1"><span class="Apple-converted-space">                              </span>reportText += `<span class="Apple-converted-space">  </span>Next small step: ${stretchHint}\n`;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>reportText += `\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `-----------------------------------\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `🌟 YOUR SUPERPOWER ZONE!\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `You might really enjoy activities like:\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>activities.forEach(activity =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>reportText += `<span class="Apple-converted-space">  </span>- ${activity}\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `\n`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `-----------------------------------\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `TEACHER TIPS FOR GROWTH:\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const tipsText = teacherNote(finalKidCode);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += tipsText ? tipsText.replace(/• /g, '- ') : "Encourage exploring different ways of learning!"; // Format tips</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `\n\n`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `-----------------------------------\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `TEACHER INTERPRETATION:\n`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += getArchetypeDescription(finalKidCode);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reportText += `\n`;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Create blob and trigger download</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const blob = new Blob([reportText], { type: 'text/plain;charset=utf-8' });</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const url = URL.createObjectURL(blob);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const a = document.createElement('a');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>a.href = url;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>a.download = 'jvdt4_kids_result.txt';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.body.appendChild(a);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>a.click();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.body.removeChild(a);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>URL.revokeObjectURL(url);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Function to highlight chosen poles in the legend</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function highlightLegend(finalKidCode) { // e.g., ["Story","How","Dream","Kind"]</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const labels = document.querySelectorAll('[data-legend-label]');</p>
+<p class="p1"><span class="Apple-converted-space">             </span>labels.forEach(label =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>const axisIndex = parseInt(label.dataset.axisIndex, 10);</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>const text = label.textContent.trim();</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>const picked = finalKidCode[axisIndex]; // Get the chosen pole for this axis</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                 </span>// Reset boldness first</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>label.classList.remove('font-extrabold', 'opacity-50');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                 </span>if (picked === 'Balanced') {</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>// Optionally style balanced differently, e.g., normal weight</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>label.classList.remove('opacity-50'); // Ensure balanced labels are fully visible</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>} else if (text === picked) {</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>label.classList.add('font-extrabold'); // Bold the chosen one</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>label.classList.add('opacity-50'); // Dim the non-chosen one</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>}</p>
+<p class="p1"><span class="Apple-converted-space">             </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- EVENT LISTENERS ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>startButtonKids.addEventListener('click', startNewQuizKids); // Use specific start function</p>
+<p class="p1"><span class="Apple-converted-space">        </span>restartButtonKids.addEventListener('click', initOrResumeKids); // Go back to start screen logic</p>
+<p class="p1"><span class="Apple-converted-space">        </span>teacherToggle.addEventListener('click', () =&gt; teacherPanel.classList.toggle('hidden'));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>optShuffle.addEventListener('change', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>shuffleItems = e.target.checked;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>saveOptions(); // Save option change</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>optBack.addEventListener('change', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>enableBack = e.target.checked;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>saveOptions(); // Save option change</p>
+<p class="p1"><span class="Apple-converted-space">             </span>maybeShowBack(); // Show/hide immediately if needed</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>optDark.addEventListener('change', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>darkMode = e.target.checked;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>applyDarkMode(darkMode);</p>
+<p class="p1"><span class="Apple-converted-space">             </span>saveOptions(); // Save option change</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>backBtn.addEventListener('click', handleBack);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>readBtn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>if (currentKidQuestionIndex &lt; questionOrder.length) { // Use questionOrder length</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>const q = questionOrder[currentKidQuestionIndex]; // Use questionOrder</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>// Read the poles based on potential swap</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>const swap = sideSwapMap[currentKidQuestionIndex];</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>const text1 = swap ? q.textB : q.textA;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>const text2 = swap ? q.textA : q.textB;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>speak(`Question ${currentKidQuestionIndex + 1}. Choice 1: ${text1}. Choice 2: ${text2}. Pick the one more like you.`);</p>
+<p class="p1"><span class="Apple-converted-space">             </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>skipBtn.addEventListener('click', handleSkip);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>saveJsonBtn.addEventListener('click', saveResultJSON);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>legendToggle?.addEventListener('click', () =&gt; { // Add null check for safety</p>
+<p class="p1"><span class="Apple-converted-space">             </span>legendExplain?.classList.toggle('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Add listener for the new TXT save button</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('save-txt')?.addEventListener('click', saveResultTXT);</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Keyboard navigation for choices</p>
+<p class="p1"><span class="Apple-converted-space">        </span>choicesGroup.addEventListener('keydown', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const choices = [choiceAButton, choiceBButton];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let focusedIndex = choices.findIndex(btn =&gt; btn === document.activeElement);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// If focus is somehow lost, default to 0</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (focusedIndex === -1 &amp;&amp; (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'ArrowUp' || e.key === 'ArrowDown')) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setTabStops('A'); // Ensure A is tabbable</p>
+<p class="p1"><span class="Apple-converted-space">                </span>choices[0].focus();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let nextIndex = focusedIndex;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>nextIndex = Math.min(focusedIndex + 1, choices.length - 1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>nextIndex = Math.max(focusedIndex - 1, 0);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (e.key === ' ' || e.key === 'Enter') {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>e.preventDefault(); // Prevent page scroll/double action</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>if (document.activeElement &amp;&amp; (document.activeElement === choiceAButton || document.activeElement === choiceBButton)) {</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>document.activeElement.click();</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>return; // Don't shift focus on activation</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>return; // Ignore other keys</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">             </span>// Only shift focus if the index actually changed</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (nextIndex !== focusedIndex) {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>setTabStops(nextIndex === 0 ? 'A' : 'B'); // Update tab stops</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>choices[nextIndex].focus();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Add click listeners to set aria-checked correctly and handle answer</p>
+<p class="p1"><span class="Apple-converted-space">         </span>choiceAButton.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>setChecked('A');</p>
+<p class="p1"><span class="Apple-converted-space">             </span>// Determine chosenPole based on swap map</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const q = questionOrder[currentKidQuestionIndex];</p>
+<p class="p1"><span class="Apple-converted-space">              </span>// Add safety check for q</p>
+<p class="p1"><span class="Apple-converted-space">              </span>if (!q) return;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const chosenPole = sideSwapMap[currentKidQuestionIndex] ? q.poleB : q.poleA;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>handleKidAnswerPole(chosenPole); // Use the pole scoring function</p>
+<p class="p1"><span class="Apple-converted-space">         </span>});</p>
+<p class="p1"><span class="Apple-converted-space">         </span>choiceBButton.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>setChecked('B');</p>
+<p class="p1"><span class="Apple-converted-space">             </span>// Determine chosenPole based on swap map</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const q = questionOrder[currentKidQuestionIndex];</p>
+<p class="p1"><span class="Apple-converted-space">              </span>// Add safety check for q</p>
+<p class="p1"><span class="Apple-converted-space">              </span>if (!q) return;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>const chosenPole = sideSwapMap[currentKidQuestionIndex] ? q.poleA : q.poleB;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>handleKidAnswerPole(chosenPole); // Use the pole scoring function</p>
+<p class="p1"><span class="Apple-converted-space">         </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- Initial Load ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>initOrResumeKids(); // Initialize or resume on first load</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+<p class="p2"><br></p>
+</body>
+</html>
