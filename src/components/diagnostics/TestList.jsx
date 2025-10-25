@@ -41,11 +41,11 @@ export default function TestList() {
     {
       id: 'jvdt-7',
       title: 'JVDT-7 Diagnostic Assessment',
-      description: 'Comprehensive assessment across seven key personal and professional development areas.',
-      estimatedTime: '25-30 minutes', 
-      totalQuestions: 28,
+      description: 'Authentic Cognitive Framework and Moral Architecture diagnostic system measuring virtue development across seven core axes of human understanding and wisdom.',
+      estimatedTime: '20-25 minutes', 
+      totalQuestions: 35,
       icon: '⭐',
-      categories: ['Emotional Intelligence', 'Critical Thinking', 'Communication', 'Resilience', 'Leadership', 'Creativity', 'Self-Awareness']
+      categories: ['Perception (A↔N)', 'Interpretation (R↔C)', 'Reflection (I↔E)', 'Application (D↔P)', 'Motivation (S↔M)', 'Orientation (T↔H)', 'Value Expression (L↔R)']
     }
   ];
 
@@ -115,7 +115,11 @@ export default function TestList() {
                   <div className="bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-lg p-3">
                     <div className="text-sm text-green-800 dark:text-green-200">
                       <div className="font-medium">Last completed: {formatDate(lastResult.completedAt)}</div>
-                      <div>Score: {Math.round(lastResult.score * 100)}% ({lastResult.level})</div>
+                      {lastResult.jvdtCode ? (
+                        <div>JVDT Code: {lastResult.jvdtCode} • Stage: {lastResult.overallStage?.name || 'Unknown'}</div>
+                      ) : (
+                        <div>Score: {Math.round(lastResult.score * 100)}% ({lastResult.level})</div>
+                      )}
                     </div>
                   </div>
                 )}
@@ -173,12 +177,25 @@ export default function TestList() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-medium text-gray-900 dark:text-gray-100">
-                        {Math.round(result.score * 100)}%
-                      </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">
-                        {result.level}
-                      </div>
+                      {result.jvdtCode ? (
+                        <div>
+                          <div className="font-medium text-gray-900 dark:text-gray-100">
+                            {result.jvdtCode}
+                          </div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">
+                            {result.overallStage?.name || 'JVDT Profile'}
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="font-medium text-gray-900 dark:text-gray-100">
+                            {Math.round(result.score * 100)}%
+                          </div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">
+                            {result.level}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
