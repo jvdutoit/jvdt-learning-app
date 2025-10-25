@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 export default function GameArcade() {
   const [iframeAllowed, setIframeAllowed] = useState(true);
   
-  // Use relative path that works with Vite's base configuration
-  const arcadeUrl = './game-arcade.html';
+  // Use Vite's base URL to construct the correct path
+  const arcadeUrl = `${import.meta.env.BASE_URL}game-arcade.html`;
 
   useEffect(() => {
     // quick feature-detect: try to load the iframe src in a hidden iframe to ensure it's reachable
