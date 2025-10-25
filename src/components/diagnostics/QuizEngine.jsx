@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { calculateJVDT7Results, getJVDT7Recommendations } from './jvdt7Scorer';
 
 // Question type components
 function MultipleChoiceQuestion({ question, selectedAnswer, onAnswer }) {
@@ -141,6 +142,56 @@ export default function QuizEngine({ testDefinition, onComplete }) {
   };
 
   const calculateResults = () => {
+    // Check if this is the authentic JVDT-7 test
+    if (testDefinition.id === 'jvdt-7' && testDefinition.scoring?.method === 'jvdt_axes') {
+      // Use authentic JVDT-7 scoring methodology
+      const jvdt7Results = calculateJVDT7Results(testDefinition, answers);
+      const recommendations = getJVDT7Recommendations(jvdt7Results, testDefinition);
+      
+      const finalResults = {
+        testId: testDefinition.id,
+        completedAt: new Date().toISOString(),
+        timeSpent,
+        methodology: 'jvdt-7-authentic',
+        ...jvdt7Results,
+        recommendations,
+        answers
+      };
+
+      setResults(finalResults);
+      setShowResults(true);
+
+      // Save results to localStorage
+      const resultsKey = `jvdt:test-results-${testDefinition.id}`;
+      const historyKey = 'jvdt:test-history';
+      
+      try {
+        localStorage.setItem(resultsKey, JSON.stringify(finalResults));
+        
+        // Add to history
+        const history = JSON.parse(localStorage.getItem(historyKey) || '[]');
+        history.push({
+          testId: testDefinition.id,
+          completedAt: finalResults.completedAt,
+          jvdtCode: finalResults.jvdtCode,
+          overallStage: finalResults.overallStage,
+          integrationIndex: finalResults.integrationIndex
+        });
+        localStorage.setItem(historyKey, JSON.stringify(history));
+
+        // Clear progress
+        localStorage.removeItem(`jvdt:test-progress-${testDefinition.id}`);
+      } catch (error) {
+        console.warn('Could not save test results:', error);
+      }
+
+      if (onComplete) {
+        onComplete(finalResults);
+      }
+      return;
+    }
+
+    // Original scoring logic for other tests
     const categoryScores = {};
     let totalScore = 0;
     let totalPoints = 0;
@@ -236,6 +287,183 @@ export default function QuizEngine({ testDefinition, onComplete }) {
   };
 
   if (showResults && results) {
+    // Render JVDT-7 authentic results
+    if (results.methodology === 'jvdt-7-authentic') {
+      return (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-4xl mx-auto space-y-6"
+        >
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+              {testDefinition.title} Results
+            </h2>
+            <div className="text-lg text-gray-600 dark:text-gray-400">
+              Completed in {formatTime(timeSpent)}
+            </div>
+          </div>
+
+          {/* JVDT Code and Overall Stage */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Your JVDT Profile</h3>
+            <div className="space-y-4">
+              <div className="text-center p-6 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg">
+                <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">
+                  {results.jvdtCode}
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  Perception · Interpretation · Reflection · Application · Motivation · Orientation · Value Expression
+                </div>
+                <div className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  Overall Stage: {results.overallStage.name}
+                </div>
+                <div className="text-gray-700 dark:text-gray-300 mt-2">
+                  {results.overallStage.description}
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Integration Index</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                      {Math.round(results.integrationIndex * 100)}%
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div
+                      className="bg-emerald-600 h-2 rounded-full transition-all duration-500"
+                      style={{ width: `${results.integrationIndex * 100}%` }}
+                    ></div>
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    Measures balance across all axes
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Average Stage</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                      {results.overallStage.averageStage} / 5.0
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div
+                      className="bg-purple-600 h-2 rounded-full transition-all duration-500"
+                      style={{ width: `${(results.overallStage.averageStage / 5) * 100}%` }}
+                    ></div>
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    Virtue Ladder development level
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Axis Breakdown */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Seven Axes Analysis</h3>
+            <div className="space-y-4">
+              {testDefinition.categories.map(category => {
+                if (!category.axis) return null;
+                
+                const axisResult = results.axisResults[category.axis];
+                const axisStage = results.axisStages[category.axis];
+                const stageInfo = category.stages?.find(s => s.stage === axisStage);
+                
+                if (!axisResult) return null;
+                
+                const preferenceText = axisResult.preference === 'balanced' 
+                  ? 'Balanced' 
+                  : axisResult.preference === 'first' 
+                    ? category.poles?.association || category.poles?.root || category.poles?.internal || category.poles?.dream || category.poles?.self || category.poles?.task || category.poles?.love || 'First pole'
+                    : category.poles?.analysis || category.poles?.context || category.poles?.external || category.poles?.pragmatic || category.poles?.mission || category.poles?.horizon || category.poles?.respect || 'Second pole';
+                
+                return (
+                  <div key={category.axis} className="border rounded-lg p-4 bg-gray-50 dark:bg-gray-700/50">
+                    <div className="flex justify-between items-start mb-3">
+                      <div>
+                        <h4 className="font-medium text-gray-900 dark:text-gray-100">{category.name}</h4>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">{category.description}</p>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-sm font-medium text-indigo-600 dark:text-indigo-400">
+                          Stage {axisStage}: {stageInfo?.name || 'Unknown'}
+                        </div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                          {preferenceText}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <div className="flex justify-between items-center mb-1">
+                          <span className="text-gray-600 dark:text-gray-400">Balance</span>
+                          <span className="text-gray-800 dark:text-gray-200">
+                            {Math.round(axisResult.balance * 100)}%
+                          </span>
+                        </div>
+                        <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-1">
+                          <div
+                            className="bg-emerald-500 h-1 rounded-full transition-all duration-500"
+                            style={{ width: `${axisResult.balance * 100}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between items-center mb-1">
+                          <span className="text-gray-600 dark:text-gray-400">Margin</span>
+                          <span className="text-gray-800 dark:text-gray-200">
+                            {Math.round(axisResult.margin * 100)}%
+                          </span>
+                        </div>
+                        <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-1">
+                          <div
+                            className="bg-orange-500 h-1 rounded-full transition-all duration-500"
+                            style={{ width: `${axisResult.margin * 100}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {stageInfo && (
+                      <div className="mt-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded border-l-4 border-blue-400">
+                        <div className="text-sm">
+                          <div className="font-medium text-blue-900 dark:text-blue-200 mb-1">
+                            Current Practice:
+                          </div>
+                          <div className="text-blue-800 dark:text-blue-300 text-xs">
+                            {stageInfo.practice}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Recommendations */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Development Recommendations</h3>
+            <ul className="space-y-3">
+              {results.recommendations.map((recommendation, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="text-indigo-600 dark:text-indigo-400 mr-2 flex-shrink-0 mt-1">•</span>
+                  <span className="text-gray-700 dark:text-gray-300">{recommendation}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
+      );
+    }
+
+    // Original results display for other tests
     return (
       <motion.div
         initial={{ opacity: 0, y: 20 }}

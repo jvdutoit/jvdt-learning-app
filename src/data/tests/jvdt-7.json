@@ -1,462 +1,921 @@
 {
   "id": "jvdt-7",
-  "title": "JVDT-7 Diagnostic Assessment", 
-  "description": "Comprehensive assessment across seven key personal and professional development areas",
-  "version": "1.0",
-  "estimatedTime": "25-30 minutes",
-  "totalQuestions": 28,
+  "title": "JVDT-7 Diagnostic Assessment",
+  "description": "Authentic Cognitive Framework and Moral Architecture diagnostic system measuring virtue development across seven core axes of human understanding and wisdom.",
+  "version": "2.0",
+  "estimatedTime": "20-25 minutes",
+  "totalQuestions": 35,
   "categories": [
     {
-      "id": "emotional-intelligence",
-      "name": "Emotional Intelligence",
+      "id": "perception",
+      "name": "Perception (A ↔ N)",
       "weight": 0.143,
-      "description": "Understanding and managing emotions in yourself and others"
+      "description": "How the learner takes in information (relational patterning vs analytical definition)",
+      "axis": "perception",
+      "poles": {
+        "association": "A - Relational patterning, intuitive connections, seeing the gestalt",
+        "analysis": "N - Analytical definition, precise categorization, breaking down parts"
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "name": "Instinct",
+          "description": "Relies only on pattern recognition or only on analysis",
+          "practice": "Notice when you rely only on first impressions or only on detailed analysis.",
+          "reflection": "Which feels more natural to you?"
+        },
+        {
+          "stage": 2,
+          "name": "Awareness", 
+          "description": "Recognizes the value of both intuition and analysis",
+          "practice": "Choose a decision this week; justify it with one feeling (A) and one fact (N).",
+          "reflection": "Did this make your decision steadier?"
+        },
+        {
+          "stage": 3,
+          "name": "Balance",
+          "description": "Can alternate between pattern recognition and analysis as needed",
+          "practice": "For one problem, start with patterns (A), then verify with analysis (N).",
+          "reflection": "How did each mode inform the other?"
+        },
+        {
+          "stage": 4,
+          "name": "Mastery",
+          "description": "Integrates intuitive and analytical approaches consistently",
+          "practice": "Teach someone how both gut feeling and logical analysis contribute to good decisions.",
+          "reflection": "What did explaining it teach you?"
+        },
+        {
+          "stage": 5,
+          "name": "Wisdom",
+          "description": "Perception becomes seamless blend of pattern and precision",
+          "practice": "Journal about a moment when intuition and analysis felt unified.",
+          "reflection": "What made that integration possible?"
+        }
+      ]
     },
     {
-      "id": "critical-thinking", 
-      "name": "Critical Thinking",
+      "id": "interpretation",
+      "name": "Interpretation (R ↔ C)",
       "weight": 0.143,
-      "description": "Analyzing information objectively and making reasoned judgments"
+      "description": "How meaning is framed (origin/essence vs situational relevance)",
+      "axis": "interpretation",
+      "poles": {
+        "root": "R - Origin/essence, fundamental principles, deep causes",
+        "context": "C - Situational relevance, environmental factors, current application"
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "name": "Instinct",
+          "description": "Focuses only on root principles or only on immediate context",
+          "practice": "When explaining something, include both why it matters in principle (R) and in this situation (C).",
+          "reflection": "Which came more easily?"
+        },
+        {
+          "stage": 2,
+          "name": "Awareness",
+          "description": "Notices tension between timeless principles and current context",
+          "practice": "Take one rule you follow and ask: What's the deeper principle? How does context change application?",
+          "reflection": "How do they interact?"
+        },
+        {
+          "stage": 3,
+          "name": "Balance",
+          "description": "Applies principles thoughtfully to specific contexts",
+          "practice": "Practice adapting a core value to three different situations this week.",
+          "reflection": "How did the value stay constant while application changed?"
+        },
+        {
+          "stage": 4,
+          "name": "Mastery",
+          "description": "Bridges universal truths with situational wisdom consistently",
+          "practice": "Help others see both the unchanging principle and its contextual application in a conflict.",
+          "reflection": "What resistance did you encounter?"
+        },
+        {
+          "stage": 5,
+          "name": "Wisdom",
+          "description": "Meaning flows naturally between eternal and temporal",
+          "practice": "Reflect on how one principle has evolved in your understanding over time.",
+          "reflection": "What stayed the same? What deepened?"
+        }
+      ]
     },
     {
-      "id": "communication",
-      "name": "Communication Skills", 
+      "id": "reflection",
+      "name": "Reflection (I ↔ E)",
       "weight": 0.143,
-      "description": "Effectively expressing ideas and understanding others"
+      "description": "How understanding consolidates (inner processing vs articulation)",
+      "axis": "reflection",
+      "poles": {
+        "internal": "I - Inner processing, private contemplation, deep consideration",
+        "external": "E - Articulation, external discussion, shared exploration"
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "name": "Instinct",
+          "description": "Processes understanding either internally or through talking, never both",
+          "practice": "After a significant conversation, spend 10 minutes alone reflecting on what you learned.",
+          "reflection": "What new insights emerged in the silence?"
+        },
+        {
+          "stage": 2,
+          "name": "Awareness",
+          "description": "Recognizes that both inner and outer processing develop understanding",
+          "practice": "Share one private insight with a trusted friend this week.",
+          "reflection": "How did articulating it change your understanding?"
+        },
+        {
+          "stage": 3,
+          "name": "Balance",
+          "description": "Uses both private reflection and discussion to deepen comprehension",
+          "practice": "Create a rhythm: reflect alone, then discuss, then reflect alone on the discussion.",
+          "reflection": "What did each phase add?"
+        },
+        {
+          "stage": 4,
+          "name": "Mastery",
+          "description": "Seamlessly moves between contemplation and dialogue",
+          "practice": "In group discussions, model both listening deeply and contributing meaningfully.",
+          "reflection": "How did your presence affect the group's thinking?"
+        },
+        {
+          "stage": 5,
+          "name": "Wisdom",
+          "description": "Inner and outer reflection become one process of understanding",
+          "practice": "Notice a moment when silent presence and spoken word felt unified.",
+          "reflection": "What created that harmony?"
+        }
+      ]
     },
     {
-      "id": "resilience",
-      "name": "Resilience & Adaptability",
+      "id": "application",
+      "name": "Application (D ↔ P)",
       "weight": 0.143,
-      "description": "Bouncing back from setbacks and adapting to change"
+      "description": "How action is organized (visionary ideals vs pragmatic method)",
+      "axis": "application",
+      "poles": {
+        "dream": "D - Visionary ideals, big picture goals, transformative vision",
+        "pragmatic": "P - Pragmatic method, practical steps, incremental progress"
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "name": "Instinct",
+          "description": "Pursues grand visions without practical steps or gets lost in details without direction",
+          "practice": "Name one big dream and identify three small, measurable actions toward it.",
+          "reflection": "How did the concrete steps change your relationship to the dream?"
+        },
+        {
+          "stage": 2,
+          "name": "Awareness",
+          "description": "Sees gap between dream and execution",
+          "practice": "Convert one abstract goal into three measurable actions.",
+          "reflection": "Did this make it more real?"
+        },
+        {
+          "stage": 3,
+          "name": "Balance",
+          "description": "Combines meaning and method with growing consistency",
+          "practice": "Review your routines—does each serve your deeper reason why?",
+          "reflection": "What needs redesigning?"
+        },
+        {
+          "stage": 4,
+          "name": "Mastery",
+          "description": "Creates systems that express values effortlessly",
+          "practice": "Document a process you do well and teach it to another.",
+          "reflection": "How did clarity refine your passion?"
+        },
+        {
+          "stage": 5,
+          "name": "Wisdom",
+          "description": "Lives as coherence itself—purpose visible in practice",
+          "practice": "Reflect on one habit that now feels sacred.",
+          "reflection": "What virtue has it built in you?"
+        }
+      ]
     },
     {
-      "id": "leadership",
-      "name": "Leadership Potential",
+      "id": "motivation",
+      "name": "Motivation (S ↔ M)",
       "weight": 0.143,
-      "description": "Inspiring and guiding others toward common goals"
+      "description": "What drives effort (autonomy/conviction vs belonging/shared purpose)",
+      "axis": "motivation",
+      "poles": {
+        "self": "S - Autonomy/conviction, individual drive, personal standards",
+        "mission": "M - Belonging/shared purpose, collective goals, community service"
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "name": "Instinct",
+          "description": "Driven by ego or approval without awareness",
+          "practice": "Identify one task you do only for others and one only for self.",
+          "reflection": "How could you merge them?"
+        },
+        {
+          "stage": 2,
+          "name": "Awareness",
+          "description": "Recognises tension between autonomy and belonging",
+          "practice": "Ask for feedback on a personal project.",
+          "reflection": "What was hard about receiving it?"
+        },
+        {
+          "stage": 3,
+          "name": "Balance",
+          "description": "Acts from inner conviction that serves shared purpose",
+          "practice": "Support someone else's idea while maintaining your standards.",
+          "reflection": "How did it stretch your leadership?"
+        },
+        {
+          "stage": 4,
+          "name": "Mastery",
+          "description": "Blends independence with interdependence; mentors collaboration",
+          "practice": "Co-create something where both voices remain distinct.",
+          "reflection": "What did unity teach about individuality?"
+        },
+        {
+          "stage": 5,
+          "name": "Wisdom",
+          "description": "Motivation becomes mission; joy arises in giving and growing together",
+          "practice": "Write gratitude notes to those who shaped your growth.",
+          "reflection": "What pattern of service do you now see?"
+        }
+      ]
     },
     {
-      "id": "creativity", 
-      "name": "Creative Problem Solving",
+      "id": "orientation",
+      "name": "Orientation (T ↔ H)",
       "weight": 0.143,
-      "description": "Generating innovative solutions and thinking outside the box"
+      "description": "How time/complexity is held (task/near-term vs seasonal/big-picture)",
+      "axis": "orientation",
+      "poles": {
+        "task": "T - Task/near-term focus, immediate priorities, concrete deadlines",
+        "horizon": "H - Seasonal/big-picture view, long-term patterns, strategic thinking"
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "name": "Instinct",
+          "description": "Focuses only on immediate or abstract time",
+          "practice": "Plan tomorrow and describe how it fits your next year.",
+          "reflection": "What link emerged?"
+        },
+        {
+          "stage": 2,
+          "name": "Awareness",
+          "description": "Notices disconnection between pace and purpose",
+          "practice": "Add one margin block ('thinking hour') to your calendar.",
+          "reflection": "Did stillness change your week?"
+        },
+        {
+          "stage": 3,
+          "name": "Balance",
+          "description": "Connects daily discipline to long-range meaning",
+          "practice": "Start each week by naming one seasonal goal and one daily goal.",
+          "reflection": "How do they nourish each other?"
+        },
+        {
+          "stage": 4,
+          "name": "Mastery",
+          "description": "Moves gracefully between short-term and long-term cycles",
+          "practice": "Teach someone time mapping or strategic rest.",
+          "reflection": "What did they mirror back?"
+        },
+        {
+          "stage": 5,
+          "name": "Wisdom",
+          "description": "Lives in kairos—time experienced as meaning, not measure",
+          "practice": "Journal a moment that felt eternal though brief.",
+          "reflection": "What made it timeless?"
+        }
+      ]
     },
     {
-      "id": "self-awareness",
-      "name": "Self-Awareness",
+      "id": "value_expression",
+      "name": "Value Expression (L ↔ R)",
       "weight": 0.141,
-      "description": "Understanding your own strengths, weaknesses, and motivations"
+      "description": "How care is expressed (mercy/warmth vs fairness/consistency)",
+      "axis": "value_expression",
+      "poles": {
+        "love": "L - Mercy/warmth, compassionate response, individual care",
+        "respect": "R - Fairness/consistency, principled action, universal standards"
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "name": "Instinct",
+          "description": "Reacts with emotion or rule, not discernment",
+          "practice": "Pause before correcting someone—ask, What do they need most: care or clarity?",
+          "reflection": "How did that pause alter your tone?"
+        },
+        {
+          "stage": 2,
+          "name": "Awareness",
+          "description": "Realises compassion and justice both matter but alternates between them",
+          "practice": "In a disagreement, state both what you feel and what principle guides you.",
+          "reflection": "Which was harder?"
+        },
+        {
+          "stage": 3,
+          "name": "Balance",
+          "description": "Learns firm kindness; stands gentle and strong simultaneously",
+          "practice": "Practise one honest but kind feedback conversation.",
+          "reflection": "How did truth and care coexist?"
+        },
+        {
+          "stage": 4,
+          "name": "Mastery",
+          "description": "Integrates mercy and law; leads communities through trust",
+          "practice": "Resolve a small conflict by naming shared values first.",
+          "reflection": "What did this reveal about leadership?"
+        },
+        {
+          "stage": 5,
+          "name": "Wisdom",
+          "description": "Embodies restorative justice—truth spoken in love",
+          "practice": "Reflect on one moment you reconciled opposites.",
+          "reflection": "What peace followed?"
+        }
+      ]
     }
   ],
   "questions": [
     {
-      "id": "eq1",
-      "category": "emotional-intelligence",
+      "id": "perception_1",
+      "category": "perception",
       "type": "scale",
-      "question": "When a colleague is visibly upset, I usually notice and understand what they might be feeling.",
+      "axis": "perception",
+      "pole_association": "association",
+      "pole_analysis": "analysis",
+      "question": "When learning something new, I prefer to start by seeing the big picture and overall patterns.",
       "scale": {
         "min": 1,
         "max": 5,
-        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+        "labels": ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
       },
+      "scoring": "reverse",
       "points": 1
     },
     {
-      "id": "eq2", 
-      "category": "emotional-intelligence",
+      "id": "perception_2",
+      "category": "perception",
       "type": "multiple-choice",
-      "question": "You're in a meeting and someone criticizes your idea harshly. What's your best response?",
+      "axis": "perception",
+      "question": "When solving a complex problem, what's your natural first approach?",
       "options": [
-        "Defend your idea aggressively",
-        "Take a moment to understand their perspective, then respond calmly",
-        "Stay silent and avoid further conflict",
-        "Criticize their idea in return"
+        "Break it down into smaller, specific components I can analyze systematically",
+        "Step back and look for patterns or connections I might have missed", 
+        "Do both simultaneously - analyze parts while sensing the whole",
+        "Switch between detailed analysis and pattern recognition as needed"
       ],
-      "correctAnswer": 1,
-      "points": 1,
-      "explanation": "Emotional intelligence involves managing your emotions and understanding others' perspectives before responding."
+      "pole_weights": {
+        "association": [2, 4, 3, 3],
+        "analysis": [4, 2, 3, 3]
+      },
+      "points": 1
     },
     {
-      "id": "eq3",
-      "category": "emotional-intelligence", 
+      "id": "perception_3",
+      "category": "perception", 
       "type": "scale",
-      "question": "I can accurately identify and name my emotions as they occur.",
+      "axis": "perception",
+      "question": "I trust my first impressions and gut feelings about people and situations.",
       "scale": {
         "min": 1,
         "max": 5,
         "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
       },
+      "scoring": "forward",
       "points": 1
     },
     {
-      "id": "eq4",
-      "category": "emotional-intelligence",
+      "id": "perception_4",
+      "category": "perception",
       "type": "scale", 
-      "question": "I remain calm and composed when dealing with stressful situations.",
+      "axis": "perception",
+      "question": "I need to understand how things work in precise detail before I feel confident using them.",
       "scale": {
         "min": 1,
         "max": 5,
         "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
       },
+      "scoring": "reverse",
       "points": 1
     },
     {
-      "id": "ct1",
-      "category": "critical-thinking",
+      "id": "perception_5",
+      "category": "perception",
       "type": "multiple-choice",
-      "question": "When evaluating news articles, which approach is most important?",
+      "axis": "perception", 
+      "question": "In group discussions, I'm most valuable when I:",
       "options": [
-        "Check if it confirms what you already believe",
-        "Look for multiple sources and verify facts",
-        "Share it immediately if it's interesting",
-        "Only read headlines to save time"
+        "Provide detailed facts and logical analysis",
+        "See connections others miss and sense the group's energy",
+        "Help the group balance data with intuition",
+        "Know when to analyze and when to trust group intuition"
       ],
-      "correctAnswer": 1,
-      "points": 1,
-      "explanation": "Critical thinking requires verification from multiple reliable sources rather than confirmation bias."
-    },
-    {
-      "id": "ct2",
-      "category": "critical-thinking",
-      "type": "scale",
-      "question": "I question assumptions and look for evidence before accepting information as true.",
-      "scale": {
-        "min": 1,
-        "max": 5,
-        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      "pole_weights": {
+        "association": [1, 4, 3, 3],
+        "analysis": [4, 1, 3, 3]
       },
       "points": 1
     },
     {
-      "id": "ct3",
-      "category": "critical-thinking",
+      "id": "interpretation_6",
+      "category": "interpretation",
+      "type": "scale",
+      "axis": "interpretation",
+      "question": "I believe there are universal principles that apply regardless of circumstances.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+      },
+      "scoring": "reverse",
+      "points": 1
+    },
+    {
+      "id": "interpretation_7", 
+      "category": "interpretation",
       "type": "multiple-choice",
-      "question": "A colleague presents data showing declining productivity. What's your first step?",
+      "axis": "interpretation",
+      "question": "When someone asks for advice, I typically focus on:",
       "options": [
-        "Immediately implement solutions",
-        "Ask questions about how the data was collected and what it represents",
-        "Ignore it if it contradicts your experience",
-        "Blame external factors"
+        "The deeper principles or values that should guide their decision",
+        "The specific circumstances and context of their situation",
+        "Both principles and context, helping them see how they interact",
+        "Knowing when to emphasize timeless wisdom vs. practical context"
       ],
-      "correctAnswer": 1,
-      "points": 1,
-      "explanation": "Critical thinking starts with examining the source, methodology, and context of information."
+      "pole_weights": {
+        "root": [4, 1, 3, 3],
+        "context": [1, 4, 3, 3]
+      },
+      "points": 1
     },
     {
-      "id": "ct4",
-      "category": "critical-thinking",
+      "id": "interpretation_8",
+      "category": "interpretation",
       "type": "scale",
-      "question": "I can identify logical fallacies and weak arguments in discussions.",
+      "axis": "interpretation", 
+      "question": "The meaning of actions depends entirely on the situation and context in which they occur.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+      },
+      "scoring": "forward",
+      "points": 1
+    },
+    {
+      "id": "interpretation_9",
+      "category": "interpretation",
+      "type": "scale",
+      "axis": "interpretation",
+      "question": "I often ask 'Why?' to get to the root cause or fundamental reason behind things.",
       "scale": {
         "min": 1,
         "max": 5,
         "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
       },
+      "scoring": "reverse", 
       "points": 1
     },
     {
-      "id": "comm1",
-      "category": "communication",
-      "type": "scale",
-      "question": "I adapt my communication style based on my audience (colleagues, clients, friends).",
-      "scale": {
-        "min": 1,
-        "max": 5,
-        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
-      },
-      "points": 1
-    },
-    {
-      "id": "comm2",
-      "category": "communication",
+      "id": "interpretation_10",
+      "category": "interpretation",
       "type": "multiple-choice",
-      "question": "During a team discussion, you notice one member hasn't spoken. What do you do?",
+      "axis": "interpretation",
+      "question": "When teaching or explaining something important, I emphasize:",
       "options": [
-        "Continue the discussion without them",
-        "Put them on the spot by asking them directly",
-        "Create an opening and invite their input gently",
-        "Assume they have nothing to contribute"
+        "The foundational principles that never change",
+        "How to adapt and apply ideas to different situations",
+        "Both unchanging truths and their contextual applications",
+        "When to rely on principles vs. when to adapt to context"
       ],
-      "correctAnswer": 2,
-      "points": 1,
-      "explanation": "Effective communication includes ensuring all voices are heard while being respectful and inclusive."
+      "pole_weights": {
+        "root": [4, 1, 3, 3],
+        "context": [1, 4, 3, 3]
+      },
+      "points": 1
     },
     {
-      "id": "comm3",
-      "category": "communication",
-      "type": "scale",
-      "question": "I listen actively and ask clarifying questions to ensure I understand others.",
+      "id": "reflection_11",
+      "category": "reflection",
+      "type": "scale", 
+      "axis": "reflection",
+      "question": "I need to talk through my thoughts with others to fully understand them.",
       "scale": {
         "min": 1,
         "max": 5,
         "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
       },
+      "scoring": "forward",
       "points": 1
     },
     {
-      "id": "comm4",
-      "category": "communication",
-      "type": "scale",
-      "question": "I can explain complex ideas in simple, understandable terms.",
-      "scale": {
-        "min": 1,
-        "max": 5,
-        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
-      },
-      "points": 1
-    },
-    {
-      "id": "res1",
-      "category": "resilience",
-      "type": "scale",
-      "question": "When I face setbacks, I bounce back quickly and learn from the experience.",
-      "scale": {
-        "min": 1,
-        "max": 5,
-        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
-      },
-      "points": 1
-    },
-    {
-      "id": "res2",
-      "category": "resilience",
+      "id": "reflection_12",
+      "category": "reflection",
       "type": "multiple-choice",
-      "question": "Your project gets cancelled after months of work. What's your most likely response?",
+      "axis": "reflection",
+      "question": "After an important meeting or conversation, I typically:",
       "options": [
-        "Feel devastated and lose motivation for weeks",
-        "Analyze what went wrong, learn from it, and apply insights to future projects",
-        "Blame others for the failure",
-        "Avoid taking on challenging projects in the future"
+        "Spend time alone thinking about what was said and what it means",
+        "Want to immediately discuss it with someone to process my thoughts",
+        "Do both - reflect privately then discuss with others",
+        "Know when I need solitude vs. when I need dialogue to understand"
       ],
-      "correctAnswer": 1,
-      "points": 1,
-      "explanation": "Resilience involves learning from setbacks and using them as growth opportunities."
+      "pole_weights": {
+        "internal": [4, 1, 3, 3],
+        "external": [1, 4, 3, 3]
+      },
+      "points": 1
     },
     {
-      "id": "res3",
-      "category": "resilience",
+      "id": "reflection_13",
+      "category": "reflection",
       "type": "scale",
-      "question": "I adapt well to changes in my work environment or personal life.",
+      "axis": "reflection",
+      "question": "My best insights come from quiet, private reflection time.",
       "scale": {
         "min": 1,
         "max": 5,
         "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
       },
+      "scoring": "reverse",
       "points": 1
     },
     {
-      "id": "res4",
-      "category": "resilience",
+      "id": "reflection_14",
+      "category": "reflection",
       "type": "scale",
-      "question": "I maintain a positive outlook even during difficult times.",
+      "axis": "reflection",
+      "question": "I understand my own thoughts better when I explain them to someone else.",
       "scale": {
         "min": 1,
         "max": 5,
         "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
       },
+      "scoring": "forward",
       "points": 1
     },
     {
-      "id": "lead1",
-      "category": "leadership",
-      "type": "scale",
-      "question": "Others often look to me for guidance and direction in group situations.",
-      "scale": {
-        "min": 1,
-        "max": 5,
-        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
-      },
-      "points": 1
-    },
-    {
-      "id": "lead2",
-      "category": "leadership",
+      "id": "reflection_15",
+      "category": "reflection",
       "type": "multiple-choice",
-      "question": "Your team is struggling with low morale. What's your approach?",
+      "axis": "reflection",
+      "question": "When learning something complex, I'm most effective when I:",
       "options": [
-        "Push them harder to improve performance",
-        "Listen to their concerns and work together on solutions",
-        "Ignore it and hope it improves",
-        "Report the problem to management"
+        "Study and contemplate it privately first",
+        "Discuss and explore it with others immediately", 
+        "Combine private study with group discussion naturally",
+        "Know when to reflect alone vs. when to think out loud with others"
       ],
-      "correctAnswer": 1,
-      "points": 1,
-      "explanation": "Effective leadership involves listening to team members and collaboratively addressing challenges."
-    },
-    {
-      "id": "lead3",
-      "category": "leadership",
-      "type": "scale",
-      "question": "I inspire and motivate others to achieve their best work.",
-      "scale": {
-        "min": 1,
-        "max": 5,
-        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      "pole_weights": {
+        "internal": [4, 1, 3, 3],
+        "external": [1, 4, 3, 3]
       },
       "points": 1
     },
     {
-      "id": "lead4",
-      "category": "leadership",
+      "id": "application_16",
+      "category": "application",
       "type": "scale",
-      "question": "I take initiative to solve problems without being asked.",
+      "axis": "application",
+      "question": "I'm naturally drawn to big, transformative visions of what could be possible.",
       "scale": {
         "min": 1,
         "max": 5,
-        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+        "labels": ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
       },
+      "scoring": "reverse",
       "points": 1
     },
     {
-      "id": "crea1",
-      "category": "creativity",
-      "type": "scale",
-      "question": "I regularly generate multiple solutions to problems before choosing one.",
-      "scale": {
-        "min": 1,
-        "max": 5,
-        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
-      },
-      "points": 1
-    },
-    {
-      "id": "crea2",
-      "category": "creativity",
+      "id": "application_17",
+      "category": "application",
       "type": "multiple-choice",
-      "question": "You're tasked with improving team productivity. What's your approach?",
+      "axis": "application",
+      "question": "When starting a project, I typically begin by:",
       "options": [
-        "Implement the same solutions that worked elsewhere",
-        "Brainstorm creative approaches, even unconventional ones",
-        "Stick to proven traditional methods",
-        "Ask your supervisor what to do"
+        "Defining the inspiring vision and ultimate impact we want to create",
+        "Identifying practical first steps and concrete milestones",
+        "Connecting the inspiring vision to practical action steps",
+        "Knowing when to dream big vs. when to focus on practical details"
       ],
-      "correctAnswer": 1,
-      "points": 1,
-      "explanation": "Creative problem-solving involves exploring innovative and unconventional solutions."
+      "pole_weights": {
+        "dream": [4, 1, 3, 3],
+        "pragmatic": [1, 4, 3, 3]
+      },
+      "points": 1
     },
     {
-      "id": "crea3",
-      "category": "creativity",
+      "id": "application_18",
+      "category": "application",
       "type": "scale",
-      "question": "I enjoy exploring new ideas and approaches, even if they seem unusual.",
+      "axis": "application",
+      "question": "I prefer to focus on practical, incremental steps rather than grand visions.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+      },
+      "scoring": "forward",
+      "points": 1
+    },
+    {
+      "id": "application_19",
+      "category": "application",
+      "type": "scale",
+      "axis": "application",
+      "question": "I get energized by turning abstract ideas into concrete, measurable actions.",
       "scale": {
         "min": 1,
         "max": 5,
         "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
       },
+      "scoring": "forward",
       "points": 1
     },
     {
-      "id": "crea4",
-      "category": "creativity",
-      "type": "scale",
-      "question": "I can connect ideas from different areas to create innovative solutions.",
-      "scale": {
-        "min": 1,
-        "max": 5,
-        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
-      },
-      "points": 1
-    },
-    {
-      "id": "self1",
-      "category": "self-awareness",
-      "type": "scale",
-      "question": "I understand my strengths and use them effectively.",
-      "scale": {
-        "min": 1,
-        "max": 5,
-        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
-      },
-      "points": 1
-    },
-    {
-      "id": "self2",
-      "category": "self-awareness",
-      "type": "scale",
-      "question": "I recognize my weaknesses and actively work to improve them.",
-      "scale": {
-        "min": 1,
-        "max": 5,
-        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
-      },
-      "points": 1
-    },
-    {
-      "id": "self3",
-      "category": "self-awareness",
+      "id": "application_20",
+      "category": "application",
       "type": "multiple-choice",
-      "question": "How do you typically respond to feedback about your performance?",
+      "axis": "application",
+      "question": "I'm most valuable to teams when I:",
       "options": [
-        "Get defensive and justify your actions",
-        "Listen carefully and reflect on how to improve",
-        "Ignore it if you disagree",
-        "Take it personally and feel upset"
+        "Inspire them with compelling visions of what we could achieve",
+        "Help them create realistic plans and track concrete progress",
+        "Bridge between inspiring vision and practical execution",
+        "Know when the team needs inspiration vs. when it needs practical focus"
       ],
-      "correctAnswer": 1,
-      "points": 1,
-      "explanation": "Self-awareness includes being open to feedback and using it for personal growth."
+      "pole_weights": {
+        "dream": [4, 1, 3, 3],
+        "pragmatic": [1, 4, 3, 3]
+      },
+      "points": 1
     },
     {
-      "id": "self4",
-      "category": "self-awareness",
+      "id": "motivation_21",
+      "category": "motivation",
       "type": "scale",
-      "question": "I understand what motivates me and what drains my energy.",
+      "axis": "motivation",
+      "question": "I'm most motivated when I can pursue my own standards and convictions.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+      },
+      "scoring": "reverse",
+      "points": 1
+    },
+    {
+      "id": "motivation_22",
+      "category": "motivation",
+      "type": "multiple-choice",
+      "axis": "motivation",
+      "question": "What energizes you most in your work or activities?",
+      "options": [
+        "Achieving personal excellence and following my own vision",
+        "Contributing to something bigger than myself and helping others",
+        "Finding ways to serve shared purpose while staying true to myself",
+        "Knowing when to lead independently vs. when to serve the group"
+      ],
+      "pole_weights": {
+        "self": [4, 1, 3, 3],
+        "mission": [1, 4, 3, 3]
+      },
+      "points": 1
+    },
+    {
+      "id": "motivation_23",
+      "category": "motivation",
+      "type": "scale",
+      "axis": "motivation",
+      "question": "I feel most fulfilled when my efforts contribute to the common good.",
       "scale": {
         "min": 1,
         "max": 5,
         "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "scoring": "forward",
+      "points": 1
+    },
+    {
+      "id": "motivation_24",
+      "category": "motivation",
+      "type": "scale",
+      "axis": "motivation",
+      "question": "I need autonomy and independence to do my best work.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+      },
+      "scoring": "reverse",
+      "points": 1
+    },
+    {
+      "id": "motivation_25",
+      "category": "motivation",
+      "type": "multiple-choice",
+      "axis": "motivation",
+      "question": "When making important decisions, I primarily consider:",
+      "options": [
+        "What aligns with my personal values and individual calling",
+        "What serves the needs of my community or organization",
+        "How to honor both my authentic self and shared responsibilities",
+        "When to prioritize personal conviction vs. collective wisdom"
+      ],
+      "pole_weights": {
+        "self": [4, 1, 3, 3],
+        "mission": [1, 4, 3, 3]
+      },
+      "points": 1
+    },
+    {
+      "id": "orientation_26",
+      "category": "orientation",
+      "type": "scale",
+      "axis": "orientation",
+      "question": "I naturally think in terms of immediate tasks and near-term deadlines.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "scoring": "reverse",
+      "points": 1
+    },
+    {
+      "id": "orientation_27",
+      "category": "orientation",
+      "type": "multiple-choice",
+      "axis": "orientation",
+      "question": "When planning, I typically focus on:",
+      "options": [
+        "What needs to be done today, this week, this month",
+        "Long-term patterns, seasonal rhythms, and strategic direction",
+        "Connecting daily actions to long-term vision naturally",
+        "When to focus on immediate tasks vs. when to think strategically"
+      ],
+      "pole_weights": {
+        "task": [4, 1, 3, 3],
+        "horizon": [1, 4, 3, 3]
+      },
+      "points": 1
+    },
+    {
+      "id": "orientation_28",
+      "category": "orientation",
+      "type": "scale",
+      "axis": "orientation",
+      "question": "I often think about how current events fit into larger historical patterns.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "scoring": "forward",
+      "points": 1
+    },
+    {
+      "id": "orientation_29",
+      "category": "orientation",
+      "type": "scale",
+      "axis": "orientation",
+      "question": "I work best when I have clear, concrete deadlines and specific deliverables.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+      },
+      "scoring": "reverse",
+      "points": 1
+    },
+    {
+      "id": "orientation_30",
+      "category": "orientation",
+      "type": "multiple-choice",
+      "axis": "orientation",
+      "question": "I'm most valuable when I help others:",
+      "options": [
+        "Stay focused on immediate priorities and concrete next steps",
+        "See the bigger picture and long-term implications",
+        "Balance urgent tasks with strategic thinking",
+        "Know when to focus on details vs. when to zoom out strategically"
+      ],
+      "pole_weights": {
+        "task": [4, 1, 3, 3],
+        "horizon": [1, 4, 3, 3]
+      },
+      "points": 1
+    },
+    {
+      "id": "value_expression_31",
+      "category": "value_expression",
+      "type": "scale",
+      "axis": "value_expression",
+      "question": "I believe in treating everyone exactly the same way, regardless of circumstances.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+      },
+      "scoring": "forward",
+      "points": 1
+    },
+    {
+      "id": "value_expression_32",
+      "category": "value_expression",
+      "type": "multiple-choice",
+      "axis": "value_expression",
+      "question": "When someone makes a mistake, my instinct is to:",
+      "options": [
+        "Focus on what they need to learn and how to prevent it happening again",
+        "Understand their situation and offer compassionate support",
+        "Balance accountability with understanding their circumstances",
+        "Know when they need compassion vs. when they need clear consequences"
+      ],
+      "pole_weights": {
+        "respect": [4, 1, 3, 3],
+        "love": [1, 4, 3, 3]
+      },
+      "points": 1
+    },
+    {
+      "id": "value_expression_33",
+      "category": "value_expression",
+      "type": "scale",
+      "axis": "value_expression",
+      "question": "I prioritize understanding someone's unique situation over applying universal rules.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+      },
+      "scoring": "reverse",
+      "points": 1
+    },
+    {
+      "id": "value_expression_34",
+      "category": "value_expression",
+      "type": "scale",
+      "axis": "value_expression",
+      "question": "Consistency and fairness are more important than individual considerations.",
+      "scale": {
+        "min": 1,
+        "max": 5,
+        "labels": ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+      },
+      "scoring": "forward",
+      "points": 1
+    },
+    {
+      "id": "value_expression_35",
+      "category": "value_expression",
+      "type": "multiple-choice",
+      "axis": "value_expression",
+      "question": "My greatest strength in relationships is:",
+      "options": [
+        "Being fair, consistent, and principled in how I treat people",
+        "Being warm, understanding, and responsive to individual needs",
+        "Combining clear standards with genuine care for each person",
+        "Knowing when to emphasize fairness vs. when to emphasize mercy"
+      ],
+      "pole_weights": {
+        "respect": [4, 1, 3, 3],
+        "love": [1, 4, 3, 3]
       },
       "points": 1
     }
   ],
   "scoring": {
-    "levels": [
-      {
-        "name": "Developing",
-        "range": [0, 0.4],
-        "description": "You're building foundational skills across these areas. There's significant opportunity for growth and development.",
-        "recommendations": [
-          "Focus on self-reflection and awareness practices",
-          "Seek feedback from others regularly",
-          "Practice active listening in conversations",
-          "Start with small leadership opportunities"
-        ]
-      },
-      {
-        "name": "Competent", 
-        "range": [0.41, 0.65],
-        "description": "You have solid skills in most areas with room for targeted improvement. You're effective in many situations.",
-        "recommendations": [
-          "Identify your strongest areas and leverage them more",
-          "Work on specific weaknesses identified in the assessment",
-          "Seek mentorship or coaching for leadership development",
-          "Practice creative problem-solving techniques"
-        ]
-      },
-      {
-        "name": "Proficient",
-        "range": [0.66, 0.8], 
-        "description": "You demonstrate strong capabilities across most areas. You're ready for greater challenges and responsibilities.",
-        "recommendations": [
-          "Take on leadership roles in projects or teams",
-          "Mentor others in areas where you excel",
-          "Continuously challenge yourself with complex problems",
-          "Develop expertise in specialized areas"
-        ]
-      },
-      {
-        "name": "Advanced",
-        "range": [0.81, 1.0],
-        "description": "You show exceptional strength across all seven areas. You're ready to lead and inspire others while continuing to grow.",
-        "recommendations": [
-          "Seek executive or senior leadership opportunities",
-          "Become a mentor and coach for others",
-          "Lead organizational change initiatives",
-          "Share your expertise through teaching or writing"
-        ]
-      }
-    ]
+    "method": "jvdt_axes",
+    "axes": [
+      "perception",
+      "interpretation", 
+      "reflection",
+      "application",
+      "motivation",
+      "orientation",
+      "value_expression"
+    ],
+    "stage_mapping": {
+      "highly_skewed": 2,
+      "strong_preference": 3, 
+      "directional_flexible": 4,
+      "balanced_low_ii": 4,
+      "balanced_high_ii": 5
+    },
+    "margin_thresholds": {
+      "highly_skewed": 0.8,
+      "strong_preference": 0.65,
+      "directional_flexible": 0.55,
+      "balanced": 0.54
+    }
   }
 }
