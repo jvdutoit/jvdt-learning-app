@@ -513,6 +513,164 @@ export default function QuizEngine({ testDefinition, onComplete }) {
       );
     }
 
+    // Render JVDT-4 cognitive results
+    if (results.methodology === 'jvdt-4-cognitive') {
+      return (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-4xl mx-auto space-y-6"
+        >
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+              {testDefinition.title} Results
+            </h2>
+            <div className="text-lg text-gray-600 dark:text-gray-400">
+              Completed in {formatTime(timeSpent)}
+            </div>
+          </div>
+
+          {/* JVDT-4 Code and Overall Stage */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Your JVDT-4 Cognitive Profile</h3>
+            <div className="space-y-4">
+              <div className="text-center p-6 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
+                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                  {results.jvdtCode}
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  Seeing · Thinking · Doing · Caring
+                </div>
+                <div className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  Overall Stage: {results.overallStage.name}
+                </div>
+                <div className="text-sm text-gray-700 dark:text-gray-300 mt-2">
+                  Average Development Level: {results.overallStage.average?.toFixed(1)}/5.0
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Integration Index</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                      {results.integrationIndex}%
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div
+                      className="bg-emerald-600 h-2 rounded-full transition-all duration-500"
+                      style={{ width: `${results.integrationIndex}%` }}
+                    ></div>
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    Balance across four cognitive axes
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Development Stage</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                      {results.overallStage.stage} / 5
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div
+                      className="bg-purple-600 h-2 rounded-full transition-all duration-500"
+                      style={{ width: `${(results.overallStage.stage / 5) * 100}%` }}
+                    ></div>
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    Virtue Ladder progression
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Four Axes Breakdown */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Four Axes Analysis</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {testDefinition.categories.map(category => {
+                if (!category.axis) return null;
+                
+                const axisResult = results.axisResults[category.axis];
+                const axisStage = results.axisStages[category.axis];
+                
+                if (!axisResult || !axisStage) return null;
+                
+                const preferenceText = axisResult.preference === 'balanced' 
+                  ? 'Balanced' 
+                  : axisResult.preference;
+                
+                return (
+                  <div key={category.axis} className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <div className="flex justify-between items-center mb-2">
+                      <h4 className="font-semibold text-gray-900 dark:text-gray-100">{category.name}</h4>
+                      <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">
+                        {axisStage.name}
+                      </span>
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                      Preference: <span className="font-medium capitalize">{preferenceText}</span>
+                    </div>
+                    <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-1.5 mb-2">
+                      <div
+                        className="bg-blue-600 h-1.5 rounded-full transition-all duration-500"
+                        style={{ width: `${axisResult.balance * 100}%` }}
+                      ></div>
+                    </div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400">
+                      Balance: {Math.round(axisResult.balance * 100)}%
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Recommendations */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Development Recommendations</h3>
+            <div className="space-y-4">
+              {results.recommendations.map((recommendation, index) => (
+                <div key={index} className="p-4 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg">
+                  <div className="font-semibold text-indigo-700 dark:text-indigo-300 mb-2 capitalize">
+                    {recommendation.axis} - {recommendation.stage}
+                  </div>
+                  <div className="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                    {recommendation.description}
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    <strong>Practice:</strong> {recommendation.practice}
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    <strong>Reflection:</strong> {recommendation.reflection}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="text-center">
+            <button
+              onClick={() => {
+                setShowResults(false);
+                setCurrentQuestionIndex(0);
+                setAnswers({});
+                setTimeSpent(0);
+                setResults(null);
+              }}
+              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Take Another Assessment
+            </button>
+          </div>
+        </motion.div>
+      );
+    }
+
     // Original results display for other tests
     return (
       <motion.div
