@@ -8,6 +8,9 @@ import TeachPeace from './components/TeachPeace';
 import GameArcade from './GameArcade';
 import TestList from './components/diagnostics/TestList';
 import DiagnosticTest from './components/diagnostics/DiagnosticTest';
+import ResourceCatalog from './components/resources/ResourceCatalog';
+import ResourceViewer from './components/resources/ResourceViewer';
+import ResourceGenerator from './components/resources/ResourceGenerator';
 
 function ThemeToggle() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || localStorage.getItem('jvdt:theme') || 'light');
@@ -31,6 +34,7 @@ function ThemeToggle() {
 function TopNav() {
   const loc = useLocation();
   const isTestActive = loc.pathname.startsWith('/test');
+  const isResourceActive = loc.pathname.startsWith('/resources');
   
   return (
     <div className="sticky top-0 z-10 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-slate-200 dark:border-gray-800">
@@ -46,6 +50,9 @@ function TopNav() {
             </Link>
             <Link to="/test" className={`px-3 py-1 rounded-lg text-sm ${isTestActive ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
               Diagnostics
+            </Link>
+            <Link to="/resources" className={`px-3 py-1 rounded-lg text-sm ${isResourceActive ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
+              Resources
             </Link>
             <Link to="/glossary" className={`px-3 py-1 rounded-lg text-sm ${loc.pathname === '/glossary' ? 'bg-slate-900 text-white' : 'bg-white dark:bg-gray-800 text-slate-800 dark:text-gray-200'}`}>
               Glossary
@@ -80,6 +87,9 @@ export default function App() {
           <Route path="/journey" element={<TrainJourney />} />
           <Route path="/test" element={<TestList />} />
           <Route path="/test/:testId" element={<DiagnosticTest />} />
+          <Route path="/resources" element={<ResourceCatalog />} />
+          <Route path="/resources/generate" element={<ResourceGenerator />} />
+          <Route path="/resources/:resourceId" element={<ResourceViewer />} />
           <Route path="/glossary" element={<Glossary />} />
           <Route path="/reflect" element={<ReflectionCage />} />
           <Route path="/peace" element={<TeachPeace />} />
